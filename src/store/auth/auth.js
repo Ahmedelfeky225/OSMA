@@ -196,5 +196,5 @@ const authSlice = createSlice({
 });
 
 export const { clearState } = authSlice.actions;
-export { loginUser, registerUser, resetPassword, forgotPassword, logoutUser };
+// export { loginUser, registerUser, resetPassword, forgotPassword, logoutUser };
 export default authSlice.reducer;
