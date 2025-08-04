@@ -78,6 +78,7 @@ import LayoutStructure from "@/components/layoutStructure";
 import FixedWhatsappButton from "@/components/fixedWhatsappButton";
 import { ThemeProvider } from "@/components/themeProvider";
 import { Suspense } from "react";
+import TopLoader from "@/components/topLoader";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -247,6 +248,7 @@ export default async function LocaleLayout({ children, params }) {
 
       <body className="antialiased">
         {/* ✅ إضافة noscript fallback */}
+        <TopLoader />
         <noscript>
           <div className="fixed inset-0 bg-white dark:bg-gray-900 flex items-center justify-center z-50">
             <div className="text-center p-8">
