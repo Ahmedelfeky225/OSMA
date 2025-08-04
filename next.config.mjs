@@ -1,4 +1,15 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
+import createNextIntlPlugin from "next-intl/plugin";
 
-export default nextConfig;
+const withNextIntl = createNextIntlPlugin();
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    domains: ["res.cloudinary.com", "cdn.salla.sa"],
+  },
+  experimental: {
+    middleware: true,
+  },
+};
+
+export default withNextIntl(nextConfig);

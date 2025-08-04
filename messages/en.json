@@ -1,0 +1,520 @@
+{
+  "Index": {
+    "categories_description": "Discover our wide collection of luxury fragrances",
+    "men_description": "Luxury men's fragrances that match your strong and distinctive personality",
+    "women_description": "Elegant women's perfumes that highlight your natural beauty and femininity",
+    "unisex_description": "Shared fragrances suitable for everyone with balanced and distinctive scents",
+    "hair_perfumes_description": "Special hair perfumes that give your hair a long-lasting fragrant scent",
+    "body_sprays_description": "Refreshing body sprays that give you a feeling of freshness all day long",
+    "air_fresheners_description": "Luxury air fresheners to scent your home and office with a distinctive fragrance",
+    "popular": "Most Popular",
+    "view_all_products": "View All Prodcuts",
+    "footer_follow_us": "Follow Us",
+    "footer_contact_title": "Contact Us",
+    "footer_whatsapp": "WhatsApp",
+    "footer_chat_now": "Chat with us now",
+    "footer_made_with_love": "Made with love in Oman",
+    "footer_privacy": "Privacy Policy",
+    "footer_terms": "Terms & Conditions",
+    "footer_sitemap": "Sitemap",
+    "categoriesTitle": "Shop by Category",
+    "footer_about_osma": "OSMA Perfumes offers unique scents that define your individuality. We blend tradition with innovation to create captivating fragrances.",
+    "footer_quick_links_title": "Quick Links",
+    "footer_men_perfumes": "Men's Perfumes",
+    "footer_women_perfumes": "Women's Perfumes",
+    "footer_body_sprays": "Body Sprays",
+    "footer_contact_us": "Contact Us",
+    "about_us": "About Us",
+    "footer_customer_service_title": "Customer Service",
+    "footer_faq": "FAQ",
+    "footer_shipping_returns": "Shipping & Returns",
+    "footer_privacy_policy": "Privacy Policy",
+    "footer_terms_of_service": "Terms of Service",
+    "footer_contact_info_title": "Contact Info",
+    "footer_email": "Email",
+    "footer_phone": "Phone",
+    "footer_address": "Address",
+    "footer_newsletter_title": "Newsletter",
+    "footer_newsletter_description": "Stay updated with our latest collections and exclusive offers.",
+    "footer_newsletter_placeholder": "Enter your email",
+    "footer_subscribe_button": "Subscribe",
+    "footer_payment_methods_title": "Payment Methods",
+    "footer_copyright": "© 2025 OSMA Perfumes. All rights reserved.",
+    "whatsapp_prefilled_message": "Hello OSMA Perfumes, I would like to inquire about:\n1. Product details\n2. Order status\n3. Shipping information\n4. Other",
+    "whatsapp_button_label": "Chat with us on WhatsApp",
+    "home": "Home",
+    "offers": "Offers",
+    "contact_us": "Contact Us",
+    "categories": "Categories",
+    "men": "Men",
+    "women": "Women",
+    "unisex": "Unisex",
+    "hair_perfumes": "Hair Perfumes",
+    "body_sprays": "Body Sprays",
+    "air_fresheners": "Air Fresheners",
+    "menDesc": "Premium fragrances crafted for men.",
+    "womenDesc": "Elegant scents designed for women.",
+    "unisexDesc": "Versatile perfumes for everyone.",
+    "hair_perfumesDesc": "Delicate fragrances to refresh your hair.",
+    "body_spraysDesc": "Light and invigorating body sprays.",
+    "air_freshenersDesc": "Refreshing scents to enhance your space.",
+    "defaultDescription": "Discover exclusive fragrances tailored for you.",
+
+    "inquiry": "Ask about product",
+    "OsmanLogo": "Logo",
+    "offersTitle": "Featured Offers",
+    "exclusiveTitle": "Exclusive Perfumes",
+    "title": "Title",
+    "description": "Description",
+    "searchPlaceholder": "Search...",
+    "footer_about": "Lorem Ipsum Many desktop publishing",
+    "footer_links_home": "Home",
+    "footer_links_about": "About Us",
+    "footer_links_programs": "Education Programs",
+    "footer_links_live": "Live Classes",
+    "footer_links_register": "Register & Pay",
+    "login": "Login",
+    "myNursery": "My Nursery",
+    "openMenu": "Open Menu",
+    "email": "Email",
+    "password": "Password",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmNewPassword": "Confirm New Password",
+    "forgot-password": "Forgot Password?",
+    "create-one": "Create one",
+    "verify": "Verify",
+    "verify-your-email": "Verify Your Email",
+    "recover-password": "Recover Password",
+    "recover-now": "Recover Now",
+    "recover-password-description": "Recover Password Description",
+    "remember-your-password": "Remember Your Password",
+    "reset-password": "Reset Password",
+    "back-to-login": "Back To Login",
+    "enter-the-code-weve-sent-to": "Enter the code we've sent to",
+    "resend-activate-code-to": "Resend activate code to",
+    "dont-have-an-account": "Don't have an account?",
+    "loading": "Loading...",
+    "remove": "Remove",
+    "name": "Name",
+    "username": "Username",
+    "phoneNumber": "Mobile",
+    "passwordPlaceholder": "Enter password...",
+    "usernamePlaceholder": "Enter username...",
+    "emailPlaceholder": "Enter email...",
+    "confirm-password": "Confirm Password",
+    "confirmPasswordPlaceholder": "Re-enter your password",
+    "loginTab": "Login",
+    "registerTab": "Register",
+    "create-my-account": "Register",
+    "have-an-account": "Already have an account?",
+    "remember-me": "Remember me",
+    "notifications": "Notifications",
+    "myWallet": "My Wallet",
+    "updateProfile": "Update Profile",
+    "updatePassword": "Update Password",
+    "logout": "Logout",
+    "direct_contact": "Need Direct Contact?",
+    "sample_text": "Sample text to test how content is displayed here.",
+    "map_title": "Google Map showing Kuwait",
+    "email_not_published": "Your email address will not be published.",
+    "write_here": "Write here...",
+    "save_info": "Save my name and email in this browser for the next time",
+    "send": "Send",
+    "sending": "Sending...",
+    "success_message": "Sent successfully",
+    "error_message": "Failed to send message",
+    "checkout": "Checkout",
+    "fillForm": "Fill form",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "firstNamePlaceholder": "Enter first name",
+    "lastNamePlaceholder": "Enter last name",
+    "province": "Province",
+    "city": "City",
+    "directPayment": "Direct payment",
+    "payViaUpay": "Pay via upay",
+    "selectProvince": "Select Province",
+    "selectCity": "Select City",
+    "buyNow": "Buy Now",
+    "payNow": "Pay Now",
+    "coupon": "Coupon",
+    "apply": "Apply",
+    "readNow": "Read Now",
+    "confirmBuying": "Confirm Buying",
+    "noDataAvailable": "No Data Available",
+    "addToCart": "Add To Cart",
+    "addToFavorite": "Add To Favorite",
+    "Footer": {
+      "ovc-program-description": "The My Nursery Academy Program is an online digital tool offering access to educational sciences and interactive workshops.",
+      "about-ovc-program": "About the My Nursery Academy Program",
+      "home": "Home",
+      "vision-and-mission": "Vision and Mission",
+      "project-introduction": "Project Introduction",
+      "curriculum": "Curriculum",
+      "more": "More",
+      "timeline": "Timeline",
+      "faculty": "Faculty",
+      "ovc-series": "My Nursery Scientific Series",
+      "admission-and-registration": "Admission & Registration",
+      "privacy-policy": "Privacy Policy",
+      "cookie-policy": "Cookie Policy",
+      "sitemap": "Sitemap"
+    },
+    "search_placeholder": "Search ...",
+
+    "Validations": {
+      "required": "Field is required",
+      "email-address-required": "Email address is required",
+      "email-must-be-a-valid-email": "Email must be a valid email",
+      "password-too-short": "Password must be at least 6 characters",
+      "password-required": "Password is required",
+      "email-too-short": "Email should be at least 6 characters long",
+      "username-required": "Username is required",
+      "username-too-short": "Username is too short, it must be at least 4 characters",
+      "passwords-must-match": "Passwords must match",
+      "please-confirm-password": "Please confirm your password",
+      "phone-too-short": "Phone number is too short",
+      "phone-required": "Phone number is required",
+      "name-too-short": "Name is too short",
+      "name-required": "Name is required",
+      "question-required": "Question is required",
+      "question-too-short": "Question must be at least 10 characters",
+      "coupon-too-short": "Coupon is too short"
+    },
+    "searchPlaceholder": "Search for products...",
+    "login": "Login",
+    "create-my-account": "Create My Account",
+    "openMenu": "Open Menu"
+  },
+  "Search": {
+    "searching": "Searching...",
+    "viewAllResults": "View All Results ({count}+)",
+    "noResultsFound": "No results found for \"{query}\"",
+    "searchAllProducts": "Search all products",
+    "startTyping": "Start typing to search",
+    "suggestedProducts": "Suggested Products",
+    "suggestedKeywords": "Suggested Keywords",
+    "recentSearches": "Recent Searches",
+    "clearAll": "Clear all",
+    "remove": "Remove",
+    "image": "Image",
+    "closeSearch": "Close search"
+  },
+
+  "About": {
+    "hero": {
+      "badge": "🎯 About Us - OSMA Perfumes",
+      "title": "We are the scent of every moment",
+      "description": "At OSMA, we don't just sell perfumes — we create unforgettable experiences. From the heart of Eastern inspiration and the magic of Western fragrances, we blend art with the senses to give you your own unique fragrance signature."
+    },
+    "vision": {
+      "title": "✨ Our Vision",
+      "description": "To be the leading brand in the world of luxury perfumes, where quality meets craftsmanship, giving everyone a fragrance that reflects their personality."
+    },
+    "mission": {
+      "title": "🎯 Our Mission",
+      "description": "Creating unique fragrances with an unforgettable signature, using the finest natural ingredients, while ensuring an exceptional customer experience from bottle to customer satisfaction."
+    },
+    "values": {
+      "title": "🧬 Our Values",
+      "quality": {
+        "title": "Quality First",
+        "description": "We use the finest oils and fragrance ingredients"
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "We create unique, unforgettable scents"
+      },
+      "transparency": {
+        "title": "Transparency",
+        "description": "We believe in honest and clear communication with our customers"
+      },
+      "excellence": {
+        "title": "Excellence",
+        "description": "In every bottle, every packaging detail, and every service"
+      }
+    },
+    "ingredients": {
+      "title": "🧪 Our Perfume Ingredients",
+      "description": "At OSMA, we carefully select our ingredients from Eastern flowers, wood extracts, and touches of musk and amber, to create a balance between classic and modern character.",
+      "items": {
+        "flowers": "Eastern Flowers",
+        "woods": "Wood Extracts",
+        "musk": "Natural Musk",
+        "amber": "Luxury Amber"
+      }
+    },
+    "whyChoose": {
+      "title": "🛍️ Why Choose OSMA?",
+      "features": {
+        "lasting": "Long-lasting formulations",
+        "design": "Elegant and luxurious bottle design",
+        "experience": "Premium user experience",
+        "support": "After-sales service"
+      }
+    },
+    "presence": {
+      "title": "🌍 Our Presence",
+      "description": "We ship our products to most Gulf countries, with a physical presence in several regions, and we aim to expand further in Oman and other Gulf countries soon.",
+      "region": "Gulf Countries",
+      "countries": "UAE • Saudi Arabia • Kuwait • Bahrain • Qatar • Oman"
+    },
+    "gallery": {
+      "title": "📸 OSMA Gallery",
+      "perfume": "OSMA Perfume"
+    },
+    "subtitle1": "Luxury and distinctive formula",
+    "subtitle2": "Long-lasting notes",
+    "subtitle3": "A fragrance that reflects you",
+    "subtitle4": "Charm and pure elegance",
+    "subtitle5": "A sense of luxury",
+    "subtitle6": "Unmatched quality",
+    "contact": {
+      "title": "🤝 Contact Us",
+      "phone": {
+        "title": "Call Us",
+        "number": "+968 7711 7906"
+      },
+      "email": {
+        "title": "Email Us",
+        "address": "osmaoman7@gmail.com"
+      },
+      "social": {
+        "title": "Follow Us"
+      }
+    },
+    "footer": {
+      "links": {
+        "about": "About Us",
+        "privacy": "Privacy Policy",
+        "contact": "Contact Us",
+        "terms": "Terms & Conditions"
+      },
+      "cta": {
+        "products": "Discover Our Products",
+        "shop": "Shop Now"
+      }
+    }
+  },
+  "Product": {
+    "brand": "Brand",
+    "size": "Size",
+    "concentration": "Concentration",
+    "notes": "Notes",
+    "topNotes": "Top Notes",
+    "heartNotes": "Heart Notes",
+    "baseNotes": "Base Notes",
+    "inStock": "In Stock",
+    "outOfStock": "Out of Stock",
+    "reviews": "reviews",
+    "rateProduct": "Rate this product",
+    "writeComment": "Write your comment here...",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "contactWhatsapp": "Contact via WhatsApp",
+    "notAvailable": "Not available"
+  },
+  "testimonials": {
+    "title": "Customer Testimonials",
+    "name": {
+      "ahmed": "Ahmed Youssef",
+      "sarah": "Sarah Mansour",
+      "khaled": "Khaled Omar"
+    },
+    "comment": {
+      "ahmed": "Luxurious scent and long-lasting freshness",
+      "sarah": "Excellent service and fast delivery",
+      "khaled": "The product matches the description exactly. Thank you!"
+    }
+  },
+  "why_us": {
+    "title": "Why Choose Us?",
+    "features": {
+      "shipping": "Fast & Secure Shipping 🚚",
+      "authentic": "100% Authentic Perfumes",
+      "support": "24/7 Customer Support",
+      "payment": "Cash on Delivery or Online Payment",
+      "packaging": "Elegant Gift-Ready Packaging 🎁"
+    }
+  },
+  "Auth": {
+    "Login": {
+      "title": "OSMA Login",
+      "email": "Email",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Invalid email format",
+      "password": "Password",
+      "passwordRequired": "Password is required",
+      "passwordMinLength": "Password must be at least 6 characters",
+      "loginButton": "Login",
+      "loggingIn": "Logging in...",
+      "loginFailed": "Login failed",
+      "loginSuccess": "Successfully logged in",
+      "registerLink": "Create a new account",
+      "forgotPassword": "Forgot password?"
+    },
+    "Logout": {
+      "logoutFailed": "Logout failed",
+      "logoutSuccess": "Logged out successfully"
+    },
+    "Register": {
+      "title": "Register",
+      "email": "Email",
+      "password": "Password",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Email is invalid",
+      "passwordRequired": "Password is required",
+      "passwordMinLength": "Password must be at least 6 characters",
+      "registerFailed": "Registration failed",
+      "registerSuccess": "Registration successful",
+      "registering": "Registering...",
+      "registerButton": "Register",
+      "loginLink": "Already have an account? Login"
+    },
+    "ResetPassword": {
+      "title": "Reset Password",
+      "subtitle": "Enter your new password below",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm Password",
+      "submit": "Update Password",
+      "success": "Your password has been reset successfully",
+      "error": "Failed to reset password",
+      "loading": "Updating password...",
+      "passwordMismatch": "Passwords do not match",
+      "passwordRequired": "Password is required",
+      "confirmPasswordRequired": "Confirm password is required",
+      "minPassword": "Password must be at least 8 characters",
+      "passwordMinLength": "Password must be at least 8 characters",
+      "resetButton": "Reset Password",
+      "resetting": "Resetting..."
+    },
+    "ForgotPassword": {
+      "title": "Forgot Password",
+      "email": "Email Address",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Invalid email address",
+      "sendResetLink": "Send Reset Link",
+      "sending": "Sending..."
+    }
+  },
+  "dashboard": {
+    "welcome": "Welcome to Dashboard",
+    "overview": "Here's an overview of your store's performance today",
+    "stats": {
+      "users": "Users",
+      "products": "Products",
+      "sales": "Sales",
+      "categories": "Categories"
+    },
+    "charts": {
+      "salesAnalysis": "Sales Analysis",
+      "salesDescription": "Overview of sales performance over the past months",
+      "revenueAnalysis": "Revenue Analysis",
+      "revenueDescription": "Monthly revenue and profit comparison",
+      "categoryDistribution": "Category Distribution",
+      "userGrowth": "User Growth",
+      "comingSoon": "Coming Soon..."
+    },
+    "recentActivity": {
+      "title": "Recent Activity",
+      "newUser": "New user joined",
+      "newProduct": "New product added",
+      "newOrder": "New order received"
+    }
+  },
+  "navbar": {
+    "title": "Dashboard",
+    "searchPlaceholder": "Quick search...",
+    "admin": "Admin",
+    "settings": "Settings",
+    "profile": "Profile",
+    "logout": "Logout"
+  },
+  "sidebar": {
+    "adminPanel": "Admin Panel",
+    "mainMenu": "Main Menu",
+    "dashboard": "Dashboard",
+    "products": "Products",
+    "categories": "Categories",
+    "users": "Users",
+    "settings": "Settings",
+    "admin": "Admin",
+    "onlineNow": "Online Now"
+  },
+  "filters": {
+    "title": "Product Filters",
+    "brand": "OSMA",
+    "resetFilters": "Reset",
+    "applyFilters": "Apply Filters",
+    "applying": "Applying...",
+    "range": {
+      "min": "Minimum",
+      "max": "Maximum"
+    },
+    "currency": {
+      "omr": "OMR"
+    },
+    "units": {
+      "stars": "stars",
+      "reviews": "reviews",
+      "discount": "discount"
+    },
+    "sections": {
+      "search": {
+        "title": "Search by Name",
+        "placeholder": "Search for product..."
+      },
+      "price": {
+        "title": "Price Range"
+      },
+      "rating": {
+        "title": "Minimum Rating"
+      },
+      "stock": {
+        "title": "In Stock",
+        "label": "Show only available products"
+      },
+      "reviews": {
+        "title": "Minimum Reviews"
+      },
+      "discount": {
+        "title": "Minimum Discount"
+      },
+      "date": {
+        "title": "Date Added",
+        "startDate": "Start Date",
+        "endDate": "End Date"
+      },
+      "featured": {
+        "title": "Featured Products",
+        "label": "Show only featured products"
+      },
+      "sort": {
+        "title": "Sort By",
+        "options": {
+          "newest": "Newest",
+          "priceAsc": "Price: Low to High",
+          "priceDesc": "Price: High to Low",
+          "ratingDesc": "Rating: High to Low",
+          "ratingAsc": "Rating: Low to High"
+        }
+      }
+    }
+  },
+  "search": {
+    "placeholder": "Search products..."
+  },
+  "common": {
+    "loading": "Loading..."
+  },
+  "products": {
+    "ask_about_product": "Ask about Product",
+    "whatsapp_message": {
+      "intro": "Hi, I would like to ask about the following product:",
+      "description": "Product description:",
+      "image": "Product image",
+      "link": "Product link"
+    }
+  }
+}
