@@ -69,7 +69,7 @@ export default function RegisterPage() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        px: isMobile ? 1.5 : 2,
+        px: 2,
       }}
     >
       <Box
@@ -78,7 +78,7 @@ export default function RegisterPage() {
         autoComplete="off"
         sx={{
           bgcolor: "transparent",
-          p: 4,
+          p: 0,
           width: "100%",
         }}
       >
@@ -86,8 +86,12 @@ export default function RegisterPage() {
           variant="h4"
           component="h1"
           textAlign="center"
-          mb={2}
-          sx={{ color: "#0b9add", fontWeight: "bold" }}
+          mb={{ xs: 1, sm: 3 }}
+          sx={{ color: "var(--primary-color)", fontWeight: "bold" }}
+          fontSize={{
+            xs: "1.8rem",
+            sm: "2.2rem",
+          }}
         >
           {t("title")}
         </Typography>
@@ -107,12 +111,12 @@ export default function RegisterPage() {
           })}
           error={Boolean(errors.email)}
           helperText={errors.email?.message}
-          InputLabelProps={{ sx: { color: "#0b9add" } }}
+          InputLabelProps={{ sx: { color: "var(--primary-color)" } }}
           sx={{
             "& .MuiOutlinedInput-root": {
-              "& fieldset": { borderColor: "#0b9add" },
-              "&:hover fieldset": { borderColor: "#0b9add" },
-              "&.Mui-focused fieldset": { borderColor: "#0b9add" },
+              "& fieldset": { borderColor: "var(--primary-color)" },
+              "&:hover fieldset": { borderColor: "var(--primary-color)" },
+              "&.Mui-focused fieldset": { borderColor: "var(--primary-color)" },
               input: { fontSize: "1rem" },
             },
             mb: 3,
@@ -135,7 +139,7 @@ export default function RegisterPage() {
           })}
           error={Boolean(errors.password)}
           helperText={errors.password?.message}
-          InputLabelProps={{ sx: { color: "#0b9add" } }}
+          InputLabelProps={{ sx: { color: "var(--primary-color)" } }}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
@@ -147,9 +151,9 @@ export default function RegisterPage() {
           }}
           sx={{
             "& .MuiOutlinedInput-root": {
-              "& fieldset": { borderColor: "#0b9add" },
-              "&:hover fieldset": { borderColor: "#0b9add" },
-              "&.Mui-focused fieldset": { borderColor: "#0b9add" },
+              "& fieldset": { borderColor: "var(--primary-color)" },
+              "&:hover fieldset": { borderColor: "var(--primary-color)" },
+              "&.Mui-focused fieldset": { borderColor: "var(--primary-color)" },
               input: { fontSize: "1rem" },
             },
             mb: 5,
@@ -164,8 +168,8 @@ export default function RegisterPage() {
             py: 1.25,
             fontWeight: "bold",
             fontSize: "1.25rem",
-            bgcolor: "#0b9add",
-            "&:hover": { bgcolor: "#3e7dd6" },
+            bgcolor: "var(--primary-color)",
+            "&:hover": { bgcolor: "var(--primary-color)" },
           }}
           disabled={isLoading}
         >
@@ -186,7 +190,11 @@ export default function RegisterPage() {
           <Link
             href="/auth/login"
             underline="hover"
-            sx={{ color: "#0b9adda9", fontWeight: "bold", cursor: "pointer" }}
+            sx={{
+              color: "var(--primary-color)",
+              fontWeight: "bold",
+              cursor: "pointer",
+            }}
           >
             {t("loginLink")}
           </Link>

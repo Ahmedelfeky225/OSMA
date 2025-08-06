@@ -81,7 +81,7 @@ export default function LoginPage() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        px: isMobile ? 1.5 : 2,
+        px: 2,
       }}
     >
       <Box
@@ -90,7 +90,7 @@ export default function LoginPage() {
         onSubmit={handleSubmit(onSubmit)}
         sx={{
           bgcolor: "transparent",
-          p: 4,
+          p: 0,
           width: "100%",
         }}
       >
@@ -98,8 +98,12 @@ export default function LoginPage() {
           variant="h4"
           component="h1"
           textAlign="center"
-          mb={3}
-          sx={{ color: "#0b9add", fontWeight: "bold" }}
+          mb={{ xs: 1, sm: 3 }}
+          sx={{ color: "var(--primary-color)", fontWeight: "bold" }}
+          fontSize={{
+            xs: "1.8rem",
+            sm: "2.2rem",
+          }}
         >
           {t("title")}
         </Typography>
@@ -109,7 +113,7 @@ export default function LoginPage() {
           variant="outlined"
           fullWidth
           margin="normal"
-          autoComplete="email"
+          autoComplete="new-email"
           {...register("email", {
             required: t("emailRequired"),
             pattern: {
@@ -120,18 +124,18 @@ export default function LoginPage() {
           error={Boolean(errors.email)}
           helperText={errors.email?.message}
           InputLabelProps={{
-            sx: { color: "#0b9add" },
+            sx: { color: "var(--primary-color)" },
           }}
           sx={{
             "& .MuiOutlinedInput-root": {
               "& fieldset": {
-                borderColor: "#0b9add",
+                borderColor: "var(--primary-color)",
               },
               "&:hover fieldset": {
-                borderColor: "#0b9add",
+                borderColor: "var(--primary-color)",
               },
               "&.Mui-focused fieldset": {
-                borderColor: "#0b9add",
+                borderColor: "var(--primary-color)",
               },
               input: {
                 fontSize: "1rem",
@@ -147,7 +151,7 @@ export default function LoginPage() {
           type={showPassword ? "text" : "password"}
           fullWidth
           margin="normal"
-          autoComplete="current-password"
+          autoComplete="new-password"
           {...register("password", {
             required: t("passwordRequired"),
             minLength: {
@@ -158,7 +162,7 @@ export default function LoginPage() {
           error={Boolean(errors.password)}
           helperText={errors.password?.message}
           InputLabelProps={{
-            sx: { color: "#0b9add" },
+            sx: { color: "var(--primary-color)" },
           }}
           InputProps={{
             endAdornment: (
@@ -172,13 +176,13 @@ export default function LoginPage() {
           sx={{
             "& .MuiOutlinedInput-root": {
               "& fieldset": {
-                borderColor: "#0b9add",
+                borderColor: "var(--primary-color)",
               },
               "&:hover fieldset": {
-                borderColor: "#0b9add",
+                borderColor: "var(--primary-color)",
               },
               "&.Mui-focused fieldset": {
-                borderColor: "#0b9add",
+                borderColor: "var(--primary-color)",
               },
               input: {
                 fontSize: "1rem",
@@ -196,8 +200,8 @@ export default function LoginPage() {
             py: 1.25,
             fontWeight: "bold",
             fontSize: "1.25rem",
-            bgcolor: "#0b9add",
-            "&:hover": { bgcolor: "#3e7dd6" },
+            bgcolor: "var(--primary-color)",
+            "&:hover": { bgcolor: "var(--primary-color)" },
           }}
           disabled={isLoading}
         >
@@ -218,7 +222,11 @@ export default function LoginPage() {
           <Link
             href="/auth/register"
             underline="hover"
-            sx={{ color: "#0b9adda9", fontWeight: "bold", cursor: "pointer" }}
+            sx={{
+              color: "var(--primary-color)",
+              fontWeight: "bold",
+              cursor: "pointer",
+            }}
           >
             {t("registerLink")}
           </Link>
@@ -226,7 +234,11 @@ export default function LoginPage() {
           <Link
             href="/auth/reset-password"
             underline="hover"
-            sx={{ color: "#0b9adda9", fontWeight: "bold", cursor: "pointer" }}
+            sx={{
+              color: "var(--primary-color)",
+              fontWeight: "bold",
+              cursor: "pointer",
+            }}
           >
             {t("forgotPassword")}
           </Link>

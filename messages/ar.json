@@ -184,6 +184,14 @@
     "create-my-account": "إنشاء حسابي",
     "openMenu": "فتح القائمة"
   },
+  "UserMenu": {
+    "defaultUserName": "User",
+    "defaultEmail": "user@example.com",
+    "accountSection": "Account",
+    "status": "Status",
+    "online": "Online",
+    "logout": "Logout"
+  },
   "Search": {
     "searching": "جاري البحث...",
     "viewAllResults": "عرض كل النتائج ({count}+)",
@@ -196,7 +204,8 @@
     "clearAll": "مسح الكل",
     "remove": "حذف",
     "image": "صورة",
-    "closeSearch": "إغلاق البحث"
+    "closeSearch": "إغلاق البحث",
+    "retry": "أعد المحاولة"
   },
 
   "filters": {
@@ -341,7 +350,7 @@
       }
     },
     "ingredients": {
-      "title": "🧪 مكونات عطورنا",
+      "title": "مكونات عطورنا",
       "description": "في OSMA، نختار بعناية مكوناتنا من أزهار الشرق، وخلاصات الأخشاب، ولمسات من المسك والعنبر، لصنع توازنٍ بين الطابع الكلاسيكي والعصري.",
       "items": {
         "flowers": "أزهار الشرق",
@@ -351,7 +360,7 @@
       }
     },
     "whyChoose": {
-      "title": "🛍️ لماذا تختار OSMA؟",
+      "title": "لماذا تختار OSMA ؟",
       "features": {
         "lasting": "تركيبات تدوم طويلًا",
         "design": "تصميم عبوات أنيق وفاخر",
@@ -360,13 +369,13 @@
       }
     },
     "presence": {
-      "title": "🌍 تواجدنا",
+      "title": "تواجدنا",
       "description": "نحن نُشحن منتجاتنا إلى معظم دول الخليج، مع تواجد فعلي في عدة مناطق، ونسعى للتوسع أكثر في سلطنة عمان ودول الخليج الأخرى قريبًا.",
       "region": "دول الخليج",
       "countries": "الإمارات • السعودية • الكويت • البحرين • قطر • عمان"
     },
     "gallery": {
-      "title": "📸 معرض OSMA",
+      "title": "معرض OSMA",
       "perfume": "عطر OSMA"
     },
     "subtitle1": "تركيبة فاخرة ومميزة",
@@ -376,7 +385,7 @@
     "subtitle5": "إحساس بالرفاهية",
     "subtitle6": "جودة لا تُضاهى",
     "contact": {
-      "title": "🤝 تواصل معنا",
+      "title": "تواصل معنا",
       "phone": {
         "title": "اتصل بنا",
         "number": "+968 7711 7906"
@@ -671,12 +680,14 @@
     "admin": "المدير",
     "onlineNow": "متصل الآن"
   },
-
   "search": {
     "placeholder": "ابحث عن المنتجات..."
   },
   "common": {
-    "loading": "جاري التحميل..."
+    "loading": "جاري التحميل...",
+    "darkMode": "الوضع الداكن",
+    "lightMode": "الوضع الفاتح",
+    "language": "اللغة"
   },
   "products": {
     "ask_about_product": "استفسر عن المنتج",
@@ -685,6 +696,12 @@
       "description": "وصف المنتج:",
       "image": "صورة المنتج",
       "link": "رابط المنتج"
-    }
+    },
+    "related_products": "Related Products",
+    "related_products_description": "Discover similar products you might like"
+  },
+  "sectionText": {
+    "special_offers": "عروض خاصة",
+    "exclusive_collection": "مجموعة حصرية"
   }
 }

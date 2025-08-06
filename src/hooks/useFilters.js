@@ -112,7 +112,7 @@ export const useFilters = (
 
       dispatch({ type: FILTER_ACTIONS.SYNC_FROM_URL, payload: urlFilters });
     } catch (error) {
-      console.error("Error syncing filters from URL:", error);
+      // console.error("Error syncing filters from URL:", error);
       // Reset to default state on error
       dispatch({
         type: FILTER_ACTIONS.RESET_FILTERS,
@@ -147,7 +147,7 @@ export const useFilters = (
         const query = current.toString();
         router.push(`?${query}`);
       } catch (error) {
-        console.error("Error applying filters:", error);
+        // console.error("Error applying filters:", error);
       }
     },
     [filters, searchParams, router, minPriceRange, maxPriceRange, preservePage]
@@ -165,7 +165,7 @@ export const useFilters = (
       current.set("page", "1");
       router.push(`?${current.toString()}`);
     } catch (error) {
-      console.error("Error resetting filters:", error);
+      // console.error("Error resetting filters:", error);
     }
   }, [router, minPriceRange, maxPriceRange]);
 
@@ -200,7 +200,7 @@ export const useFilters = (
         filters.sort !== currentSort
       );
     } catch (error) {
-      console.error("Error checking filter changes:", error);
+      // console.error("Error checking filter changes:", error);
       return false;
     }
   }, [filters, searchParams, minPriceRange, maxPriceRange]);

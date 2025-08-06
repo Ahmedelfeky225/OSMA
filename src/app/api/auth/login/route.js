@@ -29,7 +29,7 @@ export async function POST(request) {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Login error:", error.response?.data || error.message);
+    // console.error("Login error:", error.response?.data || error.message);
     return NextResponse.json({ message: "Login failed" }, { status: 401 });
   }
 }
