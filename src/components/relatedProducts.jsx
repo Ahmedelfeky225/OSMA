@@ -57,10 +57,12 @@ const RelatedProducts = ({ productId }) => {
             },
           }
         );
+
         if (!response.ok) {
           throw new Error("Failed to fetch related products");
         }
         const data = await response.json();
+        console.log("DATA", data);
         setRelatedProducts(data || []);
       } catch (err) {
         setError(err.message);
