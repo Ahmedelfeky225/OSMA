@@ -157,7 +157,7 @@ async function getUserAuth() {
   } catch (err) {
     // ✅ تسجيل الخطأ بشكل أفضل
     if (process.env.NODE_ENV === "development") {
-      console.error("JWT verification failed:", err.message);
+      // console.error("JWT verification failed:", err.message);
     }
     return null;
   }
@@ -169,13 +169,13 @@ async function getMessages(locale) {
     const messages = (await import(`../../../messages/${locale}.json`)).default;
     return messages;
   } catch (error) {
-    console.error(`Failed to load messages for locale: ${locale}`, error);
+    // console.error(`Failed to load messages for locale: ${locale}`, error);
     // ✅ fallback للإنجليزية
     if (locale !== "en") {
       try {
         return (await import(`../../../messages/en.json`)).default;
       } catch (fallbackError) {
-        console.error("Failed to load fallback messages", fallbackError);
+        // console.error("Failed to load fallback messages", fallbackError);
         return {};
       }
     }
@@ -246,7 +246,7 @@ export default async function LocaleLayout({ children, params }) {
         />
       </head>
 
-      <body className="antialiased">
+      <body className="antialiased overflow-auto">
         {/* ✅ إضافة noscript fallback */}
         <TopLoader />
         <noscript>
@@ -307,10 +307,10 @@ export default async function LocaleLayout({ children, params }) {
                 window.addEventListener('load', function() {
                   navigator.serviceWorker.register('/sw.js')
                     .then(function(registration) {
-                      console.log('SW registered: ', registration);
+                      // console.log('SW registered: ', registration);
                     })
                     .catch(function(registrationError) {
-                      console.log('SW registration failed: ', registrationError);
+                      // console.log('SW registration failed: ', registrationError);
                     });
                 });
               }

@@ -6,7 +6,7 @@ import { fetchInterceptor } from "@/utils/fetchInterceptor";
 import { getLocale } from "next-intl/server";
 
 const bodySprayPage = async ({ searchParams }) => {
-  console.log("searchParams:", searchParams);
+  // console.log("searchParams:", searchParams);
   const locale = await getLocale();
 
   // ✅ إضافة await للـ searchParams

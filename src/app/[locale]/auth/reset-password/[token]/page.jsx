@@ -70,14 +70,18 @@ export default function ResetPasswordPage() {
       <Box
         component="form"
         onSubmit={handleSubmit(onSubmit)}
-        sx={{ width: "100%", p: 4 }}
+        sx={{ width: "100%", p: 0 }}
       >
         <Typography
           variant="h4"
           component="h1"
           textAlign="center"
-          mb={3}
-          sx={{ color: "#0b9add", fontWeight: "bold" }}
+          mb={{ xs: 1, sm: 3 }}
+          sx={{ color: "var(--primary-color)", fontWeight: "bold" }}
+          fontSize={{
+            xs: "1.5rem",
+            sm: "2rem",
+          }}
         >
           {t("title")}
         </Typography>
@@ -118,9 +122,9 @@ export default function ResetPasswordPage() {
           sx={{
             py: 1.25,
             fontWeight: "bold",
-            fontSize: "1.25rem",
-            bgcolor: "#0b9add",
-            "&:hover": { bgcolor: "#3e7dd6" },
+            fontSize: "1.2rem",
+            bgcolor: "var(--primary-color)",
+            "&:hover": { bgcolor: "var(--primary-color)" },
           }}
           disabled={isLoading}
           startIcon={

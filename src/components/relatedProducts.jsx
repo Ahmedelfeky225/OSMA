@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import { useTranslations, useLocale } from "next-intl";
-import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import { Sparkles } from "lucide-react";
 import ProductCard from "@/components/ui/productCard";
 
 // Import Swiper styles
@@ -13,6 +14,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 const RelatedProducts = ({ productId }) => {
+  console.log("{{{PP}}}", productId);
   const t = useTranslations("products");
   const locale = useLocale();
   const isRTL = locale === "ar";
@@ -20,27 +22,47 @@ const RelatedProducts = ({ productId }) => {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // Refs for navigation buttons
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+  const swiperRef = useRef(null);
+
+  // Check screen size
+  useEffect(() => {
+    setMounted(true);
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Fetch related products
   useEffect(() => {
     const fetchRelatedProducts = async () => {
       if (!productId) return;
-
       setLoading(true);
       setError(null);
-
       try {
-        // استخدام fetchInterceptor (سيتم استدعاؤها من server component)
-        const response = await fetch(`/api/products/${productId}/related`);
-
+        const response = await fetch(
+          `http://localhost:5000/api/products/${productId}/related`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              appId: process.env.NEXT_PUBLIC_APPID || "",
+            },
+          }
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch related products");
         }
-
         const data = await response.json();
-        setRelatedProducts(data?.data || []);
+        setRelatedProducts(data || []);
       } catch (err) {
-        console.error("Error fetching related products:", err);
         setError(err.message);
       } finally {
         setLoading(false);
@@ -49,6 +71,43 @@ const RelatedProducts = ({ productId }) => {
 
     fetchRelatedProducts();
   }, [productId]);
+
+  // Custom navigation handlers
+  const handlePrevClick = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slidePrev();
+    }
+  };
+
+  const handleNextClick = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slideNext();
+    }
+  };
+
+  // Update direction when locale changes
+  useEffect(() => {
+    if (mounted && swiperRef.current) {
+      const swiper = swiperRef.current;
+
+      const timer = setTimeout(() => {
+        // Force update direction
+        swiper.changeLanguageDirection(isRTL ? "rtl" : "ltr");
+        swiper.update();
+        swiper.updateSize();
+        swiper.updateSlides();
+
+        // Reset to first slide
+        swiper.slideTo(0, 0);
+      }, 150);
+
+      return () => clearTimeout(timer);
+    }
+  }, [mounted, locale, isRTL]);
+
+  if (!mounted) {
+    return null;
+  }
 
   if (loading) {
     return <RelatedProductsSkeleton />;
@@ -59,191 +118,312 @@ const RelatedProducts = ({ productId }) => {
   }
 
   return (
-    <section className="py-16 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/20 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden">
+    <section
+      className="py-16 my-10 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/20 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden"
+      dir={isRTL ? "rtl" : "ltr"}
+    >
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-[#7a99c0]/5 to-transparent rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-[#5a7ba0]/5 to-transparent rounded-full blur-3xl"></div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className=" mx-auto px-4 relative z-10">
         {/* Section Header */}
-        <div className={`text-center mb-12 ${isRTL ? "rtl" : "ltr"}`}>
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#7a99c0] to-[#5a7ba0] flex items-center justify-center shadow-lg">
-              <Sparkles className="w-6 h-6 text-white" />
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 mb-4">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#7a99c0] to-[#5a7ba0] flex items-center justify-center shadow-lg">
+              <span className="text-white font-bold text-sm">O</span>
             </div>
-            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#7a99c0]/30 to-transparent max-w-24"></div>
-            <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#7a99c0] to-[#5a7ba0] bg-clip-text text-transparent whitespace-nowrap">
-              {t("related_products") || "منتجات مشابهة"}
-            </h2>
-            <div className="h-px flex-1 bg-gradient-to-l from-transparent via-[#7a99c0]/30 to-transparent max-w-24"></div>
+            <span className="text-[#7a99c0] dark:text-[#8fa5c8] font-semibold text-lg">
+              OSMA
+            </span>
           </div>
-          <p className="text-slate-600 dark:text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-            {t("related_products_description") ||
-              "اكتشف منتجات مشابهة قد تعجبك"}
-          </p>
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#7a99c0]/10 to-[#5a7ba0]/10 rounded-full border border-[#7a99c0]/20">
+              <Sparkles className="w-5 h-5 text-[#7a99c0]" />
+              <span className="text-[#7a99c0] dark:text-[#8fa5c8] font-medium text-sm">
+                {t("related_products") || "منتجات مشابهة"}
+              </span>
+            </div>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#7a99c0] to-[#5a7ba0] bg-clip-text text-transparent mb-4">
+            {t("related_products") || "منتجات مشابهة"}
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#7a99c0] to-[#5a7ba0] mx-auto rounded-full"></div>
         </div>
 
-        {/* Products Slider */}
         <div className="relative">
+          {/* Navigation Arrows for Large Screens */}
+          {isLargeScreen && (
+            <>
+              <button
+                onClick={handlePrevClick}
+                className={`cursor-pointer absolute ${
+                  isRTL ? "right-4" : "left-4"
+                } top-1/2 z-10 -translate-y-1/2 w-12 h-12 bg-white dark:bg-gray-800 text-[#7a99c0] rounded-full hover:bg-[#7a99c0] hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl border border-slate-200 dark:border-gray-700 flex items-center justify-center group`}
+                aria-label={isRTL ? "الشريحة السابقة" : "Previous slide"}
+              >
+                {isRTL ? (
+                  <ChevronRightIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                ) : (
+                  <ChevronLeftIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                )}
+              </button>
+              <button
+                onClick={handleNextClick}
+                className={`cursor-pointer absolute ${
+                  isRTL ? "left-4" : "right-4"
+                } top-1/2 z-10 -translate-y-1/2 w-12 h-12 bg-white dark:bg-gray-800 text-[#7a99c0] rounded-full hover:bg-[#7a99c0] hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl border border-slate-200 dark:border-gray-700 flex items-center justify-center group`}
+                aria-label={isRTL ? "الشريحة التالية" : "Next slide"}
+              >
+                {isRTL ? (
+                  <ChevronLeftIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                ) : (
+                  <ChevronRightIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                )}
+              </button>
+            </>
+          )}
+
+          {/* Swiper */}
           <Swiper
-            modules={[Navigation, Pagination, Autoplay]}
-            spaceBetween={24}
-            slidesPerView={1}
-            navigation={{
-              nextEl: ".swiper-button-next-custom",
-              prevEl: ".swiper-button-prev-custom",
-            }}
-            pagination={{
-              el: ".swiper-pagination-custom",
-              clickable: true,
-              bulletClass: "custom-bullet",
-              bulletActiveClass: "custom-bullet-active",
-            }}
-            autoplay={{
-              delay: 4000,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: true,
-            }}
-            breakpoints={{
-              640: {
-                slidesPerView: 1.2,
-                spaceBetween: 16,
-              },
-              768: {
-                slidesPerView: 2.2,
-                spaceBetween: 20,
-              },
-              1024: {
-                slidesPerView: 3,
-                spaceBetween: 24,
-              },
-              1280: {
-                slidesPerView: 4,
-                spaceBetween: 24,
-              },
-            }}
+            key={`${locale}-${mounted}-${relatedProducts.length}`}
+            modules={[Navigation, Pagination]}
             dir={isRTL ? "rtl" : "ltr"}
-            className="related-products-swiper"
+            spaceBetween={20}
+            slidesPerView={1}
+            slidesPerGroup={1}
+            loop={false}
+            speed={700}
+            touchRatio={2}
+            threshold={1}
+            resistanceRatio={0.85}
+            longSwipesRatio={0.1}
+            observer={true}
+            observeParents={true}
+            centeredSlides={false}
+            initialSlide={0}
+            breakpoints={{
+              640: { slidesPerView: 1.5, spaceBetween: 16 },
+              768: { slidesPerView: 2, spaceBetween: 20 },
+              1024: { slidesPerView: 3, spaceBetween: 24 },
+              1280: { slidesPerView: 4, spaceBetween: 24 },
+            }}
+            navigation={false} // تعطيل navigation المدمج واستخدام custom buttons
+            pagination={
+              !isLargeScreen
+                ? {
+                    clickable: true,
+                    dynamicBullets: false,
+                    renderBullet: (index, className) => {
+                      return `<button class="${className} related-custom-bullet" type="button" aria-label="${
+                        isRTL
+                          ? `انتقل إلى الشريحة ${index + 1}`
+                          : `Go to slide ${index + 1}`
+                      }"></button>`;
+                    },
+                  }
+                : false
+            }
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+            onInit={(swiper) => {
+              swiper.changeLanguageDirection(isRTL ? "rtl" : "ltr");
+            }}
+            className="related-swiper"
           >
-            {relatedProducts.map((product, index) => (
-              <SwiperSlide key={product._id || index} className="h-auto">
-                <div className="h-full">
-                  <ProductCard product={product} />
-                </div>
-              </SwiperSlide>
-            ))}
+            {relatedProducts.length > 0 &&
+              relatedProducts.map((product, index) => (
+                <SwiperSlide key={product._id || index}>
+                  <div className="group relative">
+                    {/* Sparkle effect */}
+                    <div
+                      className={`absolute -top-1 ${
+                        isRTL ? "-right-1" : "-left-1"
+                      } z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                    >
+                      <Sparkles className="w-5 h-5 text-yellow-400 animate-pulse" />
+                    </div>
+                    {/* Product Card with enhanced styling */}
+                    <div className="relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 dark:border-gray-700 group-hover:-translate-y-2">
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#7a99c0]/0 to-[#5a7ba0]/0 group-hover:from-[#7a99c0]/5 group-hover:to-[#5a7ba0]/5 transition-all duration-500 rounded-2xl"></div>
+                      <ProductCard product={product} />
+                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#7a99c0] to-[#5a7ba0] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center rounded-b-2xl"></div>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
           </Swiper>
-
-          {/* Custom Navigation Buttons */}
-          <button
-            className={`swiper-button-prev-custom absolute top-1/2 -translate-y-1/2 ${
-              isRTL ? "right-4" : "left-4"
-            } z-20 w-12 h-12 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm shadow-lg border border-slate-200 dark:border-gray-700 flex items-center justify-center text-slate-600 dark:text-gray-300 hover:bg-[#7a99c0] hover:text-white hover:border-[#7a99c0] transition-all duration-300 hover:scale-110 group`}
-          >
-            {isRTL ? (
-              <ChevronRight className="w-5 h-5 group-hover:scale-110 transition-transform" />
-            ) : (
-              <ChevronLeft className="w-5 h-5 group-hover:scale-110 transition-transform" />
-            )}
-          </button>
-
-          <button
-            className={`swiper-button-next-custom absolute top-1/2 -translate-y-1/2 ${
-              isRTL ? "left-4" : "right-4"
-            } z-20 w-12 h-12 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm shadow-lg border border-slate-200 dark:border-gray-700 flex items-center justify-center text-slate-600 dark:text-gray-300 hover:bg-[#7a99c0] hover:text-white hover:border-[#7a99c0] transition-all duration-300 hover:scale-110 group`}
-          >
-            {isRTL ? (
-              <ChevronLeft className="w-5 h-5 group-hover:scale-110 transition-transform" />
-            ) : (
-              <ChevronRight className="w-5 h-5 group-hover:scale-110 transition-transform" />
-            )}
-          </button>
-
-          {/* Custom Pagination */}
-          <div className="swiper-pagination-custom flex justify-center mt-8 gap-2"></div>
         </div>
       </div>
 
+      {/* Custom Styles */}
       <style jsx global>{`
-        .related-products-swiper {
-          padding: 20px 0 60px 0;
-          overflow: visible;
+        /* Related Swiper Container */
+        .related-swiper {
+          padding-bottom: 60px !important;
         }
 
-        .related-products-swiper .swiper-slide {
-          height: auto;
-          display: flex;
+        /* RTL Support for Swiper */
+        .related-swiper[dir="rtl"] .swiper-slide {
+          text-align: right;
         }
 
-        /* Custom Bullets */
-        .custom-bullet {
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
-          background: rgba(122, 153, 192, 0.3);
-          border: 2px solid transparent;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          position: relative;
-          overflow: hidden;
+        /* Hide pagination on large screens */
+        @media (min-width: 1024px) {
+          .related-swiper {
+            padding-bottom: 20px !important;
+          }
+          .related-swiper .swiper-pagination {
+            display: none !important;
+          }
         }
 
-        .custom-bullet::before {
+        /* Custom Pagination Bullets */
+        .related-swiper .swiper-pagination {
+          bottom: 0 !important;
+          position: relative !important;
+          margin-top: 30px !important;
+          text-align: center !important;
+        }
+
+        .related-swiper .related-custom-bullet {
+          width: 12px !important;
+          height: 12px !important;
+          background: transparent !important;
+          border: 2px solid #7a99c0 !important;
+          border-radius: 50% !important;
+          opacity: 0.6 !important;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+          cursor: pointer !important;
+          margin: 0 8px !important;
+          display: inline-block !important;
+          position: relative !important;
+          outline: none !important;
+          padding: 0 !important;
+          vertical-align: middle !important;
+        }
+
+        .related-swiper .related-custom-bullet:hover {
+          opacity: 0.8 !important;
+          transform: scale(1.1) !important;
+          border-color: #5a7ba0 !important;
+        }
+
+        .related-swiper .related-custom-bullet.swiper-pagination-bullet-active {
+          opacity: 1 !important;
+          background: linear-gradient(135deg, #7a99c0, #5a7ba0) !important;
+          border-color: #7a99c0 !important;
+          transform: scale(1.3) !important;
+          box-shadow: 0 0 15px rgba(122, 153, 192, 0.4) !important;
+        }
+
+        .related-swiper .related-custom-bullet::before {
           content: "";
           position: absolute;
-          inset: 0;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) scale(0);
+          width: 4px;
+          height: 4px;
+          background: white;
           border-radius: 50%;
-          background: linear-gradient(45deg, #7a99c0, #5a7ba0);
-          opacity: 0;
-          transition: opacity 0.3s ease;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .custom-bullet:hover {
-          transform: scale(1.2);
-          background: rgba(122, 153, 192, 0.5);
+        .related-swiper
+          .related-custom-bullet.swiper-pagination-bullet-active::before {
+          transform: translate(-50%, -50%) scale(1);
         }
 
-        .custom-bullet:hover::before {
-          opacity: 0.3;
+        .related-swiper .related-custom-bullet::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) scale(0);
+          width: 26px;
+          height: 26px;
+          border: 1px solid rgba(122, 153, 192, 0.2);
+          border-radius: 50%;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .custom-bullet-active {
-          background: linear-gradient(45deg, #7a99c0, #5a7ba0);
-          border-color: rgba(255, 255, 255, 0.3);
-          transform: scale(1.3);
-          box-shadow: 0 4px 12px rgba(122, 153, 192, 0.4);
+        .related-swiper .related-custom-bullet:hover::after {
+          transform: translate(-50%, -50%) scale(1);
         }
 
-        .custom-bullet-active::before {
-          opacity: 1;
+        .related-swiper
+          .related-custom-bullet.swiper-pagination-bullet-active::after {
+          transform: translate(-50%, -50%) scale(1);
+          border-color: rgba(122, 153, 192, 0.4);
         }
 
-        /* RTL Support */
-        .related-products-swiper[dir="rtl"] .swiper-slide {
-          direction: rtl;
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+          .related-swiper .related-custom-bullet {
+            border-color: #8fa5c8 !important;
+          }
+          .related-swiper .related-custom-bullet:hover {
+            border-color: #7a99c0 !important;
+          }
+          .related-swiper
+            .related-custom-bullet.swiper-pagination-bullet-active {
+            border-color: #8fa5c8 !important;
+            box-shadow: 0 0 15px rgba(143, 165, 200, 0.4) !important;
+          }
+          .related-swiper .related-custom-bullet::after {
+            border-color: rgba(143, 165, 200, 0.2);
+          }
+          .related-swiper
+            .related-custom-bullet.swiper-pagination-bullet-active::after {
+            border-color: rgba(143, 165, 200, 0.4);
+          }
         }
 
-        /* Mobile optimizations */
+        /* Mobile specific adjustments */
         @media (max-width: 640px) {
-          .related-products-swiper {
-            padding: 10px 0 50px 0;
+          .related-swiper .related-custom-bullet {
+            width: 10px !important;
+            height: 10px !important;
+            margin: 0 6px !important;
           }
-
-          .swiper-button-prev-custom,
-          .swiper-button-next-custom {
-            width: 40px;
-            height: 40px;
+          .related-swiper
+            .related-custom-bullet.swiper-pagination-bullet-active {
+            transform: scale(1.4) !important;
           }
-
-          .custom-bullet {
-            width: 10px;
-            height: 10px;
+          .related-swiper .related-custom-bullet::after {
+            width: 22px !important;
+            height: 22px !important;
           }
         }
 
-        /* Smooth transitions for all elements */
-        .related-products-swiper * {
-          transition: all 0.3s ease;
+        /* Tablet adjustments */
+        @media (min-width: 641px) and (max-width: 1023px) {
+          .related-swiper .related-custom-bullet {
+            width: 11px !important;
+            height: 11px !important;
+            margin: 0 7px !important;
+          }
+          .related-swiper
+            .related-custom-bullet.swiper-pagination-bullet-active {
+            transform: scale(1.35) !important;
+          }
+          .related-swiper .related-custom-bullet::after {
+            width: 24px !important;
+            height: 24px !important;
+          }
+        }
+
+        /* Ensure bullets are visible */
+        .related-swiper .swiper-pagination-bullet {
+          display: inline-block !important;
+          visibility: visible !important;
+        }
+
+        .related-swiper .swiper-pagination {
+          display: block !important;
+          visibility: visible !important;
         }
       `}</style>
     </section>
@@ -256,10 +436,13 @@ const RelatedProductsSkeleton = () => {
   const isRTL = locale === "ar";
 
   return (
-    <section className="py-16 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/20 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-      <div className="container mx-auto px-4">
+    <section
+      className="max-w-[90%] mx-auto px-0 py-16 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/20 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
+      dir={isRTL ? "rtl" : "ltr"}
+    >
+      <div className="container mx-auto px-4 sm:px-0">
         {/* Header Skeleton */}
-        <div className={`text-center mb-12 ${isRTL ? "rtl" : "ltr"}`}>
+        <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-12 h-12 rounded-full bg-gradient-to-r from-slate-200 to-slate-300 dark:from-gray-700 dark:to-gray-600 animate-pulse"></div>
             <div className="h-px flex-1 bg-slate-200 dark:bg-gray-700 max-w-24 animate-pulse"></div>
@@ -268,7 +451,6 @@ const RelatedProductsSkeleton = () => {
           </div>
           <div className="h-4 w-96 bg-slate-200 dark:bg-gray-700 rounded-lg mx-auto animate-pulse"></div>
         </div>
-
         {/* Products Skeleton */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {[...Array(4)].map((_, index) => (

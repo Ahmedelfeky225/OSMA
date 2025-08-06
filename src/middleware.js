@@ -27,7 +27,7 @@ export default async function middleware(req) {
       await jwtVerify(token, new TextEncoder().encode(process.env.JWT_SECRET));
       return NextResponse.redirect(new URL("/", req.url));
     } catch (err) {
-      console.log("Token invalid:", err.message);
+      // console.log("Token invalid:", err.message);
     }
   }
 
@@ -55,7 +55,7 @@ export default async function middleware(req) {
 
     return res;
   } catch (err) {
-    console.log("JWT verification error:", err.message);
+    // console.log("JWT verification error:", err.message);
     return NextResponse.redirect(new URL("/auth/login", req.url));
   }
 }

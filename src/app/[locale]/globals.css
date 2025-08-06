@@ -172,18 +172,23 @@ html {
   will-change: transform;
 }
 
-/* حركة من اليمين إلى اليسار ← (تستخدم في اللغة العربية) */
-/* في سياق RTL، translateX(negative) يحرك العنصر إلى اليسار. */
 .custom-marquee-content.marquee-ar {
   animation-name: marquee-ltr;
 }
 
-/* حركة من اليسار إلى اليمين ← (تستخدم في اللغة الإنجليزية) */
-/* في سياق LTR، translateX(positive) يحرك العنصر إلى اليمين. */
 .custom-marquee-content.marquee-en {
   animation-name: marquee-rtl;
 }
 
+.css-vbhg19-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: var(--color-primary) !important;
+}
+
+.MuiInputBase-adornedEnd,
+.css-1blp12k-MuiInputBase-root-MuiOutlinedInput-root {
+  background-color: transparent !important;
+  color: var(--color-primary) !important;
+}
 @keyframes marquee-rtl {
   0% {
     transform: translateX(0);
@@ -224,11 +229,23 @@ html {
 .animate-bounce-slow {
   animation: bounce-slow 2s infinite; /* نفس المدة والتكرار */
 }
-
-.MuiInputBase-adornedEnd {
-  background-color: #e8f0fe !important;
+.MuiSvgIcon-root {
+  color: var(--color-primary) !important;
+}
+.css-1toxriw-MuiList-root-MuiMenu-list {
+  padding: 0 !important;
 }
 
+.css-1rju2q6-MuiButtonBase-root-MuiMenuItem-root,
+.css-1pjw5zh-MuiButtonBase-root-MuiMenuItem-root {
+  padding: 12px !important;
+}
+.css-1pjw5zh-MuiButtonBase-root-MuiMenuItem-root {
+  gap: 10px !important;
+}
+.css-1pjw5zh-MuiButtonBase-root-MuiMenuItem-root svg {
+  color: rgba(255, 0, 0, 0.807) !important;
+}
 .product-card {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.084), 0 -2px 8px rgba(0, 0, 0, 0.015),
     2px 0 8px rgba(0, 0, 0, 0.02), -2px 0 8px rgba(0, 0, 0, 0.02);
@@ -240,6 +257,12 @@ html {
   .product-card {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), 0 -2px 8px rgba(0, 0, 0, 0.1),
       2px 0 8px rgba(0, 0, 0, 0.15), -2px 0 8px rgba(0, 0, 0, 0.15);
+  }
+}
+
+@media (max-width: 767px) {
+  .MuiButtonBase-root {
+    font-size: 1.2rem !important;
   }
 }
 
@@ -332,22 +355,6 @@ html {
 }
 
 /* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: hsl(var(--muted));
-}
-
-::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted-foreground) / 0.3);
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground) / 0.5);
-}
 
 /* Smooth focus transitions */
 @layer base {
@@ -376,4 +383,32 @@ html {
 
 .footerShadow {
   box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.04), 0 -2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.offers-swiper,
+.features-swiper,
+.testimonials-swiper,
+.custom-marquee-content {
+  padding-bottom: 10px !important;
+}
+
+@media (max-width: 450px) {
+  .create {
+    margin-bottom: 60px !important;
+  }
+}
+
+@media (min-width: 991px) {
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--card); /* رمادي فاتح */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-primary); /* رمادي فاتح */
+    border-radius: 5px;
+  }
 }

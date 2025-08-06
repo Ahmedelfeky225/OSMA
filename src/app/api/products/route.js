@@ -7,9 +7,9 @@ export async function GET(request) {
   const suggestions = searchParams.get("suggestions") === "true";
 
   try {
-    console.log(
-      `🔍 Products API - Search: "${search}", Limit: ${limit}, Suggestions: ${suggestions}`
-    );
+    // console.log(
+    //   `🔍 Products API - Search: "${search}", Limit: ${limit}, Suggestions: ${suggestions}`
+    // );
 
     // استدعاء الـ products endpoint
     const data = await fetchInterceptor("products", {
@@ -19,7 +19,7 @@ export async function GET(request) {
       },
     });
 
-    console.log("📦 Products API Response:", data);
+    // console.log("📦 Products API Response:", data);
 
     // معالجة البيانات المرجعة
     let products = [];
@@ -110,7 +110,7 @@ export async function GET(request) {
       message: products.length === 0 ? "No products found" : undefined,
     });
   } catch (error) {
-    console.error("❌ Products API Error:", error);
+    // console.error("❌ Products API Error:", error);
     return Response.json(
       {
         error: "Failed to fetch products",

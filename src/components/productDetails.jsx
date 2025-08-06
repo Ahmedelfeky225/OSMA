@@ -11,6 +11,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import RelatedProducts from "./relatedProducts";
 
 const ProductDetails = ({ product }) => {
+  console.log("PRODUCTID", product._id);
   const t = useTranslations("Product");
   const locale = useLocale();
 
@@ -52,7 +53,7 @@ const ProductDetails = ({ product }) => {
   };
 
   return (
-    <div className="py-6 max-w-[90%] mx-auto sm:my-12 sm:px-6 lg:px-8">
+    <div className="py-6 max-w-[90%] mx-auto sm:my-12 ">
       <div className="grid lg:grid-cols-2 gap-10">
         {/* Main Image */}
         <div>
@@ -286,7 +287,7 @@ const ProductDetails = ({ product }) => {
         </Dialog>
       </Transition>
 
-      {/* <RelatedProducts productId={} /> */}
+      <RelatedProducts productId={product._id} />
     </div>
   );
 };

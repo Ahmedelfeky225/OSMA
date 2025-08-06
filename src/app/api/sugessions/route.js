@@ -2,7 +2,7 @@ import { fetchInterceptor } from "@/utils/serverFetchInterceptor";
 
 export async function GET() {
   try {
-    console.log("🔥 Loading suggestions from /products endpoint...");
+    // console.log("🔥 Loading suggestions from /products endpoint...");
 
     // ✅ جلب المنتجات من products endpoint بدون search
     const productsResponse = await fetchInterceptor("products", {
@@ -10,11 +10,11 @@ export async function GET() {
         limit: 8,
       },
     }).catch((err) => {
-      console.error("Products API error:", err);
+      // console.error("Products API error:", err);
       return null;
     });
 
-    console.log("📊 Products Response for suggestions:", productsResponse);
+    // console.log("📊 Products Response for suggestions:", productsResponse);
 
     let topProducts = [];
     let trending = [];
@@ -60,10 +60,10 @@ export async function GET() {
       success: true,
     };
 
-    console.log("✅ Final suggestions result:", result);
+    // console.log("✅ Final suggestions result:", result);
     return Response.json(result);
   } catch (error) {
-    console.error("❌ Suggestions API Error:", error);
+    // console.error("❌ Suggestions API Error:", error);
 
     return Response.json({
       topProducts: [],
