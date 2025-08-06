@@ -49,7 +49,7 @@ const RelatedProducts = ({ productId }) => {
       setError(null);
       try {
         const response = await fetch(
-          `http://localhost:5000/api/products/${productId}/related`,
+          `${process.env.NEXT_PUBLIC_API_URL}/${productId}/related`,
           {
             headers: {
               "Content-Type": "application/json",
