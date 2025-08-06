@@ -13,7 +13,7 @@ export async function GET(request) {
   }
 
   try {
-    console.log(`🔍 Searching for: "${search}" with limit: ${limit}`);
+    // console.log(`🔍 Searching for: "${search}" with limit: ${limit}`);
 
     // ✅ نبعت للـ products endpoint مع search parameter
     const data = await fetchInterceptor("products", {
@@ -23,7 +23,7 @@ export async function GET(request) {
       },
     });
 
-    console.log("📦 API Response:", data);
+    // console.log("📦 API Response:", data);
 
     // التحقق من البيانات المرجعة
     if (data && data.products && Array.isArray(data.products)) {
@@ -45,8 +45,8 @@ export async function GET(request) {
         success: true,
       });
     } else {
-      console.warn("⚠️ No products found for search:", search);
-      console.warn("⚠️ API Response structure:", data);
+      // console.warn("⚠️ No products found for search:", search);
+      // console.warn("⚠️ API Response structure:", data);
       return Response.json({
         products: [],
         total: 0,
@@ -55,7 +55,7 @@ export async function GET(request) {
       });
     }
   } catch (error) {
-    console.error("❌ Search API Error:", error);
+    // console.error("❌ Search API Error:", error);
     return Response.json(
       {
         error: "Search failed",

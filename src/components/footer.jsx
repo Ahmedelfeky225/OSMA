@@ -20,24 +20,28 @@ export default function Footer() {
   const t = useTranslations("Index");
   const pathname = usePathname();
 
-  const shouldHideHeader = hideNavbarAndFooter.some((path) => {
-    if (path.includes(":path*")) {
-      const basePath = path.replace("/:path*", "");
-      return pathname.startsWith(basePath);
-    }
-    return pathname == path;
-  });
+  // const shouldHideHeader = hideNavbarAndFooter.some((path) => {
+  //   if (path.includes(":path*")) {
+  //     const basePath = path.replace("/:path*", "");
+  //     return pathname.startsWith(basePath);
+  //   }
+  //   return pathname == path;
+  // });
 
-  if (shouldHideHeader) return null;
+  const shouldHideLayout = hideNavbarAndFooter.some((path) =>
+    pathname.startsWith(path)
+  );
 
-  const whatsappNumber = "96877117906";
+  if (shouldHideLayout) return null;
+
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
   const prefilledMessage = encodeURIComponent(t("whatsapp_prefilled_message"));
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${prefilledMessage}`;
   const instagramLink =
     "https://www.instagram.com/osma_sur?igsh=MTUwanM0cjNhOXg3Mw==";
   const facebookLink = "https://www.facebook.com/share/1AsmBnpa9B/";
   const telegramLink = "https://t.me/yourchannel";
-  const phoneNumber = "+968 7711 7906";
+  const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
   const email = "osmaoman7@gmail.com";
 
   return (
@@ -52,19 +56,19 @@ export default function Footer() {
 
         <div className="relative z-10">
           {/* Main Footer Content */}
-          <div className="container mx-auto px-4 py-16">
+          <div className="container mx-auto px-4  sm:py-16 py-12">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
               {/* Brand Section */}
               <div className="lg:col-span-1 space-y-6">
                 <div className="space-y-4">
                   {/* Logo */}
                   <div className="flex items-center gap-3">
-                    <div className="relativ mx-auto e sm:mx-0">
+                    <div className="relativ mx-auto  sm:ml-[-50px] ">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 200 80"
-                        width="120"
-                        height="48"
+                        width="200"
+                        height="55"
                         className="transition-transform hover:scale-105"
                       >
                         <defs>
@@ -76,8 +80,8 @@ export default function Footer() {
                             y2="100%"
                           >
                             <stop offset="0%" stopColor="#7a99c0" />
-                            <stop offset="50%" stopColor="#7a99c0ac" />
-                            <stop offset="100%" stopColor="#7a99c07e" />
+                            <stop offset="50%" stopColor="#9fb3cbac" />
+                            <stop offset="100%" stopColor="#aec1d87d" />
                           </linearGradient>
                         </defs>
                         <text

@@ -184,8 +184,16 @@
     },
     "searchPlaceholder": "Search for products...",
     "login": "Login",
-    "create-my-account": "Create My Account",
+    "create-my-account": "Register",
     "openMenu": "Open Menu"
+  },
+  "UserMenu": {
+    "defaultUserName": "User",
+    "defaultEmail": "user@example.com",
+    "accountSection": "Account",
+    "status": "Status",
+    "online": "Online",
+    "logout": "Logout"
   },
   "Search": {
     "searching": "Searching...",
@@ -199,25 +207,26 @@
     "clearAll": "Clear all",
     "remove": "Remove",
     "image": "Image",
-    "closeSearch": "Close search"
+    "closeSearch": "Close search",
+    "retry": "Retry"
   },
 
   "About": {
     "hero": {
-      "badge": "🎯 About Us - OSMA Perfumes",
+      "badge": "About Us - OSMA Perfumes 🎯",
       "title": "We are the scent of every moment",
       "description": "At OSMA, we don't just sell perfumes — we create unforgettable experiences. From the heart of Eastern inspiration and the magic of Western fragrances, we blend art with the senses to give you your own unique fragrance signature."
     },
     "vision": {
-      "title": "✨ Our Vision",
+      "title": "Our Vision ✨",
       "description": "To be the leading brand in the world of luxury perfumes, where quality meets craftsmanship, giving everyone a fragrance that reflects their personality."
     },
     "mission": {
-      "title": "🎯 Our Mission",
+      "title": "Our Mission 🎯",
       "description": "Creating unique fragrances with an unforgettable signature, using the finest natural ingredients, while ensuring an exceptional customer experience from bottle to customer satisfaction."
     },
     "values": {
-      "title": "🧬 Our Values",
+      "title": "Our Values 🧬",
       "quality": {
         "title": "Quality First",
         "description": "We use the finest oils and fragrance ingredients"
@@ -236,7 +245,7 @@
       }
     },
     "ingredients": {
-      "title": "🧪 Our Perfume Ingredients",
+      "title": "Our Perfume Ingredients",
       "description": "At OSMA, we carefully select our ingredients from Eastern flowers, wood extracts, and touches of musk and amber, to create a balance between classic and modern character.",
       "items": {
         "flowers": "Eastern Flowers",
@@ -246,7 +255,7 @@
       }
     },
     "whyChoose": {
-      "title": "🛍️ Why Choose OSMA?",
+      "title": "Why Choose OSMA ?",
       "features": {
         "lasting": "Long-lasting formulations",
         "design": "Elegant and luxurious bottle design",
@@ -255,13 +264,13 @@
       }
     },
     "presence": {
-      "title": "🌍 Our Presence",
+      "title": "Our Presence",
       "description": "We ship our products to most Gulf countries, with a physical presence in several regions, and we aim to expand further in Oman and other Gulf countries soon.",
       "region": "Gulf Countries",
       "countries": "UAE • Saudi Arabia • Kuwait • Bahrain • Qatar • Oman"
     },
     "gallery": {
-      "title": "📸 OSMA Gallery",
+      "title": "OSMA Gallery ",
       "perfume": "OSMA Perfume"
     },
     "subtitle1": "Luxury and distinctive formula",
@@ -271,7 +280,7 @@
     "subtitle5": "A sense of luxury",
     "subtitle6": "Unmatched quality",
     "contact": {
-      "title": "🤝 Contact Us",
+      "title": "Contact Us",
       "phone": {
         "title": "Call Us",
         "number": "+968 7711 7906"
@@ -506,7 +515,10 @@
     "placeholder": "Search products..."
   },
   "common": {
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode",
+    "language": "Language"
   },
   "products": {
     "ask_about_product": "Ask about Product",
@@ -515,6 +527,12 @@
       "description": "Product description:",
       "image": "Product image",
       "link": "Product link"
-    }
+    },
+    "related_products": "Related Products",
+    "related_products_description": "Discover similar products you might like"
+  },
+  "sectionText": {
+    "special_offers": "Special Offers",
+    "exclusive_collection": "Exclusive Collection"
   }
 }

@@ -1,6 +1,8 @@
 import heroImage1 from "@/assets/imgs/hero1.jpg";
 import heroImage2 from "@/assets/imgs/hero2.jpg";
 import heroImage3 from "@/assets/imgs/hero3.jpg";
+import heroImage4 from "@/assets/imgs/hero4.png";
+
 import logoImg from "@/assets/imgs/logo.jpg";
 import g1 from "@/assets/imgs/gallary1.jpg";
 import g2 from "@/assets/imgs/gallary2.jpg";
@@ -1299,7 +1301,7 @@ export const unisexCategoryData = {
             name: "رجالي ونسائي",
           },
           en: {
-            name: "both",
+            name: "UniSex",
           },
         },
         _id: "68718ed58d5c6b97e436c0fa",
@@ -1343,7 +1345,7 @@ export const unisexCategoryData = {
             name: "رجالي ونسائي",
           },
           en: {
-            name: "both",
+            name: "UniSex",
           },
         },
         _id: "68718ed58d5c6b97e436c0fa",
@@ -1387,7 +1389,7 @@ export const unisexCategoryData = {
             name: "رجالي ونسائي",
           },
           en: {
-            name: "both",
+            name: "UniSex",
           },
         },
         _id: "68718ed58d5c6b97e436c0fa",
@@ -1431,7 +1433,7 @@ export const unisexCategoryData = {
             name: "رجالي ونسائي",
           },
           en: {
-            name: "both",
+            name: "UniSex",
           },
         },
         _id: "68718ed58d5c6b97e436c0fa",
@@ -1475,7 +1477,7 @@ export const unisexCategoryData = {
             name: "رجالي ونسائي",
           },
           en: {
-            name: "both",
+            name: "UniSex",
           },
         },
         _id: "68718ed58d5c6b97e436c0fa",
@@ -1519,7 +1521,7 @@ export const unisexCategoryData = {
             name: "رجالي ونسائي",
           },
           en: {
-            name: "both",
+            name: "UniSex",
           },
         },
         _id: "68718ed58d5c6b97e436c0fa",
@@ -1563,7 +1565,7 @@ export const unisexCategoryData = {
             name: "رجالي ونسائي",
           },
           en: {
-            name: "both",
+            name: "UniSex",
           },
         },
         _id: "68718ed58d5c6b97e436c0fa",
@@ -1607,7 +1609,7 @@ export const unisexCategoryData = {
             name: "رجالي ونسائي",
           },
           en: {
-            name: "both",
+            name: "UniSex",
           },
         },
         _id: "68718ed58d5c6b97e436c0fa",
@@ -1651,7 +1653,7 @@ export const unisexCategoryData = {
             name: "رجالي ونسائي",
           },
           en: {
-            name: "both",
+            name: "UniSex",
           },
         },
         _id: "68718ed58d5c6b97e436c0fa",
@@ -3411,7 +3413,7 @@ export const offersProducts = {
             name: "رجالي ونسائي",
           },
           en: {
-            name: "both",
+            name: "UniSex",
           },
         },
         _id: "68718ed58d5c6b97e436c0fa",
@@ -3455,7 +3457,7 @@ export const offersProducts = {
             name: "رجالي ونسائي",
           },
           en: {
-            name: "both",
+            name: "UniSex",
           },
         },
         _id: "68718ed58d5c6b97e436c0fa",

@@ -57,7 +57,7 @@ export default function ForgotPasswordPage() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        px: isMobile ? 1.5 : 2,
+        px: 2,
       }}
     >
       <Box
@@ -66,7 +66,7 @@ export default function ForgotPasswordPage() {
         onSubmit={handleSubmit(onSubmit)}
         sx={{
           bgcolor: "transparent",
-          p: 4,
+          p: 0,
           width: "100%",
         }}
       >
@@ -74,8 +74,15 @@ export default function ForgotPasswordPage() {
           variant="h4"
           component="h1"
           textAlign="center"
-          mb={3}
-          sx={{ color: "#0b9add", fontWeight: "bold" }}
+          mb={{
+            xs: 1,
+            sm: 3,
+          }}
+          sx={{ color: "var(--primary-color)", fontWeight: "bold" }}
+          fontSize={{
+            xs: "1.5rem",
+            sm: "2rem",
+          }}
         >
           {t("title")}
         </Typography>
@@ -95,12 +102,12 @@ export default function ForgotPasswordPage() {
           })}
           error={Boolean(errors.email)}
           helperText={errors.email?.message}
-          InputLabelProps={{ sx: { color: "#0b9add" } }}
+          InputLabelProps={{ sx: { color: "var(--primary-color)" } }}
           sx={{
             "& .MuiOutlinedInput-root": {
-              "& fieldset": { borderColor: "#0b9add" },
-              "&:hover fieldset": { borderColor: "#0b9add" },
-              "&.Mui-focused fieldset": { borderColor: "#0b9add" },
+              "& fieldset": { borderColor: "var(--primary-color)" },
+              "&:hover fieldset": { borderColor: "var(--primary-color)" },
+              "&.Mui-focused fieldset": { borderColor: "var(--primary-color)" },
               input: { fontSize: "1rem" },
             },
             mb: 3,
@@ -115,8 +122,8 @@ export default function ForgotPasswordPage() {
             py: 1.25,
             fontWeight: "bold",
             fontSize: "1.25rem",
-            bgcolor: "#0b9add",
-            "&:hover": { bgcolor: "#3e7dd6" },
+            bgcolor: "var(--primary-color)",
+            "&:hover": { bgcolor: "var(--primary-color)" },
           }}
           disabled={isLoading}
           startIcon={

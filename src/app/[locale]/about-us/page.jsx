@@ -26,7 +26,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
       {/* Hero Section */}
-      <section className="relative py-20 px-4 overflow-hidden">
+      <section className="relative py-10 sm:py-20  px-4 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-primary/5" />
         <div className="container mx-auto text-center relative z-10">
           <div className="space-y-6 max-w-4xl mx-auto">
@@ -35,11 +35,11 @@ export default function AboutPage() {
               <span>{t("hero.badge")}</span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-primary via-primary to-primary/70 bg-clip-text text-transparent">
+            <h1 className="sm:text-4xl text-3xl xl:text-5xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-primary via-primary to-primary/70 bg-clip-text text-transparent">
               {t("hero.title")}
             </h1>
 
-            <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+            <p className="text-base md:text-2xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
               {t("hero.description")}
             </p>
 
@@ -71,13 +71,13 @@ export default function AboutPage() {
             {/* Vision */}
             <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900">
               <CardContent className="p-8 text-center space-y-4">
-                <div className="w-16 h-16 mx-auto rounded-full bg-blue-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Eye className="w-8 h-8 text-blue-600" />
+                <div className="sm:w-16 sm:h-16 w-14 h-14 mx-auto rounded-full bg-blue-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Eye className="sm:w-8 sm:h-8 w-6 h-6 text-blue-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                <h3 className="text-2xl capitalize tracking-wide font-bold text-gray-900 dark:text-white">
                   {t("vision.title")}
                 </h3>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                <p className="text-gray-700 text-[15px] sm:text-base text-center dark:text-gray-300 leading-relaxed">
                   {t("vision.description")}
                 </p>
               </CardContent>
@@ -86,13 +86,13 @@ export default function AboutPage() {
             {/* Mission */}
             <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950 dark:to-purple-900">
               <CardContent className="p-8 text-center space-y-4">
-                <div className="w-16 h-16 mx-auto rounded-full bg-purple-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Target className="w-8 h-8 text-purple-600" />
+                <div className="sm:w-16 sm:h-16 w-14 h-14 mx-auto rounded-full bg-purple-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Target className="sm:w-8 sm:h-8 w-6 h-6 text-purple-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                <h3 className=" text-2xl capitalize tracking-wide font-bold text-gray-900 dark:text-white">
                   {t("mission.title")}
                 </h3>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                <p className="text-gray-700  text-[15px] sm:text-base text-center dark:text-gray-300 leading-relaxed">
                   {t("mission.description")}
                 </p>
               </CardContent>
@@ -101,13 +101,13 @@ export default function AboutPage() {
             {/* Values */}
             <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-pink-50 to-pink-100 dark:from-pink-950 dark:to-pink-900">
               <CardContent className="p-8 text-center space-y-4">
-                <div className="w-16 h-16 mx-auto rounded-full bg-pink-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Heart className="w-8 h-8 text-pink-600" />
+                <div className="sm:w-16 sm:h-16 w-14 h-14 mx-auto rounded-full bg-pink-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Heart className="sm:w-8 sm:h-8 w-6 h-6 text-pink-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                <h3 className="text-2xl capitalize tracking-wide font-bold text-gray-900 dark:text-white">
                   {t("values.title")}
                 </h3>
-                <div className="text-gray-700 dark:text-gray-300 leading-relaxed space-y-2">
+                <div className="text-gray-700 text-[15px] sm:text-base text-center dark:text-gray-300 leading-relaxed space-y-2">
                   <p>
                     <strong>{t("values.quality.title")}</strong> –{" "}
                     {t("values.quality.description")}
@@ -132,10 +132,10 @@ export default function AboutPage() {
           {/* Ingredients Section */}
           <div className="text-center space-y-8">
             <div className="space-y-4">
-              <h2 className="text-4xl font-bold text-foreground">
+              <h2 className="text-2xl tracking-wide  text-center sm:text-4xl font-bold text-foreground">
                 {t("ingredients.title")}
               </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              <p className="text-sm sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                 {t("ingredients.description")}
               </p>
             </div>
@@ -168,8 +168,10 @@ export default function AboutPage() {
                   className={`group hover:shadow-lg transition-all duration-300 border-0 bg-gradient-to-br ${ingredient.color}`}
                 >
                   <CardContent className="p-6 text-center space-y-3">
-                    <div className="text-4xl">{ingredient.icon}</div>
-                    <h4 className="font-bold text-lg text-foreground">
+                    <div className="text-3xl sm:text-4xl">
+                      {ingredient.icon}
+                    </div>
+                    <h4 className="font-bold text-[18px] tracking-wider sm:text-lg text-foreground">
                       {t(`ingredients.items.${ingredient.key}`)}
                     </h4>
                   </CardContent>
@@ -181,7 +183,7 @@ export default function AboutPage() {
           {/* Why Choose OSMA */}
           <div className="bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 rounded-3xl p-12">
             <div className="text-center space-y-8">
-              <h2 className="text-4xl font-bold text-foreground">
+              <h2 className="text-2xl tracking-wide sm:text-4xl font-bold text-foreground">
                 {t("whyChoose.title")}
               </h2>
 
@@ -189,32 +191,32 @@ export default function AboutPage() {
                 {[
                   {
                     key: "lasting",
-                    icon: <Droplets className="w-8 h-8" />,
+                    icon: <Droplets className="w-6 h-6 sm:w-8 sm:h-8" />,
                     color: "text-blue-600",
                   },
                   {
                     key: "design",
-                    icon: <Star className="w-8 h-8" />,
+                    icon: <Star className="w-6 h-6 sm:w-8 sm:h-8" />,
                     color: "text-purple-600",
                   },
                   {
                     key: "experience",
-                    icon: <Heart className="w-8 h-8" />,
+                    icon: <Heart className="w-6 h-6 sm:w-8 sm:h-8" />,
                     color: "text-pink-600",
                   },
                   {
                     key: "support",
-                    icon: <Phone className="w-8 h-8" />,
+                    icon: <Phone className="w-6 h-6 sm:w-8 sm:h-8" />,
                     color: "text-green-600",
                   },
                 ].map((feature, i) => (
                   <div key={i} className="group text-center space-y-4">
                     <div
-                      className={`w-16 h-16 mx-auto rounded-full bg-white/50 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 ${feature.color}`}
+                      className={`sm:w-16 sm:h-16 w-14 h-14 mx-auto rounded-full bg-white/50 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 ${feature.color}`}
                     >
                       {feature.icon}
                     </div>
-                    <h4 className="font-bold text-lg text-foreground">
+                    <h4 className="font-bold  sm:text-lg text-foreground">
                       {t(`whyChoose.features.${feature.key}`)}
                     </h4>
                   </div>
@@ -226,10 +228,10 @@ export default function AboutPage() {
           {/* Our Presence */}
           <div className="text-center space-y-8">
             <div className="space-y-4">
-              <h2 className="text-4xl font-bold text-foreground">
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
                 {t("presence.title")}
               </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              <p className=" sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                 {t("presence.description")}
               </p>
             </div>
@@ -237,13 +239,13 @@ export default function AboutPage() {
             <div className="flex justify-center">
               <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950 dark:to-green-900">
                 <CardContent className="p-8 text-center space-y-4">
-                  <div className="w-20 h-20 mx-auto rounded-full bg-green-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <Globe className="w-10 h-10 text-green-600" />
+                  <div className="sm:w-20 sm:h-20 w-14 h-14 mx-auto rounded-full bg-green-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <Globe className="sm:w-10 sm:h-10 w-6 h-6 text-green-600" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  <h3 className="text-2xl tracking-wide font-bold text-gray-900 dark:text-white">
                     {t("presence.region")}
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-300">
+                  <p className="text-gray-700 sm:text-base text-sm dark:text-gray-300">
                     {t("presence.countries")}
                   </p>
                 </CardContent>
@@ -253,7 +255,7 @@ export default function AboutPage() {
 
           {/* Gallery Section */}
           <div className="text-center space-y-8">
-            <h2 className="text-4xl font-bold text-foreground">
+            <h2 className="tracking-wide text-3xl sm:text-4xl font-bold text-foreground">
               {t("gallery.title")}
             </h2>
 
@@ -282,14 +284,14 @@ export default function AboutPage() {
           {/* Contact Section */}
           <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-3xl p-12">
             <div className="text-center space-y-8">
-              <h2 className="text-4xl font-bold text-foreground">
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
                 {t("contact.title")}
               </h2>
 
               <div className="grid gap-8 md:grid-cols-3 max-w-4xl mx-auto">
                 <div className="space-y-4">
-                  <div className="w-16 h-16 mx-auto rounded-full bg-primary/20 flex items-center justify-center">
-                    <Phone className="w-8 h-8 text-primary" />
+                  <div className="sm:w-16 sm:h-16 w-14 h-14 mx-auto rounded-full bg-primary/20 flex items-center justify-center">
+                    <Phone className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
                   </div>
                   <h4 className="font-bold text-lg">
                     {t("contact.phone.title")}
@@ -303,8 +305,8 @@ export default function AboutPage() {
                 </div>
 
                 <div className="space-y-4">
-                  <div className="w-16 h-16 mx-auto rounded-full bg-primary/20 flex items-center justify-center">
-                    <Mail className="w-8 h-8 text-primary" />
+                  <div className="sm:w-16 sm:h-16 w-14 h-14 mx-auto rounded-full bg-primary/20 flex items-center justify-center">
+                    <Mail className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
                   </div>
                   <h4 className="font-bold text-lg">
                     {t("contact.email.title")}
@@ -318,8 +320,8 @@ export default function AboutPage() {
                 </div>
 
                 <div className="space-y-4">
-                  <div className="w-16 h-16 mx-auto rounded-full bg-primary/20 flex items-center justify-center">
-                    <Instagram className="w-8 h-8 text-primary" />
+                  <div className="sm:w-16 sm:h-16 w-14 h-14 mx-auto rounded-full bg-primary/20 flex items-center justify-center">
+                    <Instagram className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
                   </div>
                   <h4 className="font-bold text-lg">
                     {t("contact.social.title")}

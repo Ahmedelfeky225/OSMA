@@ -351,13 +351,13 @@ const CategoryMegaMenu = ({ item }) => {
             exit="exit"
             className={cn(
               "absolute z-50 mt-2 bg-white dark:bg-gray-900 backdrop-blur-md shadow-2xl rounded-xl border border-gray-200 dark:border-gray-700",
-              "min-w-[320px] max-w-[90vw] lg:w-[1000]",
+              "w-[100%] lg:w-[1000]",
               // Desktop positioning
               "lg:start-[0%]",
               // Mobile positioning
               "left-0 right-0 mx-4 lg:mx-0",
               // Mobile full width on small screens
-              "sm:left-1/2 sm:mx-0"
+              "sm:start-0 sm:mx-0"
             )}
             style={{
               boxShadow:
@@ -482,12 +482,14 @@ const CategoryMegaMenu = ({ item }) => {
                     "text-primary hover:text-white hover:bg-primary",
                     "border-2 border-primary/20 hover:border-primary",
                     "font-bold text-base shadow-sm hover:shadow-md",
-                    "bg-gradient-to-r from-primary/5 to-primary/10 hover:from-primary hover:to-primary"
+                    "bg-gradient-to-r from-primary/5 to-primary/10 hover:from-primary hover:to-primary  mb-14 sm:mb-0"
                   )}
                   onClick={() => isMobile && setIsOpen(false)}
                 >
                   <Sparkles className="w-5 h-5" />
-                  <span>{t("view_all_products")}</span>
+                  <button className="cursor-pointer">
+                    {t("view_all_products")}
+                  </button>
                   <ChevronDown className="w-4 h-4 rotate-[-90deg]" />
                 </Link>
               </motion.div>

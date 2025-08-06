@@ -58,19 +58,16 @@ const Wrapper = ({ locale }) => {
       {/* Main Content */}
       <main className="xl:flex-3 lg:flex-2 sm:flex-1">
         <SearchInput />
-
         {isPending && (
           <div className="flex items-center justify-center py-8">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#7a99c0]"></div>
           </div>
         )}
-
         {!data?.products && !isPending && (
           <div className="text-center py-12 text-slate-500 dark:text-gray-400">
             لم يتم العثور على منتجات
           </div>
         )}
-
         {data?.products?.length > 0 && (
           <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 lg:gap-3 2xl:gap-7">
             {data.products.map((product) => (
@@ -78,8 +75,7 @@ const Wrapper = ({ locale }) => {
             ))}
           </div>
         )}
-
-        {data?.totalPages > 1 && <Paginator paginate={data} />}
+        a{data?.totalPages > 1 && <Paginator paginate={data} />}
       </main>
     </div>
   );
