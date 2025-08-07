@@ -72,6 +72,7 @@ export default function LoginPage() {
       toast.error(result.payload || t("loginFailed"));
     }
   };
+  console.log("first");
 
   return (
     <Container
