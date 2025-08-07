@@ -19,7 +19,7 @@ export const fetchInterceptor = async (url, options = {}) => {
       ...(options.headers || {}),
       "Content-Type": "application/json",
       appId: process.env.NEXT_PUBLIC_APPID,
-      Cookie: `token=${tokenCookie?.value || ""}`, // ✅ هنا السر
+      // Cookie: `token=${tokenCookie?.value || ""}`,
     },
     cache: "no-store",
   };
