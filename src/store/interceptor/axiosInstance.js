@@ -9,4 +9,7 @@ const axiosInstance = axios.create({
   withCredentials: true,
 });
 
+// Optional: Add interceptors if needed
+// axiosInstance.interceptors...
+
 export default axiosInstance;
