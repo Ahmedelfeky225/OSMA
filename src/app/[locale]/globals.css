@@ -412,3 +412,11 @@ html {
     border-radius: 5px;
   }
 }
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed !important;
+}

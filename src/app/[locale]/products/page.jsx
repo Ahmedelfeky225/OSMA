@@ -80,7 +80,7 @@ const ProductsPage = async ({ searchParams }) => {
         <SearchInput /> {/* Add the search input here */}
         <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 lg:gap-3 2xl:gap-7">
           {data?.products?.map((product) => (
-            <ProductCard product={product} key={product?.id} />
+            <ProductCard product={product} key={product?._id} />
           ))}
         </div>
         {/***** Products ******/}

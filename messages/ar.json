@@ -1,11 +1,167 @@
 {
+  "productsPage": {
+    "manageProducts": "إدارة المنتجات",
+    "manageProductsDescription": "عرض وتعديل وحذف المنتجات الموجودة في متجرك.",
+    "noProductsFound": "لم يتم العثور على منتجات.",
+    "table": {
+      "image": "الصورة",
+      "name": "الاسم",
+      "category": "الفئة",
+      "price": "السعر",
+      "stock": "المخزون",
+      "isFeatured": "مميز",
+      "actions": "الإجراءات",
+      "featured": "مميز",
+      "soldOut": "نفد المخزون",
+      "active": "نشط",
+      "inactive": "غير نشط"
+    },
+    "grid": {
+      "featured": "مميز",
+      "soldOut": "نفد المخزون",
+      "stock": "المخزون",
+      "outOfStock": "نفد المخزون",
+      "edit": "تعديل",
+      "delete": "حذف"
+    },
+    "filters": {
+      "searchPlaceholder": "البحث عن منتج...",
+      "selectCategory": "اختر فئة",
+      "allCategories": "جميع الفئات",
+      "categoriesLoading": "جاري تحميل الفئات...",
+      "stockStatus": "حالة المخزون",
+      "allStock": "الكل",
+      "inStock": "متوفر",
+      "outOfStock": "نفد المخزون",
+      "sortBy": "الترتيب حسب",
+      "newest": "الأحدث",
+      "oldest": "الأقدم",
+      "priceAsc": "السعر: من الأقل للأعلى",
+      "priceDesc": "السعر: من الأعلى للأقل"
+    },
+    "deleteDialog": {
+      "title": "تأكيد الحذف",
+      "description": "هل أنت متأكد أنك تريد حذف المنتج \"{productName}\"؟ لا يمكن التراجع عن هذا الإجراء.",
+      "cancel": "إلغاء",
+      "confirm": "حذف"
+    }
+  },
+  "products": {
+    "createProduct": "إنشاء منتج جديد",
+    "createProductDescription": "أضف منتجًا جديدًا إلى متجرك.",
+    "editProduct": "تعديل المنتج",
+    "editProductDescription": "قم بتحديث تفاصيل المنتج الحالي.",
+    "errorFetchingProduct": "حدث خطأ أثناء جلب تفاصيل المنتج.",
+    "productNotFound": "المنتج غير موجود.",
+    "tabs": {
+      "arabic": "العربية",
+      "english": "الإنجليزية"
+    },
+    "form": {
+      "arabicInfo": "المعلومات الأساسية (العربية)",
+      "englishInfo": "المعلومات الأساسية (الإنجليزية)",
+      "productNameAr": "اسم المنتج (العربية)",
+      "productNameArPlaceholder": "أدخل اسم المنتج باللغة العربية",
+      "productNameEn": "اسم المنتج (الإنجليزية)",
+      "productNameEnPlaceholder": "أدخل اسم المنتج باللغة الإنجليزية",
+      "descriptionAr": "الوصف (العربية)",
+      "descriptionArPlaceholder": "أدخل وصف المنتج باللغة العربية",
+      "descriptionEn": "الوصف (الإنجليزية)",
+      "descriptionEnPlaceholder": "أدخل وصف المنتج باللغة الإنجليزية",
+      "slug": "الرابط اللطيف (Slug)",
+      "slugPlaceholder": "سيتم إنشاؤه تلقائيًا من اسم المنتج الإنجليزي",
+      "category": "الفئة",
+      "selectCategory": "اختر فئة",
+      "categoriesLoading": "جاري تحميل الفئات...",
+      "stock": "المخزون",
+      "stockPlaceholder": "أدخل كمية المخزون",
+      "optionalDetails": "تفاصيل اختيارية",
+      "price": "السعر",
+      "pricePlaceholder": "أدخل سعر المنتج",
+      "discount": "الخصم (%)",
+      "discountPlaceholder": "أدخل نسبة الخصم",
+      "finalPrice": "السعر النهائي",
+      "originalPrice": "السعر الأصلي",
+      "fragranceNotes": "ملاحظات العطر",
+      "fragranceNotesHelp": "أدخل الملاحظات مفصولة بفاصلة (مثال: ليمون، ياسمين، خشب الصندل)",
+      "topNotes": "الملاحظات العليا",
+      "topNotesPlaceholder": "ملاحظات عليا (مثال: ليمون، برغموت)",
+      "heartNotes": "ملاحظات القلب",
+      "heartNotesPlaceholder": "ملاحظات قلب (مثال: ياسمين، ورد)",
+      "baseNotes": "ملاحظات القاعدة",
+      "baseNotesPlaceholder": "ملاحظات قاعدة (مثال: خشب الصندل، مسك)",
+      "isFeatured": "منتج مميز",
+      "featuredDescription": "اجعل هذا المنتج يظهر في قسم المنتجات المميزة.",
+      "images": "صور المنتج",
+      "imagesDescription": "اسحب وأفلت الصور هنا، أو انقر لتحديدها.",
+      "imagesLimit": "الحد الأقصى 5 صور.",
+      "selectImages": "تحديد الصور",
+      "formStatus": "حالة النموذج",
+      "productNames": "أسماء المنتجات",
+      "productDescriptions": "أوصاف المنتجات",
+      "imagesCount": "عدد الصور",
+      "saving": "جاري الحفظ...",
+      "save": "حفظ المنتج",
+      "cancel": "إلغاء",
+      "validation": {
+        "maxImages": "الحد الأقصى للصور هو 5.",
+        "nameArRequired": "اسم المنتج بالعربية مطلوب.",
+        "nameEnRequired": "اسم المنتج بالإنجليزية مطلوب.",
+        "descriptionArRequired": "وصف المنتج بالعربية مطلوب.",
+        "descriptionEnRequired": "وصف المنتج بالإنجليزية مطلوب.",
+        "categoryRequired": "الفئة مطلوبة.",
+        "stockRequired": "المخزون مطلوب ويجب أن يكون أكبر من أو يساوي 0.",
+        "priceRequired": "السعر مطلوب ويجب أن يكون أكبر من أو يساوي 0.",
+        "imageRequired": "صورة واحدة على الأقل مطلوبة."
+      },
+      "backendValidation": {
+        "translations": {
+          "en": {
+            "description": "الوصف بالإنجليزية مطلوب.",
+            "name": "الاسم بالإنجليزية مطلوب."
+          },
+          "ar": {
+            "description": "الوصف بالعربية مطلوب.",
+            "name": "الاسم بالعربية مطلوب."
+          }
+        },
+        "price": "السعر مطلوب.",
+        "category": "الفئة مطلوبة."
+      }
+    }
+  },
+  "common": {
+    "addNew": "إضافة جديد",
+    "loading": "جاري التحميل...",
+    "darkMode": "الوضع الداكن",
+    "lightMode": "الوضع الفاتح",
+    "language": "اللغة"
+  },
   "Index": {
+    "categories_description": "اكتشف مجموعتنا الواسعة من العطور الفاخرة",
+    "men_description": "عطور رجالية فاخرة تناسب شخصيتك القوية والمميزة",
+    "women_description": "عطور نسائية أنيقة تبرز جمالك الطبيعي وأنوثتك",
+    "unisex_description": "عطور مشتركة تناسب الجميع بروائح متوازنة ومميزة",
+    "hair_perfumes_description": "عطور شعر خاصة تمنح شعرك رائحة عطرية تدوم طويلاً",
+    "body_sprays_description": "معطرات جسم منعشة تمنحك شعوراً بالانتعاش طوال اليوم",
+    "air_fresheners_description": "معطرات جو فاخرة لتعطير منزلك ومكتبك برائحة مميزة",
+    "popular": "الأكثر شعبية",
+    "view_all_products": "عرض جميع المنتجات",
+    "footer_follow_us": "تابعنا",
+    "footer_contact_title": "تواصل معنا",
+    "footer_whatsapp": "واتساب",
+    "footer_chat_now": "تحدث معنا الآن",
+    "footer_made_with_love": "صنع بحب في عمان",
+    "footer_privacy": "سياسة الخصوصية",
+    "footer_terms": "الشروط والأحكام",
+    "footer_sitemap": "خريطة الموقع",
     "categoriesTitle": "تسوق حسب الفئة",
-    "footer_about_osma": "عطور عثمان تقدم روائح فريدة تحدد شخصيتك. نمزج التقاليد بالابتكار لخلق عطور تأسر الحواس.",
+    "footer_about_osma": "عطور عُصمة تقدم روائح فريدة تحدد شخصيتك. نمزج التقاليد بالابتكار لخلق عطور آسرة.",
+    "footer_quick_links_title": "روابط سريعة",
     "footer_men_perfumes": "عطور رجالية",
     "footer_women_perfumes": "عطور نسائية",
-    "footer_body_sprays": "معطرات الجسم",
-    "footer_contact_us": "اتصل بنا",
+    "footer_body_sprays": "معطرات جسم",
+    "footer_contact_us": "تواصل معنا",
     "about_us": "من نحن",
     "footer_customer_service_title": "خدمة العملاء",
     "footer_faq": "الأسئلة الشائعة",
@@ -13,328 +169,162 @@
     "footer_privacy_policy": "سياسة الخصوصية",
     "footer_terms_of_service": "شروط الخدمة",
     "footer_contact_info_title": "معلومات الاتصال",
+    "footer_email": "البريد الإلكتروني",
+    "footer_phone": "الهاتف",
     "footer_address": "العنوان",
     "footer_newsletter_title": "النشرة الإخبارية",
     "footer_newsletter_description": "ابقَ على اطلاع بأحدث مجموعاتنا وعروضنا الحصرية.",
     "footer_newsletter_placeholder": "أدخل بريدك الإلكتروني",
     "footer_subscribe_button": "اشترك",
     "footer_payment_methods_title": "طرق الدفع",
-    "whatsapp_prefilled_message": "مرحباً عطور اوسما أود الاستفسار عن:\n1. تفاصيل المنتجات\n2. حالة الطلب\n3. معلومات الشحن\n4. أخرى",
+    "footer_copyright": "© 2025 عطور عُصمة. جميع الحقوق محفوظة.",
+    "whatsapp_prefilled_message": "مرحباً عطور عُصمة، أود الاستفسار عن:\n1. تفاصيل المنتج\n2. حالة الطلب\n3. معلومات الشحن\n4. أخرى",
     "whatsapp_button_label": "تحدث معنا عبر واتساب",
-    "menDesc": "عطور فاخرة مصممة للرجال.",
-    "womenDesc": "عطور أنيقة مصممة للنساء.",
-    "unisexDesc": "عطور متنوعة تناسب الجميع.",
-    "hair_perfumesDesc": "عطور ناعمة لإنعاش شعرك.",
-    "body_spraysDesc": "بخاخات عطرية خفيفة ومنعشة للجسم.",
-    "air_freshenersDesc": "عطور منعشة لتعزيز أجواء المكان.",
-    "defaultDescription": "اكتشف عطور حصرية مصممة خصيصًا لك.",
-    "inquiry": "استفسار عن المنتج",
-    "offersTitle": "عروضنا المميزة",
-    "footer_follow_us": "تابعنا",
-    "footer_quick_links_title": "روابط سريعة",
-    "footer_contact_title": "تواصل معنا",
-    "footer_phone": "الهاتف",
-    "footer_email": "البريد الإلكتروني",
-    "footer_whatsapp": "واتساب",
-    "footer_chat_now": "تحدث معنا الآن",
-    "footer_copyright": "© 2025 OSMA Perfumes. جميع الحقوق محفوظة.",
-    "footer_made_with_love": "صُنع بحب في عُمان",
-    "footer_privacy": "سياسة الخصوصية",
-    "footer_terms": "الشروط والأحكام",
-    "footer_sitemap": "خريطة الموقع",
     "home": "الرئيسية",
-    "categories": "الفئات",
     "offers": "العروض",
+    "contact_us": "تواصل معنا",
+    "categories": "الفئات",
     "men": "رجالي",
     "women": "نسائي",
     "unisex": "للجنسين",
     "hair_perfumes": "عطور الشعر",
-    "body_sprays": "بخاخات الجسم",
+    "body_sprays": "معطرات الجسم",
     "air_fresheners": "معطرات الجو",
-    "categories_description": "اكتشف مجموعتنا الواسعة من العطور الفاخرة",
-    "men_description": "عطور رجالية فاخرة تناسب شخصيتك القوية والمميزة",
-    "women_description": "عطور نسائية أنيقة تبرز جمالك وأنوثتك الطبيعية",
-    "unisex_description": "عطور مشتركة مناسبة للجميع بروائح متوازنة ومميزة",
-    "hair_perfumes_description": "عطور خاصة للشعر تمنحه رائحة عطرة تدوم طويلاً",
-    "body_sprays_description": "بخاخات منعشة للجسم تمنحك شعوراً بالانتعاش طوال اليوم",
-    "air_fresheners_description": "معطرات فاخرة لتعطير المنزل والمكتب برائحة مميزة",
-    "popular": "الأكثر طلباً",
-    "view_all_products": "عرض جميع المنتجات",
-    "login": "تسجيل الدخول",
-    "OsmanLogo": "لوجو",
+    "menDesc": "عطور فاخرة مصممة للرجال.",
+    "womenDesc": "روائح أنيقة مصممة للنساء.",
+    "unisexDesc": "عطور متعددة الاستخدامات للجميع.",
+    "hair_perfumesDesc": "عطور رقيقة لإنعاش شعرك.",
+    "body_spraysDesc": "معطرات جسم خفيفة ومنعشة.",
+    "air_freshenersDesc": "روائح منعشة لتعزيز مساحتك.",
+    "defaultDescription": "اكتشف عطورًا حصرية مصممة خصيصًا لك.",
+    "inquiry": "استفسر عن المنتج",
+    "OsmanLogo": "الشعار",
+    "offersTitle": "عروض مميزة",
+    "exclusiveTitle": "عطور حصرية",
     "title": "العنوان",
     "description": "الوصف",
-    "exclusiveTitle": "عطور حصرية",
-    "searchPlaceholder": "كيف يمكنني مساعدتك؟",
-    "footer_about": "لوريم إيبسوم النص الشكلي لصناعة النشر المكتبي",
+    "searchPlaceholder": "بحث...",
+    "footer_about": "لوريم إيبسوم العديد من برامج النشر المكتبي",
     "footer_links_home": "الرئيسية",
     "footer_links_about": "من نحن",
-    "footer_links_programs": "البرامج التعليمية",
+    "footer_links_programs": "برامج تعليمية",
     "footer_links_live": "حصص مباشرة",
     "footer_links_register": "التسجيل والدفع",
-    "openMenu": "--",
-    "email": "البريد الالكتروني",
-    "password": "كلمه المرور",
-    "currentPassword": "كلمة المرور القديمة",
+    "login": "تسجيل الدخول",
+    "myNursery": "حضانتنا",
+    "openMenu": "فتح القائمة",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "currentPassword": "كلمة المرور الحالية",
     "newPassword": "كلمة المرور الجديدة",
     "confirmNewPassword": "تأكيد كلمة المرور الجديدة",
-    "forgot-password": "هل نسيت كلمه المرور؟",
-    "create-one": "أنشئ حسابًا",
+    "forgot-password": "نسيت كلمة المرور؟",
+    "create-one": "إنشاء حساب",
     "verify": "تحقق",
-    "verify-your-email": "التحقق من البريد الإلكتروني",
-    "recover-password": "إستعادة كلمة المرور",
-    "recover-now": "إستعادة الأن",
-    "recover-password-description": "وصف إستعادة كلمة المرور",
-    "remember-your-password": "تذكر كلمة المرور",
+    "verify-your-email": "تحقق من بريدك الإلكتروني",
+    "recover-password": "استعادة كلمة المرور",
+    "recover-now": "استعادة الآن",
+    "recover-password-description": "وصف استعادة كلمة المرور",
+    "remember-your-password": "تذكر كلمة المرور الخاصة بك",
     "reset-password": "إعادة تعيين كلمة المرور",
     "back-to-login": "العودة لتسجيل الدخول",
-    "enter-the-code-weve-sent-to": "أدخل الرمز الذي أرسلناه إليك",
+    "enter-the-code-weve-sent-to": "أدخل الرمز الذي أرسلناه إلى",
     "resend-activate-code-to": "إعادة إرسال رمز التفعيل إلى",
     "dont-have-an-account": "ليس لديك حساب؟",
-    "loading": "جار التحميل...",
-    "remove": "حذف",
-    "name": "الإسم",
+    "loading": "جاري التحميل...",
+    "remove": "إزالة",
+    "name": "الاسم",
     "username": "اسم المستخدم",
-    "phoneNumber": "رقم الهاتف",
+    "phoneNumber": "الجوال",
+    "passwordPlaceholder": "أدخل كلمة المرور...",
+    "usernamePlaceholder": "أدخل اسم المستخدم...",
+    "emailPlaceholder": "أدخل البريد الإلكتروني...",
+    "confirm-password": "تأكيد كلمة المرور",
+    "confirmPasswordPlaceholder": "أعد إدخال كلمة المرور",
+    "loginTab": "تسجيل الدخول",
+    "registerTab": "تسجيل",
+    "create-my-account": "تسجيل",
+    "have-an-account": "هل لديك حساب بالفعل؟",
+    "remember-me": "تذكرني",
+    "notifications": "الإشعارات",
     "myWallet": "محفظتي",
     "updateProfile": "تحديث الملف الشخصي",
     "updatePassword": "تحديث كلمة المرور",
     "logout": "تسجيل الخروج",
-    "passwordPlaceholder": "ادخل كلمة المرور ...",
-    "usernamePlaceholder": "ادخل اسم المستخدم ...",
-    "emailPlaceholder": "ادخل البريد الإلكتروني ...",
-    "confirm-password": "تأكيد كلمة المرور",
-    "confirmPasswordPlaceholder": "اعد كتابة كلمة المرور",
-    "loginTab": "تسجيل دخول",
-    "registerTab": "حساب جديد",
-    "create-my-account": "تسجيل حساب",
-    "have-an-account": "هل لديك حساب بالفعل؟",
-    "remember-me": "تذكرني",
-    "notifications": "الإشعارات",
-    "direct_contact": "تحتاج إلي تواصل مباشر ؟",
-    "sample_text": "نص تجريبي لاختبار شكل و حجم النصوص و طريقة عرضها في هذا المكان",
-    "map_title": "خريطة جوجل تعرض الكويت",
+    "direct_contact": "هل تحتاج إلى اتصال مباشر؟",
+    "sample_text": "نص تجريبي لاختبار كيفية عرض المحتوى هنا.",
+    "map_title": "خريطة جوجل تظهر الكويت",
     "email_not_published": "لن يتم نشر عنوان بريدك الإلكتروني.",
-    "write_here": "اكتب هنا ...",
-    "save_info": "احفظ اسمي، بريدي الإلكتروني في هذا المتصفح لاستخدامه في المرة المقبلة",
+    "write_here": "اكتب هنا...",
+    "save_info": "احفظ اسمي وبريدي الإلكتروني في هذا المتصفح للمرة القادمة",
     "send": "إرسال",
     "sending": "جاري الإرسال...",
     "success_message": "تم الإرسال بنجاح",
     "error_message": "فشل في إرسال الرسالة",
     "checkout": "الدفع",
-    "fillForm": "املأ البيانات",
-    "firstName": "الإسم الأول",
-    "lastName": "الإسم الأخير",
-    "firstNamePlaceholder": "أدخل الاإسم الأول",
-    "lastNamePlaceholder": "أدخل الإسم الأخير",
+    "fillForm": "املأ النموذج",
+    "firstName": "الاسم الأول",
+    "lastName": "اسم العائلة",
+    "firstNamePlaceholder": "أدخل الاسم الأول",
+    "lastNamePlaceholder": "أدخل اسم العائلة",
     "province": "المحافظة",
     "city": "المدينة",
-    "directPayment": "دفع مباشر",
-    "payViaUpay": "دفع باستخدام Upayment",
-    "selectProvince": "إختر المحافظة",
-    "selectCity": "إختر المدينة",
-    "buyNow": "إشتر الأن",
-    "payNow": "إدفع الأن",
-    "coupon": "الكوبون",
+    "directPayment": "الدفع المباشر",
+    "payViaUpay": "الدفع عبر Upay",
+    "selectProvince": "اختر المحافظة",
+    "selectCity": "اختر المدينة",
+    "buyNow": "اشترِ الآن",
+    "payNow": "ادفع الآن",
+    "coupon": "كوبون",
     "apply": "تطبيق",
-    "readNow": "إقرأ الأن",
+    "readNow": "اقرأ الآن",
     "confirmBuying": "تأكيد الشراء",
     "noDataAvailable": "لا توجد بيانات متاحة",
-    "addToCart": "أضف للسلة",
-    "addToFavorite": "أضف للمفضلة",
-    "Footer": {
-      "ovc-program-description": "برنامج أكاديمية My Nursery - برنامج إلكتروني مقدم عن طريق الإنترنت يمنحك أداة مكتبة رقمية لكافة العلوم التربوية وورش العمل التفاعلية.",
-      "about-ovc-program": "عن برنامج أكاديمية My Nursery",
-      "home": "الرئيسية",
-      "vision-and-mission": "الرؤية والرسالة",
-      "project-introduction": "تعريف بالمشروع",
-      "curriculum": "المنهج الدراسي",
-      "more": "المزيد",
-      "timeline": "الجدول الزمني",
-      "faculty": "هيئة التدريس",
-      "ovc-series": "سلسلة My Nursery العلمية",
-      "admission-and-registration": "القبول والتسجيل",
-      "privacy-policy": "سياسة الخصوصية",
-      "cookie-policy": "سياسة ملفات الارتباط",
-      "sitemap": "خريطة الموقع"
-    },
-    "search_placeholder": "بحث ...",
-
-    "Validations": {
-      "required": "الحقل مطلوب",
-      "email-address-required": "البريد الإلكتروني مطلوب",
-      "email-must-be-a-valid-email": "يجب أن يكون البريد الإلكتروني صحيحًا",
-      "password-too-short": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",
-      "password-required": "كلمة المرور مطلوبة",
-      "email-too-short": "يجب أن يكون البريد الإلكتروني طوله 6 أحرف على الأقل",
-      "username-required": "اسم المستخدم مطلوب",
-      "username-too-short": "اسم المستخدم قصير جدًا، يجب ألا يقل عن 4 أحرف",
-      "passwords-must-match": "كلمتا المرور يجب أن تتطابقا",
-      "please-confirm-password": "يرجى تأكيد كلمة المرور",
-      "phone-too-short": "رقم الهاتف قصير جدًا",
-      "phone-required": "رقم الهاتف مطلوب",
-      "name-too-short": "الاسم قصير جدًا",
-      "name-required": "الاسم مطلوب",
-      "question-required": "السؤال مطلوب",
-      "question-too-short": "يجب أن يحتوي السؤال على 10 أحرف على الأقل",
-      "coupon-too-short": "الكوبون قصير جدًا"
-    },
-    "searchPlaceholder": "ابحث عن المنتجات...",
-    "login": "تسجيل الدخول",
-    "create-my-account": "إنشاء حسابي",
-    "openMenu": "فتح القائمة"
+    "addToCart": "أضف إلى السلة",
+    "addToFavorite": "أضف إلى المفضلة"
   },
   "UserMenu": {
-    "defaultUserName": "User",
+    "defaultUserName": "مستخدم",
     "defaultEmail": "user@example.com",
-    "accountSection": "Account",
-    "status": "Status",
-    "online": "Online",
-    "logout": "Logout"
+    "accountSection": "الحساب",
+    "status": "الحالة",
+    "online": "متصل",
+    "logout": "تسجيل الخروج"
   },
   "Search": {
     "searching": "جاري البحث...",
-    "viewAllResults": "عرض كل النتائج ({count}+)",
+    "viewAllResults": "عرض جميع النتائج ({count}+)",
     "noResultsFound": "لم يتم العثور على نتائج لـ \"{query}\"",
-    "searchAllProducts": "البحث في كل المنتجات",
-    "startTyping": "ابدأ بكتابة ما تبحث عنه",
-    "suggestedProducts": "المنتجات المقترحة",
-    "suggestedKeywords": "كلمات مقترحة",
+    "searchAllProducts": "البحث في جميع المنتجات",
+    "startTyping": "ابدأ الكتابة للبحث",
+    "suggestedProducts": "منتجات مقترحة",
+    "suggestedKeywords": "كلمات مفتاحية مقترحة",
     "recentSearches": "عمليات البحث الأخيرة",
     "clearAll": "مسح الكل",
-    "remove": "حذف",
+    "remove": "إزالة",
     "image": "صورة",
     "closeSearch": "إغلاق البحث",
-    "retry": "أعد المحاولة"
-  },
-
-  "filters": {
-    "title": "فلاتر المنتجات",
-    "brand": "متجر العطور",
-    "resetFilters": "إعادة تعيين الفلاتر",
-    "applying": "جاري التطبيق...",
-    "applyFilters": "تطبيق الفلاتر",
-    "loading": "جاري التحميل...",
-    "error": "حدث خطأ في تحميل البيانات",
-    "currency": {
-      "omr": "ر.ع"
-    },
-    "range": {
-      "min": "الحد الأدنى",
-      "max": "الحد الأقصى"
-    },
-    "sections": {
-      "search": {
-        "title": "البحث",
-        "placeholder": "ابحث عن المنتجات..."
-      },
-      "price": {
-        "title": "نطاق السعر"
-      },
-      "rating": {
-        "title": "التقييم"
-      },
-      "stock": {
-        "title": "المخزون",
-        "label": "المنتجات المتوفرة فقط"
-      },
-      "reviews": {
-        "title": "عدد المراجعات"
-      },
-      "discount": {
-        "title": "نسبة الخصم"
-      },
-      "date": {
-        "title": "تاريخ الإضافة",
-        "startDate": "من تاريخ",
-        "endDate": "إلى تاريخ"
-      },
-      "featured": {
-        "title": "المنتجات المميزة",
-        "label": "المنتجات المميزة فقط"
-      },
-      "brand": {
-        "title": "الماركة",
-        "placeholder": "اختر الماركة..."
-      },
-      "sort": {
-        "title": "ترتيب حسب",
-        "options": {
-          "newest": "الأحدث",
-          "priceAsc": "السعر: من الأقل للأعلى",
-          "priceDesc": "السعر: من الأعلى للأقل",
-          "ratingDesc": "التقييم: من الأعلى للأقل",
-          "ratingAsc": "التقييم: من الأقل للأعلى"
-        }
-      }
-    },
-    "units": {
-      "stars": "نجوم",
-      "reviews": "مراجعة",
-      "discount": "خصم"
-    },
-    "validation": {
-      "invalidPriceRange": "نطاق السعر غير صحيح",
-      "invalidDateRange": "نطاق التاريخ غير صحيح",
-      "searchTooShort": "البحث يجب أن يكون أكثر من حرفين",
-      "maxFiltersReached": "تم الوصول للحد الأقصى من الفلاتر"
-    },
-    "messages": {
-      "noResults": "لا توجد نتائج مطابقة للفلاتر المحددة",
-      "filtersApplied": "تم تطبيق الفلاتر بنجاح",
-      "filtersReset": "تم إعادة تعيين الفلاتر",
-      "loadingProducts": "جاري تحميل المنتجات...",
-      "errorLoadingProducts": "خطأ في تحميل المنتجات"
-    },
-    "accessibility": {
-      "priceRangeSlider": "شريط تمرير نطاق السعر",
-      "ratingSlider": "شريط تمرير التقييم",
-      "reviewsSlider": "شريط تمرير عدد المراجعات",
-      "discountSlider": "شريط تمرير نسبة الخصم",
-      "expandFilter": "توسيع الفلتر",
-      "collapseFilter": "طي الفلتر",
-      "filterApplied": "تم تطبيق الفلتر",
-      "filterRemoved": "تم إزالة الفلتر"
-    },
-    "tooltips": {
-      "priceRange": "حدد نطاق السعر المطلوب",
-      "rating": "اختر الحد الأدنى للتقييم",
-      "inStock": "عرض المنتجات المتوفرة في المخزون فقط",
-      "featured": "عرض المنتجات المميزة فقط",
-      "discount": "حدد الحد الأدنى لنسبة الخصم",
-      "dateRange": "حدد فترة زمنية لتاريخ إضافة المنتج",
-      "brand": "اختر ماركة معينة",
-      "sort": "اختر طريقة ترتيب النتائج"
-    },
-    "stats": {
-      "totalProducts": "إجمالي المنتجات",
-      "averagePrice": "متوسط السعر",
-      "averageRating": "متوسط التقييم",
-      "totalBrands": "إجمالي الماركات",
-      "productsInStock": "المنتجات المتوفرة",
-      "featuredProducts": "المنتجات المميزة",
-      "discountedProducts": "المنتجات المخفضة"
-    }
+    "retry": "إعادة المحاولة"
   },
   "About": {
     "hero": {
-      "badge": "🎯 من نحن - OSMA Perfumes",
-      "title": "نحن عطر كل لحظة",
-      "description": "في OSMA، لا نبيع العطور فقط — بل نصنع تجارب لا تُنسى. من قلب الإلهام الشرقي وسحر الروائح الغربية، ندمج الفن مع الحواس لنمنحك بصمتك العطرية الخاصة."
+      "badge": "من نحن - عطور عُصمة 🎯",
+      "title": "نحن عبير كل لحظة",
+      "description": "في عُصمة، لا نبيع العطور فحسب - بل نصنع تجارب لا تُنسى. من قلب الإلهام الشرقي وسحر العطور الغربية، نمزج الفن بالحواس لنمنحك توقيعك العطري الفريد."
     },
     "vision": {
-      "title": "✨ رؤيتنا",
-      "description": "أن نكون العلامة التجارية الأولى في عالم العطور الفاخرة، حيث تلتقي الجودة بالحرفية، لنمنح كل شخص عطرًا يعكس شخصيته."
+      "title": "رؤيتنا ✨",
+      "description": "أن نكون العلامة التجارية الرائدة في عالم العطور الفاخرة، حيث تلتقي الجودة بالحرفية، لنمنح كل شخص عطرًا يعكس شخصيته."
     },
     "mission": {
-      "title": "🎯 مهمتنا",
-      "description": "ابتكار عطور فريدة تحمل توقيعًا لا يُنسى، باستخدام أفضل المكونات الطبيعية، مع الحرص على تجربة عميل متميزة تبدأ من الزجاجة وتنتهي برضا العميل."
+      "title": "مهمتنا 🎯",
+      "description": "ابتكار عطور فريدة بتوقيع لا يُنسى، باستخدام أجود المكونات الطبيعية، مع ضمان تجربة عملاء استثنائية من الزجاجة وحتى رضا العميل."
     },
     "values": {
-      "title": "🧬 قيمنا",
+      "title": "قيمنا 🧬",
       "quality": {
         "title": "الجودة أولاً",
-        "description": "نستخدم أفضل الزيوت والمكونات العطرية"
+        "description": "نستخدم أجود الزيوت والمكونات العطرية"
       },
       "innovation": {
         "title": "الابتكار",
@@ -346,44 +336,44 @@
       },
       "excellence": {
         "title": "التميز",
-        "description": "في كل عبوة، كل تفاصيل التغليف، وكل خدمة"
+        "description": "في كل زجاجة، وكل تفاصيل التعبئة، وكل خدمة"
       }
     },
     "ingredients": {
       "title": "مكونات عطورنا",
-      "description": "في OSMA، نختار بعناية مكوناتنا من أزهار الشرق، وخلاصات الأخشاب، ولمسات من المسك والعنبر، لصنع توازنٍ بين الطابع الكلاسيكي والعصري.",
+      "description": "في عُصمة، نختار مكوناتنا بعناية من الزهور الشرقية، ومستخلصات الأخشاب، ولمسات المسك والعنبر، لنخلق توازنًا بين الطابع الكلاسيكي والحديث.",
       "items": {
-        "flowers": "أزهار الشرق",
-        "woods": "خلاصات الأخشاب",
-        "musk": "المسك الطبيعي",
-        "amber": "العنبر الفاخر"
+        "flowers": "زهور شرقية",
+        "woods": "مستخلصات خشبية",
+        "musk": "مسك طبيعي",
+        "amber": "عنبر فاخر"
       }
     },
     "whyChoose": {
-      "title": "لماذا تختار OSMA ؟",
+      "title": "لماذا تختار عُصمة؟",
       "features": {
-        "lasting": "تركيبات تدوم طويلًا",
-        "design": "تصميم عبوات أنيق وفاخر",
-        "experience": "تجربة مستخدم راقية",
+        "lasting": "تركيبات تدوم طويلاً",
+        "design": "تصميم زجاجة أنيق وفاخر",
+        "experience": "تجربة مستخدم مميزة",
         "support": "خدمة ما بعد البيع"
       }
     },
     "presence": {
       "title": "تواجدنا",
-      "description": "نحن نُشحن منتجاتنا إلى معظم دول الخليج، مع تواجد فعلي في عدة مناطق، ونسعى للتوسع أكثر في سلطنة عمان ودول الخليج الأخرى قريبًا.",
+      "description": "نقوم بشحن منتجاتنا إلى معظم دول الخليج، مع تواجد فعلي في عدة مناطق، ونهدف إلى التوسع أكثر في عمان ودول الخليج الأخرى قريبًا.",
       "region": "دول الخليج",
       "countries": "الإمارات • السعودية • الكويت • البحرين • قطر • عمان"
     },
     "gallery": {
-      "title": "معرض OSMA",
-      "perfume": "عطر OSMA"
+      "title": "معرض عُصمة",
+      "perfume": "عطر عُصمة"
     },
     "subtitle1": "تركيبة فاخرة ومميزة",
-    "subtitle2": "نفحات تدوم طويلاً",
-    "subtitle3": "عطر يعكس شخصيتك",
-    "subtitle4": "سحر وأناقة مطلقة",
+    "subtitle2": "نوتات تدوم طويلاً",
+    "subtitle3": "عطر يعكسك",
+    "subtitle4": "سحر وأناقة خالصة",
     "subtitle5": "إحساس بالرفاهية",
-    "subtitle6": "جودة لا تُضاهى",
+    "subtitle6": "جودة لا مثيل لها",
     "contact": {
       "title": "تواصل معنا",
       "phone": {
@@ -391,7 +381,7 @@
         "number": "+968 7711 7906"
       },
       "email": {
-        "title": "راسلنا",
+        "title": "راسلنا عبر البريد الإلكتروني",
         "address": "osmaoman7@gmail.com"
       },
       "social": {
@@ -402,213 +392,89 @@
       "links": {
         "about": "من نحن",
         "privacy": "سياسة الخصوصية",
-        "contact": "اتصل بنا",
+        "contact": "تواصل معنا",
         "terms": "الشروط والأحكام"
       },
       "cta": {
-        "products": "تعرّف على منتجاتنا",
-        "shop": "تسوّق الآن"
+        "products": "اكتشف منتجاتنا",
+        "shop": "تسوق الآن"
       }
     }
   },
   "Product": {
-    "brand": "العلامة التجارية",
+    "brand": "الماركة",
     "size": "الحجم",
     "concentration": "التركيز",
-    "notes": "النوتات",
-    "topNotes": "نوتات المقدمة",
-    "heartNotes": "نوتات القلب",
-    "baseNotes": "نوتات القاعدة",
-    "inStock": "متوفر في المخزون",
-    "outOfStock": "غير متوفر",
-    "reviews": "تقييم",
-    "rateProduct": "قيّم هذا المنتج",
+    "notes": "الملاحظات",
+    "topNotes": "الملاحظات العليا",
+    "heartNotes": "ملاحظات القلب",
+    "baseNotes": "ملاحظات القاعدة",
+    "inStock": "متوفر",
+    "outOfStock": "نفد المخزون",
+    "reviews": "مراجعات",
+    "rateProduct": "قيم هذا المنتج",
     "writeComment": "اكتب تعليقك هنا...",
     "cancel": "إلغاء",
     "submit": "إرسال",
     "contactWhatsapp": "تواصل عبر واتساب",
-    "notAvailable": "غير متوفر",
-    "productName": "اسم المنتج",
-    "brand": "الماركة",
-    "size": "الحجم",
-    "notes": "النوتات",
-    "topNotes": "النوتات العلوية",
-    "heartNotes": "نوتات القلب",
-    "baseNotes": "النوتات الأساسية",
-    "inStock": "متوفر في المخزن",
-    "outOfStock": "غير متوفر",
-    "reviews": "تقييم",
-    "rateProduct": "قيم المنتج",
-    "contactWhatsapp": "تواصل عبر واتساب",
-    "customerReviews": "تقييمات العملاء",
-    "noReviews": "لا توجد تقييمات بعد",
-    "pleaseSelectRating": "يرجى اختيار تقييم",
-    "writeComment": "اكتب تعليقك هنا (اختياري)",
-    "cancel": "إلغاء",
-    "submit": "إرسال",
-    "submitting": "جاري الإرسال...",
-    "confirmDeleteReview": "هل أنت متأكد من حذف هذا التقييم؟",
-    "deleteReview": "حذف التقييم",
-    "editReview": "تعديل التقييم",
-    "update": "تحديث",
-    "rate": "قيم",
-    "stars": "نجوم",
-    "user": "المستخدم",
-    "anonymousUser": "مستخدم مجهول",
-    "noImage": "لا توجد صورة",
-    "selectImage": "اختر الصورة",
-    "thumbnail": "صورة مصغرة",
-    "reviewSubmitted": "تم إرسال التقييم بنجاح",
-    "reviewSubmitError": "خطأ في إرسال التقييم",
-    "reviewDeleted": "تم حذف التقييم بنجاح",
-    "reviewDeleteError": "خطأ في حذف التقييم",
-    "reviewUpdated": "تم تحديث التقييم بنجاح",
-    "reviewUpdateError": "خطأ في تحديث التقييم",
-    "loading": "جاري التحميل...",
-    "error": "حدث خطأ",
-    "tryAgain": "حاول مرة أخرى",
-    "addToCart": "أضف للسلة",
-    "buyNow": "اشتري الآن",
-    "quantity": "الكمية",
-    "price": "السعر",
-    "originalPrice": "السعر الأصلي",
-    "discount": "خصم",
-    "save": "وفر",
-    "freeShipping": "شحن مجاني",
-    "fastDelivery": "توصيل سريع",
-    "returnPolicy": "سياسة الإرجاع",
-    "warranty": "الضمان",
-    "description": "الوصف",
-    "specifications": "المواصفات",
-    "ingredients": "المكونات",
-    "howToUse": "طريقة الاستخدام",
-    "relatedProducts": "منتجات ذات صلة",
-    "similarProducts": "منتجات مشابهة",
-    "recentlyViewed": "شوهدت مؤخراً",
-    "addToWishlist": "أضف للمفضلة",
-    "removeFromWishlist": "إزالة من المفضلة",
-    "share": "مشاركة",
-    "shareOnFacebook": "شارك على فيسبوك",
-    "shareOnTwitter": "شارك على تويتر",
-    "shareOnWhatsapp": "شارك على واتساب",
-    "copyLink": "نسخ الرابط",
-    "linkCopied": "تم نسخ الرابط",
-    "outOfStockMessage": "هذا المنتج غير متوفر حالياً",
-    "notifyWhenAvailable": "أعلمني عند التوفر",
-    "emailNotification": "إشعار بالبريد الإلكتروني",
-    "smsNotification": "إشعار برسالة نصية",
-    "productCode": "كود المنتج",
-    "category": "الفئة",
-    "tags": "العلامات",
-    "madeIn": "صنع في",
-    "expiryDate": "تاريخ الانتهاء",
-    "batchNumber": "رقم الدفعة",
-    "volume": "الحجم",
-    "weight": "الوزن",
-    "dimensions": "الأبعاد",
-    "color": "اللون",
-    "fragrance": "العطر",
-    "intensity": "الكثافة",
-    "longevity": "مدة البقاء",
-    "sillage": "الإشعاع",
-    "season": "الموسم",
-    "occasion": "المناسبة",
-    "gender": "الجنس",
-    "ageGroup": "الفئة العمرية",
-    "perfumeType": "نوع العطر",
-    "concentration": "التركيز",
-    "ml": "مل",
-    "oz": "أونصة",
-    "piece": "قطعة",
-    "set": "طقم",
-    "gift": "هدية",
-    "giftWrap": "تغليف هدايا",
-    "personalMessage": "رسالة شخصية",
-    "deliveryOptions": "خيارات التوصيل",
-    "standardDelivery": "توصيل عادي",
-    "expressDelivery": "توصيل سريع",
-    "sameDay": "نفس اليوم",
-    "nextDay": "اليوم التالي",
-    "pickupFromStore": "استلام من المتجر",
-    "paymentMethods": "طرق الدفع",
-    "cashOnDelivery": "الدفع عند الاستلام",
-    "creditCard": "بطاقة ائتمان",
-    "debitCard": "بطاقة خصم",
-    "bankTransfer": "تحويل بنكي",
-    "digitalWallet": "محفظة رقمية",
-    "installments": "أقساط",
-    "securePayment": "دفع آمن",
-    "customerService": "خدمة العملاء",
-    "contactUs": "اتصل بنا",
-    "helpCenter": "مركز المساعدة",
-    "faq": "الأسئلة الشائعة",
-    "liveChat": "دردشة مباشرة",
-    "callUs": "اتصل بنا",
-    "emailUs": "راسلنا",
-    "workingHours": "ساعات العمل",
-    "support": "الدعم",
-    "technicalSupport": "الدعم الفني",
-    "loginToRate": "سجل دخولك لتقييم المنتج",
-    "login": "تسجيل الدخول",
-    "register": "إنشاء حساب",
-    "you": "أنت"
+    "notAvailable": "غير متوفر"
   },
   "testimonials": {
-    "title": "آراء العملاء",
+    "title": "شهادات العملاء",
     "name": {
       "ahmed": "أحمد يوسف",
       "sarah": "سارة منصور",
       "khaled": "خالد عمر"
     },
     "comment": {
-      "ahmed": "رائحة فخمة وثبات يدوم طوال اليوم",
-      "sarah": "خدمة ممتازة وسرعة في التوصيل",
-      "khaled": "المنتج مطابق للوصف تمامًا. شكرًا!"
+      "ahmed": "رائحة فاخرة وانتعاش يدوم طويلاً",
+      "sarah": "خدمة ممتازة وتوصيل سريع",
+      "khaled": "المنتج يطابق الوصف تمامًا. شكرًا لكم!"
     }
   },
   "why_us": {
-    "title": "لماذا نحن؟",
+    "title": "لماذا تختارنا؟",
     "features": {
       "shipping": "شحن سريع وآمن 🚚",
       "authentic": "عطور أصلية 100%",
-      "support": "دعم فني على مدار الساعة",
-      "payment": "الدفع عند الاستلام أو أونلاين",
-      "packaging": "تغليف أنيق ومناسب للإهداء 🎁"
+      "support": "دعم العملاء 24/7",
+      "payment": "الدفع عند الاستلام أو الدفع عبر الإنترنت",
+      "packaging": "تغليف هدايا أنيق 🎁"
     }
   },
   "Auth": {
-    "Logout": {
-      "logoutFailed": "فشل تسجيل الخروج",
-      "logoutSuccess": "تم تسجيل الخروج بنجاح"
-    },
     "Login": {
-      "title": "OSMA تسجيل الدخول",
+      "title": "تسجيل الدخول إلى عُصمة",
       "email": "البريد الإلكتروني",
       "emailRequired": "البريد الإلكتروني مطلوب",
       "emailInvalid": "صيغة البريد الإلكتروني غير صحيحة",
       "password": "كلمة المرور",
       "passwordRequired": "كلمة المرور مطلوبة",
-      "passwordMinLength": "كلمة المرور يجب أن تكون 6 أحرف على الأقل",
-      "loginButton": "دخول",
+      "passwordMinLength": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",
+      "loginButton": "تسجيل الدخول",
       "loggingIn": "جاري تسجيل الدخول...",
       "loginFailed": "فشل تسجيل الدخول",
       "loginSuccess": "تم تسجيل الدخول بنجاح",
       "registerLink": "إنشاء حساب جديد",
       "forgotPassword": "نسيت كلمة المرور؟"
     },
+    "Logout": {
+      "logoutFailed": "فشل تسجيل الخروج",
+      "logoutSuccess": "تم تسجيل الخروج بنجاح"
+    },
     "Register": {
-      "title": "إنشاء حساب",
+      "title": "تسجيل",
       "email": "البريد الإلكتروني",
       "password": "كلمة المرور",
       "emailRequired": "البريد الإلكتروني مطلوب",
       "emailInvalid": "البريد الإلكتروني غير صالح",
       "passwordRequired": "كلمة المرور مطلوبة",
-      "passwordMinLength": "كلمة المرور يجب أن تكون 6 أحرف على الأقل",
-      "registerFailed": "فشل إنشاء الحساب",
-      "registerSuccess": "تم إنشاء الحساب بنجاح",
-      "registering": "جاري إنشاء الحساب...",
-      "registerButton": "إنشاء حساب",
-      "loginLink": "هل لديك حساب؟ تسجيل الدخول"
+      "passwordMinLength": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",
+      "registerFailed": "فشل التسجيل",
+      "registerSuccess": "تم التسجيل بنجاح",
+      "registering": "جاري التسجيل...",
+      "registerButton": "تسجيل",
+      "loginLink": "هل لديك حساب بالفعل؟ تسجيل الدخول"
     },
     "ResetPassword": {
       "title": "إعادة تعيين كلمة المرور",
@@ -622,83 +488,123 @@
       "passwordMismatch": "كلمتا المرور غير متطابقتين",
       "passwordRequired": "كلمة المرور مطلوبة",
       "confirmPasswordRequired": "تأكيد كلمة المرور مطلوب",
-      "minPassword": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
-      "passwordMinLength": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
-      "resetButton": "تحديث كلمة المرور",
-      "resetting": "جاري التحديث..."
+      "minPassword": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
+      "passwordMinLength": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
+      "resetButton": "إعادة تعيين كلمة المرور",
+      "resetting": "جاري إعادة التعيين..."
     },
     "ForgotPassword": {
       "title": "نسيت كلمة المرور",
-      "email": "البريد الإلكتروني",
+      "email": "عنوان البريد الإلكتروني",
       "emailRequired": "البريد الإلكتروني مطلوب",
-      "emailInvalid": "البريد الإلكتروني غير صالح",
+      "emailInvalid": "عنوان البريد الإلكتروني غير صالح",
       "sendResetLink": "إرسال رابط إعادة التعيين",
       "sending": "جاري الإرسال..."
     }
   },
   "dashboard": {
     "welcome": "مرحباً بك في لوحة التحكم",
-    "overview": "إليك نظرة عامة على أداء متجرك اليوم",
+    "overview": "نظرة عامة على إحصائيات موقعك",
     "stats": {
-      "users": "المستخدمين",
+      "users": "المستخدمون",
       "products": "المنتجات",
       "sales": "المبيعات",
-      "categories": "التصنيفات"
+      "categories": "الفئات"
     },
     "charts": {
       "salesAnalysis": "تحليل المبيعات",
-      "salesDescription": "نظرة عامة على أداء المبيعات خلال الأشهر الماضية",
+      "salesDescription": "إحصائيات المبيعات الشهرية",
       "revenueAnalysis": "تحليل الإيرادات",
-      "revenueDescription": "مقارنة الإيرادات والأرباح الشهرية",
-      "categoryDistribution": "توزيع التصنيفات",
+      "revenueDescription": "تطور الإيرادات والأرباح",
+      "categoryDistribution": "توزيع الفئات",
       "userGrowth": "نمو المستخدمين",
       "comingSoon": "قريباً..."
     },
     "recentActivity": {
       "title": "النشاط الأخير",
-      "newUser": "مستخدم جديد انضم",
-      "newProduct": "تم إضافة منتج جديد",
-      "newOrder": "طلب جديد تم استلامه"
+      "newUser": "انضم مستخدم جديد",
+      "newProduct": "تمت إضافة منتج جديد",
+      "newOrder": "تم استلام طلب جديد"
     }
-  },
-  "navbar": {
-    "title": "لوحة التحكم",
-    "searchPlaceholder": "بحث سريع...",
-    "admin": "المدير",
-    "settings": "الإعدادات",
-    "profile": "الملف الشخصي",
-    "logout": "تسجيل الخروج"
   },
   "sidebar": {
     "adminPanel": "لوحة الإدارة",
     "mainMenu": "القائمة الرئيسية",
-    "dashboard": "الرئيسية",
+    "dashboard": "لوحة التحكم",
     "products": "المنتجات",
-    "categories": "التصنيفات",
-    "users": "المستخدمين",
+    "categories": "الفئات",
+    "users": "المستخدمون",
     "settings": "الإعدادات",
-    "admin": "المدير",
+    "admin": "المسؤول",
     "onlineNow": "متصل الآن"
   },
-  "search": {
-    "placeholder": "ابحث عن المنتجات..."
+  "navbar": {
+    "title": "لوحة التحكم",
+    "searchPlaceholder": "بحث...",
+    "admin": "المسؤول",
+    "profile": "الملف الشخصي",
+    "settings": "الإعدادات",
+    "logout": "تسجيل الخروج"
   },
-  "common": {
-    "loading": "جاري التحميل...",
-    "darkMode": "الوضع الداكن",
-    "lightMode": "الوضع الفاتح",
-    "language": "اللغة"
-  },
-  "products": {
-    "ask_about_product": "استفسر عن المنتج",
-    "whatsapp_message": {
-      "intro": "مرحبًا، أود الاستفسار عن هذا المنتج:",
-      "description": "وصف المنتج:",
-      "image": "صورة المنتج",
-      "link": "رابط المنتج"
+  "filters": {
+    "title": "فلاتر المنتجات",
+    "brand": "عُصمة",
+    "resetFilters": "إعادة تعيين",
+    "applyFilters": "تطبيق الفلاتر",
+    "applying": "جاري التطبيق...",
+    "range": {
+      "min": "الحد الأدنى",
+      "max": "الحد الأقصى"
     },
-    "related_products": "Related Products",
-    "related_products_description": "Discover similar products you might like"
+    "currency": {
+      "omr": "ريال عماني"
+    },
+    "units": {
+      "stars": "نجوم",
+      "reviews": "مراجعات",
+      "discount": "خصم"
+    },
+    "sections": {
+      "search": {
+        "title": "البحث بالاسم",
+        "placeholder": "البحث عن منتج..."
+      },
+      "price": {
+        "title": "نطاق السعر"
+      },
+      "rating": {
+        "title": "الحد الأدنى للتقييم"
+      },
+      "stock": {
+        "title": "في المخزون",
+        "label": "إظهار المنتجات المتوفرة فقط"
+      },
+      "reviews": {
+        "title": "الحد الأدنى للمراجعات"
+      },
+      "discount": {
+        "title": "الحد الأدنى للخصم"
+      },
+      "date": {
+        "title": "تاريخ الإضافة",
+        "startDate": "تاريخ البدء",
+        "endDate": "تاريخ الانتهاء"
+      },
+      "featured": {
+        "title": "المنتجات المميزة",
+        "label": "إظهار المنتجات المميزة فقط"
+      },
+      "sort": {
+        "title": "الترتيب حسب",
+        "options": {
+          "newest": "الأحدث",
+          "priceAsc": "السعر: من الأقل للأعلى",
+          "priceDesc": "السعر: من الأعلى للأقل",
+          "ratingDesc": "التقييم: من الأعلى للأقل",
+          "ratingAsc": "التقييم: من الأقل للأعلى"
+        }
+      }
+    }
   },
   "sectionText": {
     "special_offers": "عروض خاصة",

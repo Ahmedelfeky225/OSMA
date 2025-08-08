@@ -8,6 +8,7 @@ import { Star, Heart, Eye, ShoppingCart } from "lucide-react";
 import { useState } from "react";
 
 const ProductCard = ({ product }) => {
+  console.log(product);
   const t = useTranslations("products");
   const locale = useLocale();
   const [isWishlisted, setIsWishlisted] = useState(false);
@@ -23,8 +24,9 @@ const ProductCard = ({ product }) => {
     _id,
   } = product;
 
-  const name = translations[locale]?.name || "";
-  const description = translations[locale]?.description || "";
+  const name = translations?.[locale]?.name || product?.name || "اسم المنتج";
+  const description =
+    translations?.[locale]?.description || product?.description || "";
   const image = images?.[0] || "";
 
   const formatPrice = (value) => {
