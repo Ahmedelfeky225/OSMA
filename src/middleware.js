@@ -140,20 +140,18 @@ export default async function middleware(req) {
   const res = intlMiddleware(req);
   const pathname = req.nextUrl.pathname;
 
-  // تحقق من وجود JWT_SECRET
-  if (!process.env.JWT_SECRET) {
-    console.error(
-      "🚨 JWT_SECRET is NOT defined in environment variables! Middleware will fail JWT verification."
-    );
-  }
-
-  // قراءة التوكن من الكوكيز (Edge Runtime friendly)
+  // ✅ Debug log عشان تعرف إذا الكوكي واصل في الـ production
   const token = req.cookies.get("token")?.value;
+  console.log("🔍 Token from cookies:", token ? "[FOUND]" : "[MISSING]");
+
+  // ✅ تحذير لو مفيش الـ JWT_SECRET
+  if (!process.env.JWT_SECRET) {
+    console.error("🚨 JWT_SECRET is NOT defined in environment variables!");
+  }
 
   // إزالة اللغة من بداية الرابط
   const pathWithoutLocale = pathname.replace(/^\/(en|ar|fr)/, "");
 
-  // المسارات المحمية
   const protectedPaths = ["/profile", "/admin"];
   const publicPaths = ["/auth/login", "/auth/register"];
 
@@ -161,22 +159,22 @@ export default async function middleware(req) {
     pathWithoutLocale.startsWith(path)
   );
 
-  // لو المستخدم على login/register ومعاه توكن → رجعه للرئيسية
+  // لو هو في login/register ومعاه توكن → رجعه للرئيسية
   if (publicPaths.some((path) => pathWithoutLocale.startsWith(path)) && token) {
     try {
       await jwtVerify(token, new TextEncoder().encode(process.env.JWT_SECRET));
       return NextResponse.redirect(new URL("/", req.url));
-    } catch (err) {
-      // التوكن مش صالح → خليه يكمل في صفحة login
+    } catch {
+      // التوكن مش صالح → كمل
     }
   }
 
-  // الصفحات العامة → مش محتاجة تحقق
+  // الصفحات العامة
   if (!needsAuth) {
     return res;
   }
 
-  // لو الصفحة محمية ومفيش توكن → رجعه للّوجين
+  // لو محمية ومفيش توكن
   if (!token) {
     return NextResponse.redirect(new URL("/auth/login", req.url));
   }
@@ -187,14 +185,13 @@ export default async function middleware(req) {
       new TextEncoder().encode(process.env.JWT_SECRET)
     );
 
-    // تحقق من الدور لو داخل admin
+    // تحقق من الدور
     if (pathWithoutLocale.startsWith("/admin") && payload.role !== "admin") {
       return NextResponse.redirect(new URL("/", req.url));
     }
 
     return res;
-  } catch (err) {
-    // JWT غير صالح → رجعه لتسجيل الدخول
+  } catch {
     return NextResponse.redirect(new URL("/auth/login", req.url));
   }
 }
