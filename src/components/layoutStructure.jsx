@@ -6,14 +6,24 @@ import { Toaster } from "react-hot-toast";
 import { fetchInterceptor } from "@/utils/fetchInterceptor";
 
 export default async function LayoutStructure({ children }) {
-  const cookieStore = await cookies();
-  const cookieString = cookieStore.toString();
+  // const cookieStore = await cookies();
+  // const cookieString = cookieStore.toString();
+
+  // const userData = await fetchInterceptor("auth/me", {
+  //   headers: {
+  //     Cookie: cookieString,
+  //   },
+  // }).catch(() => null);
+
+  const store = await cookies();
+  const cookieHeader = store
+    .getAll()
+    .map((c) => `${c.name}=${c.value}`)
+    .join("; ");
 
   const userData = await fetchInterceptor("auth/me", {
-    headers: {
-      Cookie: cookieString,
-    },
-  }).catch(() => null);
+    headers: cookieHeader ? { Cookie: cookieHeader } : undefined,
+  });
 
   console.log("userData", userData);
 
