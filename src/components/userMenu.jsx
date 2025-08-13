@@ -1,84 +1,33 @@
-// "use client";
-
-// import { useState } from "react";
-// import Avatar from "@mui/material/Avatar";
-// import Menu from "@mui/material/Menu";
-// import MenuItem from "@mui/material/MenuItem";
-// import Divider from "@mui/material/Divider";
-// import ListItemText from "@mui/material/ListItemText";
-// import Logout from "@mui/icons-material/Logout";
-
-// export default function UserMenu({ user, onLogout }) {
-//   const [anchorEl, setAnchorEl] = useState(null);
-//   const open = Boolean(anchorEl);
-//   const handleClick = (event) => {
-//     setAnchorEl(event.currentTarget);
-//   };
-//   const handleClose = () => {
-//     setAnchorEl(null);
-//   };
-//   return (
-//     <>
-//       <Avatar
-//         src={user?.image || ""}
-//         alt={user?.name || "User"}
-//         sx={{ cursor: "pointer", bgcolor: "var(--primary-color)" }}
-//         onClick={handleClick}
-//       />
-//       <Menu
-//         anchorEl={anchorEl}
-//         open={open}
-//         onClose={handleClose}
-//         PaperProps={{
-//           elevation: 2,
-//           sx: { width: 240, borderRadius: 2 },
-//           px: 2,
-//         }}
-//       >
-//         <MenuItem>
-//           <ListItemText>{user?.email || "User Email"}</ListItemText>
-//         </MenuItem>
-//         <Divider />
-//         <MenuItem
-//           onClick={() => {
-//             handleClose();
-//             onLogout();
-//           }}
-//           sx={{
-//             color: "red",
-//             fontWeight: "normal",
-//             "& svg": { color: "red" },
-//             "&:hover": {
-//               backgroundColor: "#ffe6e6",
-//             },
-//           }}
-//         >
-//           <Logout fontSize="small" />
-//           <span style={{ marginLeft: 12 }}>Logout</span>
-//         </MenuItem>
-//       </Menu>
-//     </>
-//   );
-// }
-
 "use client";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { UserIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
-import { ArrowRightOnRectangleIcon } from "@heroicons/react/24/outline";
+import {
+  UserIcon,
+  ChevronDownIcon,
+  ArrowRightOnRectangleIcon,
+} from "@heroicons/react/24/outline";
 import { useTranslations, useLocale } from "next-intl";
+import { toast } from "sonner";
+import { logoutUser } from "@/store/auth/auth";
 
-export default function UserMenu({ user, onLogout }) {
+export default function UserMenu({ user }) {
   const [isOpen, setIsOpen] = useState(false);
   const t = useTranslations("UserMenu");
+  const tLogout = useTranslations("Auth");
   const locale = useLocale();
+  const dispatch = useDispatch();
+  const router = useRouter();
 
-  // Extract username from email and style it
   const displayName = useMemo(() => {
-    if (user?.name) return user.name;
-    if (user?.email) {
-      const emailPart = user.email.split("@")[0];
-      // Capitalize first letter and replace dots/underscores with spaces
+    const name = user?.user?.name?.trim();
+    const email = user?.user?.email;
+
+    if (name) return name;
+
+    if (email) {
+      const emailPart = email.split("@")[0];
       return emailPart
         .replace(/[._]/g, " ")
         .split(" ")
@@ -87,25 +36,35 @@ export default function UserMenu({ user, onLogout }) {
         )
         .join(" ");
     }
+
     return t("defaultUserName");
-  }, [user?.name, user?.email, t]);
+  }, [user?.user?.name, user?.user?.email, t]);
 
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
-  };
+  const handleToggle = () => setIsOpen(!isOpen);
+  const handleClose = () => setIsOpen(false);
 
-  const handleClose = () => {
-    setIsOpen(false);
-  };
+  const handleLogout = useCallback(async () => {
+    try {
+      const resultAction = await dispatch(logoutUser());
 
-  const handleLogout = () => {
-    handleClose();
-    onLogout();
-  };
+      if (logoutUser.fulfilled.match(resultAction)) {
+        toast.success(tLogout("Logout.logoutSuccess"));
+        router.push("/auth/login");
+      } else {
+        const errorMessage =
+          resultAction.payload ||
+          resultAction.error?.message ||
+          tLogout("Logout.logoutFailed");
+        toast.error(errorMessage);
+      }
+    } catch {
+      toast.error(tLogout("Logout.logoutFailed"));
+    }
+  }, [dispatch, router, tLogout]);
 
   return (
     <div className="relative">
-      {/* User Avatar Button */}
+      {/* Avatar Button */}
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
@@ -113,9 +72,9 @@ export default function UserMenu({ user, onLogout }) {
         className="flex items-center gap-2 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 group cursor-pointer"
       >
         <div className="relative">
-          {user?.image ? (
+          {user?.user?.image ? (
             <img
-              src={user.image || "/placeholder.svg"}
+              src={user.user.image || "/placeholder.svg"}
               alt={displayName}
               className="w-8 h-8 rounded-full object-cover border-2 border-[var(--primary-color)]/20"
             />
@@ -124,7 +83,6 @@ export default function UserMenu({ user, onLogout }) {
               <UserIcon className="w-4 h-4 text-white" />
             </div>
           )}
-          {/* Online indicator */}
           <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-white dark:border-gray-800"></div>
         </div>
 
@@ -135,17 +93,15 @@ export default function UserMenu({ user, onLogout }) {
         />
       </motion.button>
 
-      {/* Dropdown Menu */}
+      {/* Dropdown */}
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Backdrop */}
             <div
               className="fixed inset-0 z-40 cursor-pointer"
               onClick={handleClose}
             />
 
-            {/* Menu */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: -10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -155,13 +111,13 @@ export default function UserMenu({ user, onLogout }) {
                 locale === "en" ? "right-0" : "left-0"
               } top-full mt-2 w-64 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 z-50 overflow-hidden`}
             >
-              {/* User Info Section */}
+              {/* User Info */}
               <div className="p-4 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 border-b border-gray-200 dark:border-gray-600">
                 <div className="flex items-center gap-3">
                   <div className="relative">
-                    {user?.image ? (
+                    {user?.user?.image ? (
                       <img
-                        src={user.image || "/placeholder.svg"}
+                        src={user.user.image || "/placeholder.svg"}
                         alt={displayName}
                         className="w-12 h-12 rounded-full object-cover border-2 border-[var(--primary-color)]/30"
                       />
@@ -178,7 +134,7 @@ export default function UserMenu({ user, onLogout }) {
                       {displayName}
                     </p>
                     <p className="text-sm text-gray-600 dark:text-gray-300 truncate">
-                      {user?.email || t("defaultEmail")}
+                      {user?.user?.email || t("defaultEmail")}
                     </p>
                   </div>
                 </div>
@@ -186,14 +142,13 @@ export default function UserMenu({ user, onLogout }) {
 
               {/* Menu Items */}
               <div className="py-2">
-                {/* Profile Section */}
                 <div className="px-4 py-2">
                   <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                     {t("accountSection")}
                   </p>
                 </div>
 
-                {/* Account Status */}
+                {/* Status */}
                 <div className="px-4 py-2 flex items-center justify-between">
                   <span className="text-sm text-gray-700 dark:text-gray-300">
                     {t("status")}
@@ -204,10 +159,9 @@ export default function UserMenu({ user, onLogout }) {
                   </span>
                 </div>
 
-                {/* Divider */}
                 <div className="my-2 border-t border-gray-200 dark:border-gray-600"></div>
 
-                {/* Logout Button */}
+                {/* Logout */}
                 <motion.button
                   whileHover={{ backgroundColor: "#ffe6e6" }}
                   whileTap={{ scale: 0.98 }}

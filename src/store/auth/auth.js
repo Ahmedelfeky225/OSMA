@@ -1,18 +1,23 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "../interceptor/axiosInstance";
+import { fetchCurrentUser, clearCurrentUser } from "@/store/users/users"; // استدعاء دوال userSlice
 
 // تسجيل الدخول
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
-  async (credentials, { rejectWithValue }) => {
+  async (credentials, { dispatch, rejectWithValue }) => {
     try {
-      const response = await axiosInstance.post("/auth/login", credentials, {
+      await axiosInstance.post("/auth/login", credentials, {
         withCredentials: true,
       });
-      return response.data;
+      // بعد ما الكوكي تتخزن، نجيب بيانات المستخدم
+      await dispatch(fetchCurrentUser());
+      return { message: "تم تسجيل الدخول بنجاح" };
     } catch (error) {
       if (error.response && error.response.data) {
-        return rejectWithValue(error.response.data.message);
+        return rejectWithValue(
+          error.response.data.message || error.response.data.error
+        );
       }
       return rejectWithValue(error.message);
     }
@@ -22,15 +27,18 @@ export const loginUser = createAsyncThunk(
 // تسجيل مستخدم جديد
 export const registerUser = createAsyncThunk(
   "auth/registerUser",
-  async (userData, { rejectWithValue }) => {
+  async (userData, { dispatch, rejectWithValue }) => {
     try {
-      const response = await axiosInstance.post("/auth/register", userData, {
+      await axiosInstance.post("/auth/register", userData, {
         withCredentials: true,
       });
-      return response.data;
+      await dispatch(fetchCurrentUser());
+      return { message: "تم التسجيل بنجاح" };
     } catch (error) {
       if (error.response && error.response.data) {
-        return rejectWithValue(error.response.data.message);
+        return rejectWithValue(
+          error.response.data.message || error.response.data.error
+        );
       }
       return rejectWithValue(error.message);
     }
@@ -80,14 +88,11 @@ export const forgotPassword = createAsyncThunk(
 // تسجيل الخروج
 export const logoutUser = createAsyncThunk(
   "auth/logoutUser",
-  async (_, { rejectWithValue }) => {
+  async (_, { dispatch, rejectWithValue }) => {
     try {
-      const response = await axiosInstance.post(
-        "/auth/logout",
-        {},
-        { withCredentials: true }
-      );
-      return response.data;
+      await axiosInstance.post("/auth/logout", {}, { withCredentials: true });
+      dispatch(clearCurrentUser()); // تفريغ بيانات المستخدم
+      return { message: "تم تسجيل الخروج بنجاح" };
     } catch (error) {
       if (error.response && error.response.data) {
         return rejectWithValue(error.response.data.message);
@@ -98,7 +103,6 @@ export const logoutUser = createAsyncThunk(
 );
 
 const initialState = {
-  user: null,
   isLoading: false,
   error: null,
   message: null,
@@ -123,8 +127,7 @@ const authSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.user = action.payload.user || null;
-        state.error = null;
+        state.message = action.payload?.message;
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.isLoading = false;
@@ -138,8 +141,7 @@ const authSlice = createSlice({
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.user = action.payload.user || null;
-        state.error = null;
+        state.message = action.payload?.message;
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.isLoading = false;
@@ -182,11 +184,9 @@ const authSlice = createSlice({
       .addCase(logoutUser.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(logoutUser.fulfilled, (state) => {
+      .addCase(logoutUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.user = null;
-        state.error = null;
-        state.message = "تم تسجيل الخروج بنجاح";
+        state.message = action.payload?.message;
       })
       .addCase(logoutUser.rejected, (state, action) => {
         state.isLoading = false;
@@ -196,5 +196,4 @@ const authSlice = createSlice({
 });
 
 export const { clearState } = authSlice.actions;
-// export { loginUser, registerUser, resetPassword, forgotPassword, logoutUser };
 export default authSlice.reducer;

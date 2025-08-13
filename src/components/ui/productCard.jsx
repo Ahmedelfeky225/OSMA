@@ -8,7 +8,7 @@ import { Star, Heart, Eye, ShoppingCart } from "lucide-react";
 import { useState } from "react";
 
 const ProductCard = ({ product }) => {
-  console.log(product);
+  // console.log(product);
   const t = useTranslations("products");
   const locale = useLocale();
   const [isWishlisted, setIsWishlisted] = useState(false);

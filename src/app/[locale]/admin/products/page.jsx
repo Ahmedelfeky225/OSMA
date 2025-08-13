@@ -20,6 +20,7 @@ import ProductFilters from "@/components/ui/dashboard/products/productFilters";
 import PaginationControls from "@/components/ui/dashboard/products/paginationControls";
 import DeleteProductDialog from "@/components/ui/dashboard/products/deleteProductDialog";
 import { Button } from "@/components/ui/button"; // Assuming shadcn/ui Bu
+import Navbar from "@/components/ui/dashboard/Navbar";
 
 export default function ProductsPage() {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ export default function ProductsPage() {
   const [viewMode, setViewMode] = useState("table"); // 'table' or 'grid'
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
   const [productToDelete, setProductToDelete] = useState(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const loadProducts = useCallback(() => {
     dispatch(fetchProducts({ ...filters, page: pagination.currentPage }));
@@ -105,8 +107,8 @@ export default function ProductsPage() {
       className="min-h-screen flex flex-col bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900"
       dir={isRTL ? "rtl" : "ltr"}
     >
-      <div className="w-[90%] max-w-7xl mx-auto px-6 py-8 flex flex-col flex-grow">
-        {" "}
+      <Navbar onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} />{" "}
+      <div className="w-[90%] max-w-[90%] mx-auto px-6 py-8 flex flex-col flex-grow">
         {/* Added flex-grow here */}
         {/* Header */}
         <div className="flex items-center justify-between mb-8">

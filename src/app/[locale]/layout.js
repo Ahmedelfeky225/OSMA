@@ -293,9 +293,7 @@ export default async function LocaleLayout({ children, params }) {
             </Suspense>
 
             {/* ✅ WhatsApp Button مع Suspense */}
-            <Suspense fallback={null}>
-              <FixedWhatsappButton />
-            </Suspense>
+            <Suspense fallback={null}>{/* <FixedWhatsappButton /> */}</Suspense>
           </NextIntlClientProvider>
         </ThemeProvider>
 

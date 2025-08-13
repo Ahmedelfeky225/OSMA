@@ -5,12 +5,21 @@ import { ReduxProvider } from "@/components/ReduxProvider";
 import { Toaster } from "react-hot-toast";
 import { fetchInterceptor } from "@/utils/fetchInterceptor";
 
-export default async function LayoutStructure({ children, userAuth }) {
-  const userData = await fetchInterceptor("auth/me");
+export default async function LayoutStructure({ children }) {
+  const cookieStore = cookies();
+  const cookieString = cookieStore.toString();
+
+  const userData = await fetchInterceptor("auth/me", {
+    headers: {
+      Cookie: cookieString,
+    },
+  }).catch(() => null);
+
+  console.log("userData", userData);
 
   return (
     <ReduxProvider>
-      <Navbar isAuth={!!userAuth} user={userAuth} userData={userData} />
+      <Navbar userData={userData} />
       <main>{children}</main>
       <Footer />
       <Toaster
@@ -18,10 +27,7 @@ export default async function LayoutStructure({ children, userAuth }) {
         toastOptions={{
           className: "react-hot-toast",
           duration: 4000,
-          style: {
-            background: "#ffffff",
-            color: "#131212",
-          },
+          style: { background: "#ffffff", color: "#131212" },
         }}
       />
     </ReduxProvider>

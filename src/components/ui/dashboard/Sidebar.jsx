@@ -23,40 +23,40 @@ export default function Sidebar({ isOpen, onClose }) {
       {isOpen && (
         <div
           onClick={onClose}
-          className="fixed inset-0 bg-black/50 z-40 md:hidden backdrop-blur-sm"
+          className="fixed inset-0 bg-black/60 z-40 md:hidden backdrop-blur-sm"
         />
       )}
 
       <aside
-        className={`fixed inset-y-0 right-0 z-50 w-72 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border-l border-gray-200 dark:border-gray-700 shadow-xl transition-transform duration-300 md:static md:translate-x-0 ${
+        className={`fixed inset-y-0 right-0 z-50 w-80 bg-white/95 dark:bg-[#1c283b]/95 backdrop-blur-md border-l border-gray-200/50 dark:border-gray-700/50 shadow-2xl transition-all duration-300 md:static md:translate-x-0 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         } md:flex flex-col`}
       >
         {/* Header */}
-        <div className="h-16 flex items-center justify-between border-b border-gray-200 dark:border-gray-700 px-6">
+        <div className="h-16 flex items-center justify-between border-b border-gray-200/50 dark:border-gray-700/50 px-6 bg-gradient-to-r from-[#1c283b]/5 to-transparent">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-gradient-to-br from-[#11cad3] to-[#0ea5e9] rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-gradient-to-br from-[#1c283b] to-[#2d3748] rounded-xl flex items-center justify-center shadow-lg">
               <span className="text-white font-bold text-sm">A</span>
             </div>
-            <span className="font-bold text-lg bg-gradient-to-r from-[#11cad3] to-[#0ea5e9] bg-clip-text text-transparent">
+            <span className="font-bold text-lg bg-gradient-to-r from-[#7a99c0] to-[#5a7a9a] bg-clip-text text-transparent">
               {t("adminPanel")}
             </span>
           </div>
           <button
             onClick={onClose}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            className="md:hidden p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800/50 transition-all duration-200 hover:scale-105"
           >
-            <X className="h-5 w-5" />
+            <X className="h-5 w-5 text-[#7a99c0] dark:text-[#7a99c0]" />
           </button>
         </div>
 
         {/* Navigation */}
-        <div className="flex-1 px-4 py-6 overflow-y-auto">
-          <div className="space-y-2">
-            <h3 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider px-2">
+        <div className="flex-1 px-6 py-8 overflow-y-auto">
+          <div className="space-y-6">
+            <h3 className="text-xs font-bold text-[#7a99c0]/70 dark:text-[#7a99c0]/70 uppercase tracking-wider px-3">
               {t("mainMenu")}
             </h3>
-            <nav className="space-y-1">
+            <nav className="space-y-2">
               {menuItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = pathname === item.href;
@@ -65,14 +65,21 @@ export default function Sidebar({ isOpen, onClose }) {
                     key={item.name}
                     href={item.href}
                     onClick={onClose}
-                    className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+                    className={`flex items-center gap-4 px-4 py-3.5 rounded-xl text-sm font-semibold transition-all duration-200 group ${
                       isActive
-                        ? "bg-[#11cad3] text-white shadow-sm"
-                        : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800"
+                        ? "bg-gradient-to-r from-[#1c283b] to-[#2d3748] text-white shadow-lg transform scale-105"
+                        : /* Updated inactive menu item colors to use #7a99c0 */ "text-[#7a99c0] dark:text-[#7a99c0] hover:text-[#5a7a9a] dark:hover:text-[#5a7a9a] hover:bg-gray-100/50 dark:hover:bg-gray-800/30 hover:scale-105"
                     }`}
                   >
-                    <Icon className="h-5 w-5" />
+                    <Icon
+                      className={`h-5 w-5 transition-all duration-200 ${
+                        isActive ? "text-white" : "group-hover:scale-110"
+                      }`}
+                    />
                     {item.name}
+                    {isActive && (
+                      <div className="ml-auto w-2 h-2 bg-white rounded-full shadow-sm"></div>
+                    )}
                   </Link>
                 );
               })}
@@ -81,15 +88,20 @@ export default function Sidebar({ isOpen, onClose }) {
         </div>
 
         {/* Footer */}
-        <div className="p-4 border-t border-gray-200 dark:border-gray-700">
-          <div className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 dark:bg-gray-800">
-            <div className="w-8 h-8 bg-[#11cad3] rounded-full flex items-center justify-center">
+        <div className="p-6 border-t border-gray-200/50 dark:border-gray-700/50">
+          <div className="flex items-center gap-4 p-4 rounded-xl bg-gradient-to-r from-gray-50 to-gray-100/50 dark:from-gray-800/30 dark:to-gray-700/20 backdrop-blur-sm">
+            <div className="w-10 h-10 bg-gradient-to-br from-[#1c283b] to-[#2d3748] rounded-xl flex items-center justify-center shadow-lg">
               <span className="text-white text-xs font-bold">AD</span>
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium truncate">{t("admin")}</p>
-              <p className="text-xs text-gray-500 truncate">{t("onlineNow")}</p>
+              <p className="text-sm font-semibold truncate text-[#7a99c0] dark:text-[#7a99c0]">
+                {t("admin")}
+              </p>
+              <p className="text-xs text-[#7a99c0]/70 dark:text-[#7a99c0]/70 truncate">
+                {t("onlineNow")}
+              </p>
             </div>
+            <div className="w-3 h-3 bg-green-500 rounded-full shadow-sm animate-pulse"></div>
           </div>
         </div>
       </aside>

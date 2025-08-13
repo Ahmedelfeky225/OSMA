@@ -140,8 +140,11 @@ body {
   @apply bg-[var(--bg-button)] text-[var(--text-button)] hover:opacity-90 transition;
 }
 
-html {
+html,
+body {
   scroll-behavior: smooth;
+  padding-right: 0 !important;
+  overflow: hidden !important;
 }
 
 .aboutLi::after {

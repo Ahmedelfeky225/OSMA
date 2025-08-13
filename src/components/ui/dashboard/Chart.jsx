@@ -29,41 +29,52 @@ export default function Chart() {
         >
           <defs>
             <linearGradient id="colorSales" x1="0" y1="0" x2="0" y2="1">
-              <stop
-                offset="5%"
-                stopColor="hsl(var(--primary))"
-                stopOpacity={0.3}
-              />
-              <stop
-                offset="95%"
-                stopColor="hsl(var(--primary))"
-                stopOpacity={0}
-              />
+              <stop offset="5%" stopColor="#1c283b" stopOpacity={0.4} />
+              <stop offset="95%" stopColor="#1c283b" stopOpacity={0.05} />
             </linearGradient>
           </defs>
-          <CartesianGrid strokeDasharray="3 3" className="opacity-30" />
+          <CartesianGrid
+            strokeDasharray="3 3"
+            className="opacity-20"
+            stroke="#1c283b"
+          />
           <XAxis
             dataKey="name"
             axisLine={false}
             tickLine={false}
             className="text-xs"
+            tick={{ fill: "#1c283b", fontSize: 12 }}
           />
-          <YAxis axisLine={false} tickLine={false} className="text-xs" />
+          <YAxis
+            axisLine={false}
+            tickLine={false}
+            className="text-xs"
+            tick={{ fill: "#1c283b", fontSize: 12 }}
+          />
           <Tooltip
             contentStyle={{
-              backgroundColor: "hsl(var(--background))",
-              border: "1px solid hsl(var(--border))",
-              borderRadius: "8px",
-              boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)",
+              backgroundColor: "rgba(255, 255, 255, 0.95)",
+              border: "1px solid #1c283b20",
+              borderRadius: "12px",
+              boxShadow:
+                "0 10px 25px -5px rgba(28, 40, 59, 0.1), 0 10px 10px -5px rgba(28, 40, 59, 0.04)",
+              backdropFilter: "blur(10px)",
             }}
-            labelStyle={{ color: "hsl(var(--foreground))" }}
+            labelStyle={{ color: "#1c283b", fontWeight: "600" }}
           />
           <Area
             type="monotone"
             dataKey="sales"
-            stroke="hsl(var(--primary))"
+            stroke="#1c283b"
             strokeWidth={3}
             fill="url(#colorSales)"
+            dot={{ fill: "#1c283b", strokeWidth: 2, r: 4 }}
+            activeDot={{
+              r: 6,
+              fill: "#1c283b",
+              strokeWidth: 2,
+              stroke: "#fff",
+            }}
           />
         </AreaChart>
       </ResponsiveContainer>
