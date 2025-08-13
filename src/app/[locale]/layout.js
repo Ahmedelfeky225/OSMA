@@ -320,7 +320,7 @@ export default async function LocaleLayout({ children, params }) {
   );
 }
 
-// ✅ إضافة generateStaticParams للـ static generation
+// ✅ إضافة generateStaticParams للـ static generation //
 export async function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
