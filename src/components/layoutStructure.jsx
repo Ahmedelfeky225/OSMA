@@ -6,7 +6,7 @@ import { Toaster } from "react-hot-toast";
 import { fetchInterceptor } from "@/utils/fetchInterceptor";
 
 export default async function LayoutStructure({ children }) {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const cookieString = cookieStore.toString();
 
   const userData = await fetchInterceptor("auth/me", {
