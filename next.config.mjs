@@ -4,11 +4,20 @@ const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // images: {
+  //   domains: ["res.cloudinary.com", "cdn.salla.sa"],
+  // },
   images: {
-    domains: ["res.cloudinary.com", "cdn.salla.sa"],
-  },
-  experimental: {
-    middleware: true,
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.salla.sa",
+      },
+    ],
   },
 };
 
