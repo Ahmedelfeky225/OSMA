@@ -24,6 +24,8 @@ const page = async () => {
     method: "GET",
   });
 
+  console.log("JWT_SECRET in middleware:", process.env.JWT_SECRET);
+
   return (
     <div>
       <HeroSlider />
