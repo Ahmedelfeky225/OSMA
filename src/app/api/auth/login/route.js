@@ -15,10 +15,14 @@ export async function POST(request) {
           "Content-Type": "application/json",
           AppId: process.env.NEXT_PUBLIC_APPID,
         },
+        // مهم عشان يجيب الكوكي كاملة
         withCredentials: true,
+        // عشان يجيب الـ headers الأصلية
+        validateStatus: () => true,
       }
     );
 
+    // الكوكي زي ما رجعت من السيرفر بالattributes
     const cookies = response.headers["set-cookie"];
 
     const res = NextResponse.json(
@@ -26,12 +30,13 @@ export async function POST(request) {
         user: response.data.user,
         message: response.data.message,
       },
-      { status: 200 }
+      { status: response.status }
     );
 
     if (cookies && cookies.length > 0) {
       cookies.forEach((cookie) => {
-        res.headers.append("Set-Cookie", cookie);
+        // نرجع الكوكي بالattributes كاملة
+        res.headers.append("set-cookie", cookie);
       });
     }
 
