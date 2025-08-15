@@ -1,13 +1,14 @@
-//app/api/auth/login/route.js
+export const runtime = "nodejs";
+
 import { NextResponse } from "next/server";
 import axios from "axios";
 
 export async function POST(request) {
-  const { email, password } = await request.json();
-
   try {
+    const { email, password } = await request.json();
+
     const response = await axios.post(
-      process.env.NEXT_PUBLIC_API_URL + "/auth/login",
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
       { email, password },
       {
         headers: {
@@ -28,12 +29,15 @@ export async function POST(request) {
       { status: 200 }
     );
 
-    if (cookies) {
-      res.headers.set("Set-Cookie", cookies);
+    if (cookies && cookies.length > 0) {
+      cookies.forEach((cookie) => {
+        res.headers.append("Set-Cookie", cookie);
+      });
     }
 
     return res;
   } catch (error) {
+    console.error("Login error:", error.response?.data || error.message);
     return NextResponse.json({ message: "Login failed" }, { status: 401 });
   }
 }
