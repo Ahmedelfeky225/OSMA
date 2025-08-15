@@ -38,7 +38,7 @@ const ProductCard = ({ product }) => {
   };
 
   const generateWhatsAppLink = () => {
-    const baseUrl = process.env.NEXT_PUBLIC_FRONTEND_URL;
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL;
     const productUrl = `${baseUrl}/${locale}/products/${_id}`;
     const message = `${t("whatsapp_message.intro")} ${name}\n\n${t(
       "whatsapp_message.description"
