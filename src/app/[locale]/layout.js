@@ -277,7 +277,7 @@ export default async function LocaleLayout({ children, params }) {
             now={new Date()} // ✅ إضافة current time للـ SSR consistency
           >
             {/* ✅ Suspense boundary للـ layout */}
-            <Suspense
+            {/* <Suspense
               fallback={
                 <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50/30 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center">
                   <div className="text-center">
@@ -288,9 +288,9 @@ export default async function LocaleLayout({ children, params }) {
                   </div>
                 </div>
               }
-            >
-              <LayoutStructure userAuth={userAuth}>{children}</LayoutStructure>
-            </Suspense>
+            > */}
+            <LayoutStructure userAuth={userAuth}>{children}</LayoutStructure>
+            {/* </Suspense> */}
 
             {/* ✅ WhatsApp Button مع Suspense */}
             <Suspense fallback={null}>{/* <FixedWhatsappButton /> */}</Suspense>
