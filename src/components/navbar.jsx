@@ -750,7 +750,6 @@ export const Navbar = ({ isAuth, user, userData }) => {
                   onChangeLanguage={changeLanguage}
                 />
 
-                {/* Auth Links with better spacing */}
                 {userData ? (
                   <UserMenu user={userData} onLogout={handleLogout} />
                 ) : (
@@ -831,7 +830,7 @@ export const Navbar = ({ isAuth, user, userData }) => {
 
                   {/* Scrollable Content */}
                   <div className="flex-1 overflow-y-auto">
-                    <nav className="flex flex-col p-4 sm:p-6 gap-y-4">
+                    <nav className="flex flex-col p-4 sm:p-6 gap-y-4 pb-8">
                       {/* Mobile Search */}
                       <button
                         onClick={() => {
@@ -931,8 +930,8 @@ export const Navbar = ({ isAuth, user, userData }) => {
                         </div>
 
                         {/* Mobile Auth Section */}
-                        <div className="border-t border-border pt-6">
-                          {isAuth && user ? (
+                        <div className="border-t border-border pt-6 pb-4">
+                          {userData ? (
                             <div className="space-y-4">
                               <div className="flex items-center gap-4 px-4 py-4 bg-[var(--card)/5] rounded-xl">
                                 <div className="w-12 h-12 bg-[var(--primary-color)] rounded-full flex items-center justify-center shadow-lg">
@@ -940,10 +939,10 @@ export const Navbar = ({ isAuth, user, userData }) => {
                                 </div>
                                 <div className="flex-1 min-w-0">
                                   <p className="font-semibold text-foreground truncate">
-                                    {user.name || user.email}
+                                    {user?.user?.name || user?.user?.email}
                                   </p>
                                   <p className="text-sm text-muted-foreground truncate">
-                                    {user.email}
+                                    {user?.user?.email}
                                   </p>
                                 </div>
                               </div>
