@@ -930,7 +930,7 @@ export const Navbar = ({ isAuth, user, userData }) => {
                         </div>
 
                         {/* Mobile Auth Section */}
-                        <div className="border-t border-border pt-6 pb-4">
+                        <div className="border-t border-border pt-6 pb-6">
                           {userData ? (
                             <div className="space-y-4">
                               <div className="flex items-center gap-4 px-4 py-4 bg-[var(--card)/5] rounded-xl">
