@@ -27,7 +27,7 @@ const page = async () => {
   console.log("JWT_SECRET in middleware:", process.env.JWT_SECRET);
 
   return (
-    <div>
+    <div className=" !pt-[90px]">
       <HeroSlider />
       <Video />
       <Offers offersData={offersProducts} />

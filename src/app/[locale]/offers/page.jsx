@@ -142,7 +142,7 @@ export default async function OffersPage({ searchParams }) {
   }
 
   return (
-    <div className="flex flex-col md:flex-row gap-6 max-w-[90%] mx-auto py-6 sm:py-16">
+    <div className="flex flex-col md:flex-row gap-6 max-w-[90%] mx-auto pt-[120px]  sm:pt-[130px] sm:pb-16">
       <aside className="flex-1">
         <ProductFilters
           minPriceRange={calculatedMinPriceRange}

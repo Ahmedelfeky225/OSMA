@@ -22,7 +22,7 @@ export default async function LayoutStructure({ children }) {
   return (
     <ReduxProvider>
       <Navbar userData={userData} />
-      <main className="pt-[90px]">{children}</main>
+      <main>{children}</main>
       <Footer />
       <Toaster
         position="top-center"

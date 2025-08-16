@@ -67,7 +67,7 @@ const ProductsPage = async ({ searchParams }) => {
   }
 
   return (
-    <div className="flex flex-col md:flex-row gap-6 max-w-[90%] mx-auto py-16">
+    <div className="flex flex-col md:flex-row gap-6 max-w-[90%] mx-auto pt-[120px]  sm:pt-[130px] sm:pb-16">
       {/* Filter Sidebar */}
       <aside className="flex-1">
         <ProductFilters

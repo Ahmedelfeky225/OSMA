@@ -5,7 +5,7 @@ import ProductCardSkeleton from "@/components/productCardSkeleton";
 
 export default function Loading() {
   return (
-    <div className="flex flex-col md:flex-row gap-6 max-w-[90%] mx-auto py-16">
+    <div className="flex flex-col md:flex-row gap-6 max-w-[90%] mx-auto  pt-[120px]  sm:pt-[130px] sm:pb-16">
       <aside className="md:w-1/4">
         <div className="h-96 bg-gray-100 animate-pulse rounded-md" />
       </aside>

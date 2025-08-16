@@ -80,6 +80,12 @@
     },
     "ask_about_product": "اسأل عن المنتج",
     "form": {
+      "brand": "العلامة التجارية",
+      "brandPlaceholder": "اختر العلامة التجارية",
+      "size": "الحجم",
+      "sizePlaceholder": "اختر الحجم",
+      "concentration": "التركيز",
+      "concentrationPlaceholder": "اختر التركيز",
       "arabicInfo": "المعلومات الأساسية (العربية)",
       "englishInfo": "المعلومات الأساسية (الإنجليزية)",
       "productNameAr": "اسم المنتج (العربية)",
