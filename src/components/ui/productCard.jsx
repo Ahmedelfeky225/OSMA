@@ -45,7 +45,7 @@ const ProductCard = ({ product }) => {
     )} ${description}\n\n${t("whatsapp_message.image")}: ${image}\n${t(
       "whatsapp_message.link"
     )}: ${productUrl}`;
-    return `https://wa.me/201005845202?text=${encodeURIComponent(message)}`;
+    return `https://wa.me/+968 7711 7906?text=${encodeURIComponent(message)}`;
   };
 
   const renderStars = (rating) => {
@@ -116,13 +116,15 @@ const ProductCard = ({ product }) => {
             } shadow-lg hover:scale-110`}
           >
             <Heart
-              className={`w-4 h-4 ${isWishlisted ? "fill-current" : ""}`}
+              className={`w-4 h-4 cursor-pointer ${
+                isWishlisted ? "fill-current" : ""
+              }`}
             />
           </button>
 
           <Link
             href={`/products/${_id}`}
-            className="w-8 h-8 rounded-full bg-white/90 dark:bg-gray-800/90 text-gray-600 dark:text-gray-300 hover:bg-[#7a99c0] hover:text-white flex items-center justify-center transition-all duration-300 shadow-lg hover:scale-110"
+            className="w-8 h-8 rounded-full bg-white/90 dark:bg-gray-800/90 text-gray-600 dark:text-gray-300 hover:bg-[#7a99c0] hover:text-white flex items-center justify-center transition-all duration-300 shadow-lg hover:scale-105"
           >
             <Eye className="w-4 h-4" />
           </Link>

@@ -4,6 +4,8 @@ import Footer from "@/components/footer";
 import { ReduxProvider } from "@/components/ReduxProvider";
 import { Toaster } from "react-hot-toast";
 import { fetchInterceptor } from "@/utils/fetchInterceptor";
+import { Suspense } from "react";
+import FixedWhatsappButton from "./fixedWhatsappButton";
 
 export default async function LayoutStructure({ children }) {
   const cookieStore = await cookies();
@@ -15,12 +17,12 @@ export default async function LayoutStructure({ children }) {
     },
   }).catch(() => null);
 
-  console.log("userData", userData);
+  // console.log("userData", userData);
 
   return (
     <ReduxProvider>
       <Navbar userData={userData} />
-      <main>{children}</main>
+      <main className="pt-[90px]">{children}</main>
       <Footer />
       <Toaster
         position="top-center"
@@ -30,6 +32,9 @@ export default async function LayoutStructure({ children }) {
           style: { background: "#ffffff", color: "#131212" },
         }}
       />
+      <Suspense fallback={null}>
+        <FixedWhatsappButton />
+      </Suspense>
     </ReduxProvider>
   );
 }

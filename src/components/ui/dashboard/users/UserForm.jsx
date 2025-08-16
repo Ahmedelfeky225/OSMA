@@ -217,7 +217,7 @@ export default function UserForm({ userId = null }) {
     password: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
+  // const [showPassword, setShowPassword] = useState(false);
   const [validationErrors, setValidationErrors] = useState({});
   const [touched, setTouched] = useState({});
 
@@ -236,7 +236,7 @@ export default function UserForm({ userId = null }) {
       setFormData({
         email: selectedUser.email || "",
         role: selectedUser.role || "user",
-        password: "", // Don't populate password for edit
+        // password: "", // Don't populate password for edit
       });
     }
   }, [selectedUser, isEditMode]);
@@ -281,18 +281,18 @@ export default function UserForm({ userId = null }) {
         }
         break;
 
-      case "password":
-        if (!isEditMode) {
-          if (!value.trim()) {
-            errors.password = "كلمة المرور مطلوبة";
-          } else if (value.length < 8) {
-            errors.password = "كلمة المرور يجب أن تكون 8 أحرف على الأقل";
-          } else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(value)) {
-            errors.password =
-              "كلمة المرور يجب أن تحتوي على حروف كبيرة وصغيرة وأرقام";
-          }
-        }
-        break;
+      // case "password":
+      //   if (!isEditMode) {
+      //     if (!value.trim()) {
+      //       errors.password = "كلمة المرور مطلوبة";
+      //     } else if (value.length < 8) {
+      //       errors.password = "كلمة المرور يجب أن تكون 8 أحرف على الأقل";
+      //     } else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(value)) {
+      //       errors.password =
+      //         "كلمة المرور يجب أن تحتوي على حروف كبيرة وصغيرة وأرقام";
+      //     }
+      //   }
+      //   break;
 
       case "role":
         if (!value) {
@@ -497,7 +497,7 @@ export default function UserForm({ userId = null }) {
                   }
                 />
 
-                <FormField
+                {/* <FormField
                   label={
                     <div className="flex items-center gap-2">
                       <Lock className="h-4 w-4" />
@@ -564,7 +564,7 @@ export default function UserForm({ userId = null }) {
                       isRTL={isRTL}
                     />
                   )}
-                </FormField>
+                </FormField> */}
 
                 <FormField
                   label={
@@ -630,7 +630,7 @@ export default function UserForm({ userId = null }) {
                   isRTL={isRTL}
                   warning={touched.email && validationErrors.email}
                 />
-                <StatusItem
+                {/* <StatusItem
                   completed={
                     isEditMode ||
                     (formData.password &&
@@ -640,7 +640,7 @@ export default function UserForm({ userId = null }) {
                   label={isEditMode ? "كلمة المرور (اختياري)" : t("password")}
                   isRTL={isRTL}
                   warning={touched.password && validationErrors.password}
-                />
+                /> */}
                 <StatusItem
                   completed={formData.role}
                   label={t("role")}

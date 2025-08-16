@@ -1,6 +1,5 @@
 // "use client";
 // import { useState, useCallback, useEffect } from "react";
-// import React from "react";
 // import { Link } from "@/i18n/navigation";
 // import { useTranslations, useLocale } from "next-intl";
 // import { usePathname, useRouter } from "@/i18n/navigation";
@@ -107,18 +106,6 @@
 //     });
 //   }, []);
 
-//   useEffect(() => {
-//     document.documentElement.style.setProperty(
-//       "overflow",
-//       "hidden",
-//       "important"
-//     );
-
-//     return () => {
-//       document.documentElement.style.removeProperty("overflow");
-//     };
-//   }, []);
-
 //   // Scroll effect (only for background blur and scroll to top button)
 //   useEffect(() => {
 //     const handleScroll = () => {
@@ -143,34 +130,31 @@
 //       // حفظ الـ scroll position الحالي
 //       const scrollY = window.scrollY;
 
-//       // منع الـ scroll بطريقة أفضل
-//       document.body.style.overflow = "hidden";
-//       document.body.style.paddingRight = "0px"; // منع shift الـ content
-//       document.documentElement.style.overflow = "hidden";
+//       // Add the menu-open class to body and html
+//       document.body.classList.add("menu-open");
+//       document.documentElement.classList.add("menu-open");
 
 //       // حفظ الـ scroll position
 //       document.body.setAttribute("data-scroll-y", scrollY.toString());
 //     } else {
-//       // استعادة الـ scroll
 //       const scrollY = document.body.getAttribute("data-scroll-y");
 
-//       // إزالة الـ styles
-//       document.body.style.overflow = "";
-//       document.body.style.paddingRight = "";
-//       document.documentElement.style.overflow = "";
+//       // Remove the menu-open class
+//       document.body.classList.remove("menu-open");
+//       document.documentElement.classList.remove("menu-open");
+
 //       document.body.removeAttribute("data-scroll-y");
 
 //       // استعادة الـ scroll position
 //       if (scrollY) {
-//         window.scrollTo(0, parseInt(scrollY));
+//         window.scrollTo(0, Number.parseInt(scrollY));
 //       }
 //     }
 
 //     return () => {
-//       // تنظيف
-//       document.body.style.overflow = "";
-//       document.body.style.paddingRight = "";
-//       document.documentElement.style.overflow = "";
+//       // تنظيف - Remove classes on cleanup
+//       document.body.classList.remove("menu-open");
+//       document.documentElement.classList.remove("menu-open");
 //       document.body.removeAttribute("data-scroll-y");
 //     };
 //   }, [isMenuOpen]);
@@ -196,7 +180,7 @@
 //     <>
 //       <header
 //         className={`
-//           bg-[var(--bg-navbar)]/80 py-1 backdrop-blur-xl border-b border-border/50 w-full z-50 sticky top-0
+//           bg-[var(--bg-navbar)] py-1 backdrop-blur-xl border-b border-border/50 w-full z-[100] fixed top-0
 //           transition-all duration-500 ease-in-out
 //           ${
 //             isScrolled
@@ -237,9 +221,8 @@
 //                   onChangeLanguage={changeLanguage}
 //                 />
 
-//                 {/* Auth Links with better spacing */}
 //                 {userData ? (
-//                   <UserMenu user={userData} onLogout={handleLogout} />
+//                   <UserMenu user={userData} />
 //                 ) : (
 //                   <div className="flex items-center gap-x-2 lg:gap-x-3">
 //                     <Link
@@ -292,7 +275,7 @@
 //                   initial={{ opacity: 0 }}
 //                   animate={{ opacity: 1 }}
 //                   exit={{ opacity: 0 }}
-//                   className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 lg:hidden"
+//                   className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[150] lg:hidden"
 //                   onClick={toggleMenu}
 //                 />
 //                 <motion.div
@@ -300,7 +283,7 @@
 //                   animate={{ x: 0 }}
 //                   exit={{ x: "100%" }}
 //                   transition={{ type: "spring", damping: 25, stiffness: 200 }}
-//                   className="fixed top-0  right-0 w-full h-screen bg-[var(--bg-navbar)] shadow-2xl !z-50 lg:hidden flex flex-col border-l border-border overflow-hidden ل"
+//                   className="fixed top-0 right-0 w-full h-screen bg-[var(--bg-navbar)] shadow-2xl z-[200] lg:hidden flex flex-col border-l border-border overflow-hidden"
 //                   style={{ maxWidth: "100vw", boxSizing: "border-box" }}
 //                 >
 //                   {/* Mobile Menu Header */}
@@ -318,7 +301,7 @@
 
 //                   {/* Scrollable Content */}
 //                   <div className="flex-1 overflow-y-auto">
-//                     <nav className="flex flex-col p-4 sm:p-6 gap-y-4">
+//                     <nav className="flex flex-col p-4 sm:p-6 gap-y-4 pb-8">
 //                       {/* Mobile Search */}
 //                       <button
 //                         onClick={() => {
@@ -418,22 +401,13 @@
 //                         </div>
 
 //                         {/* Mobile Auth Section */}
-//                         <div className="border-t border-border pt-6">
-//                           {isAuth && user ? (
+//                         <div className="border-t border-border pt-6 pb-6">
+//                           {userData ? (
 //                             <div className="space-y-4">
-//                               <div className="flex items-center gap-4 px-4 py-4 bg-[var(--card)/5] rounded-xl">
-//                                 <div className="w-12 h-12 bg-[var(--primary-color)] rounded-full flex items-center justify-center shadow-lg">
-//                                   <UserIcon className="w-6 h-6 text-white" />
-//                                 </div>
-//                                 <div className="flex-1 min-w-0">
-//                                   <p className="font-semibold text-foreground truncate">
-//                                     {user.name || user.email}
-//                                   </p>
-//                                   <p className="text-sm text-muted-foreground truncate">
-//                                     {user.email}
-//                                   </p>
-//                                 </div>
-//                               </div>
+//                               {/* <UserMenu
+//                                 user={userData}
+//                                 onLogout={handleLogout}
+//                               /> */}
 //                               <button
 //                                 onClick={handleLogout}
 //                                 className="w-full px-4 py-3 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl transition-all duration-300 font-semibold cursor-pointer"
@@ -484,7 +458,7 @@
 //             whileTap={{ scale: 0.9 }}
 //             onClick={scrollToTop}
 //             className={`
-//               fixed bottom-20 ${locale === "ar" ? "left-4" : "right-4"} z-40
+//               fixed bottom-20 ${locale === "ar" ? "left-4" : "right-4"} z-[90]
 //               w-12 h-12 bg-[var(--primary-color)] text-white rounded-full
 //               shadow-lg hover:shadow-xl transition-all duration-300
 //               flex items-center justify-center cursor-pointer
@@ -497,30 +471,51 @@
 //         )}
 //       </AnimatePresence>
 
-//       {/* Search Overlay */}
 //       <SearchOverlay
 //         isOpen={isSearchOverlayOpen}
 //         onClose={() => setIsSearchOverlayOpen(false)}
 //         onSearch={handleSearchOverlaySearch}
+//         className="z-[120]"
 //       />
 
-//       {/* تحسين الـ CSS */}
 //       <style jsx global>{`
 //         /* منع الـ scroll بدون تأثير على العناصر الأخرى */
 //         body.menu-open {
 //           overflow: hidden !important;
 //           padding-right: 0px !important;
+//           position: fixed !important;
+//           width: 100% !important;
 //         }
 
 //         html.menu-open {
 //           overflow: hidden !important;
 //         }
 
-//         /* تأكد من أن الـ navbar يبقى مرئي */
+//         /* تأكد من أن الـ navbar يبقى مرئي مع أعلى z-index */
 //         .navbar-fixed {
 //           position: sticky !important;
 //           top: 0 !important;
-//           z-index: 50 !important;
+//           z-index: 100 !important;
+//         }
+
+//         /* تحسين الـ mobile menu layering */
+//         @media (max-width: 1024px) {
+//           .mobile-menu-overlay {
+//             z-index: 150 !important;
+//           }
+
+//           .mobile-menu-panel {
+//             z-index: 200 !important;
+//           }
+//         }
+
+//         /* منع التداخل مع العناصر الأخرى */
+//         .search-overlay {
+//           z-index: 120 !important;
+//         }
+
+//         .scroll-to-top {
+//           z-index: 90 !important;
 //         }
 //       `}</style>
 //     </>
@@ -708,15 +703,9 @@ export const Navbar = ({ isAuth, user, userData }) => {
   return (
     <>
       <header
-        className={`
-          bg-[var(--bg-navbar)]/80 py-1 backdrop-blur-xl border-b border-border/50 w-full z-[100] sticky top-0 
-          transition-all duration-500 ease-in-out
-          ${
-            isScrolled
-              ? "shadow-lg shadow-black/5 bg-[var(--bg-navbar)]/95"
-              : ""
-          }
-        `}
+        className={`bg-[var(--bg-navbar)] py-1 backdrop-blur-xl border-b border-border/50 w-full z-[100] fixed top-0 transition-all duration-500 ease-in-out ${
+          isScrolled ? "shadow-lg shadow-black/5 bg-[var(--bg-navbar)]/95" : ""
+        }`}
       >
         <div className="w-[95%] sm:w-[95%] max-w-[95%] sm:max-w-[90%] mx-auto sm:px-0">
           <nav className="flex items-center justify-between gap-x-4 py-4">
@@ -751,7 +740,32 @@ export const Navbar = ({ isAuth, user, userData }) => {
                 />
 
                 {userData ? (
-                  <UserMenu user={userData} onLogout={handleLogout} />
+                  <div className="flex items-center gap-x-2 lg:gap-x-3">
+                    {userData?.user?.role === "admin" && (
+                      <Link
+                        href="/admin/dashboard"
+                        className="inline-flex items-center gap-2 px-3 lg:px-4 py-2 lg:py-2.5 rounded-xl hover:bg-[var(--primary-color)] hover:text-white font-medium transition-all duration-300 group border border-transparent hover:border-[var(--primary-color)] cursor-pointer text-sm whitespace-nowrap"
+                      >
+                        <svg
+                          className="w-4 h-4 group-hover:scale-110 transition-transform"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                          />
+                        </svg>
+                        <span>
+                          {locale === "ar" ? "لوحة التحكم" : "Dashboard"}
+                        </span>
+                      </Link>
+                    )}
+                    <UserMenu user={userData} />
+                  </div>
                 ) : (
                   <div className="flex items-center gap-x-2 lg:gap-x-3">
                     <Link
@@ -933,19 +947,32 @@ export const Navbar = ({ isAuth, user, userData }) => {
                         <div className="border-t border-border pt-6 pb-6">
                           {userData ? (
                             <div className="space-y-4">
-                              <div className="flex items-center gap-4 px-4 py-4 bg-[var(--card)/5] rounded-xl">
-                                <div className="w-12 h-12 bg-[var(--primary-color)] rounded-full flex items-center justify-center shadow-lg">
-                                  <UserIcon className="w-6 h-6 text-white" />
-                                </div>
-                                <div className="flex-1 min-w-0">
-                                  <p className="font-semibold text-foreground truncate">
-                                    {user?.user?.name || user?.user?.email}
-                                  </p>
-                                  <p className="text-sm text-muted-foreground truncate">
-                                    {user?.user?.email}
-                                  </p>
-                                </div>
-                              </div>
+                              {userData.role === "admin" && (
+                                <Link
+                                  href="/admin/dashboard"
+                                  onClick={toggleMenu}
+                                  className="flex items-center gap-3 w-full px-6 py-4 text-foreground hover:bg-[var(--card)/5] rounded-xl transition-all duration-300 cursor-pointer border border-border hover:border-[var(--primary-color)]/30"
+                                >
+                                  <svg
+                                    className="w-5 h-5"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth={2}
+                                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                                    />
+                                  </svg>
+                                  <span className="font-medium text-base">
+                                    {locale === "ar"
+                                      ? "لوحة التحكم"
+                                      : "Dashboard"}
+                                  </span>
+                                </Link>
+                              )}
                               <button
                                 onClick={handleLogout}
                                 className="w-full px-4 py-3 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl transition-all duration-300 font-semibold cursor-pointer"
@@ -995,13 +1022,9 @@ export const Navbar = ({ isAuth, user, userData }) => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={scrollToTop}
-            className={`
-              fixed bottom-20 ${locale === "ar" ? "left-4" : "right-4"} z-[90]
-              w-12 h-12 bg-[var(--primary-color)] text-white rounded-full
-              shadow-lg hover:shadow-xl transition-all duration-300
-              flex items-center justify-center cursor-pointer
-              hover:bg-[var(--primary-color)]/90
-            `}
+            className={`fixed bottom-20 ${
+              locale === "ar" ? "left-4" : "right-4"
+            } z-[90] w-12 h-12 bg-[var(--primary-color)] text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center cursor-pointer hover:bg-[var(--primary-color)]/90`}
             aria-label={locale === "ar" ? "العودة للأعلى" : "Scroll to top"}
           >
             <ChevronUpIcon className="w-6 h-6" />

@@ -40,9 +40,9 @@ export default function Footer() {
   const instagramLink =
     "https://www.instagram.com/osma_sur?igsh=MTUwanM0cjNhOXg3Mw==";
   const facebookLink = "https://www.facebook.com/share/1AsmBnpa9B/";
-  const telegramLink = "https://t.me/yourchannel";
+  const telegramLink = "https://t.me/201070681502";
   const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
-  const email = "osmaoman7@gmail.com";
+  const email = "omanosma3@gmail.com";
 
   return (
     <footer className="relative bg-[var(--footer)] text-white overflow-hidden">
@@ -63,7 +63,7 @@ export default function Footer() {
                 <div className="space-y-4">
                   {/* Logo */}
                   <div className="flex items-center gap-3">
-                    <div className="relativ mx-auto  sm:ml-[-50px] ">
+                    <div className="relative mx-auto  sm:ms-[-50px] ">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 200 80"
@@ -195,8 +195,8 @@ export default function Footer() {
                       <p className="text-xs text-foreground uppercase tracking-wide">
                         {t("footer_phone")}
                       </p>
-                      <p className="font-medium  text-foreground ">
-                        {phoneNumber}
+                      <p className="font-medium text-foreground" dir="ltr">
+                        +968 7711 7906
                       </p>
                     </div>
                   </a>

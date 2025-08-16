@@ -1,24 +1,28 @@
 import createNextIntlPlugin from "next-intl/plugin";
+import withPWAInit from "next-pwa";
 
+// إعداد next-intl
 const withNextIntl = createNextIntlPlugin();
+
+// إعداد PWA
+const withPWA = withPWAInit({
+  dest: "public", // مكان توليد service worker
+  register: true, // يسجل تلقائيًا
+  skipWaiting: true, // يفعّل أي تحديث فورًا
+  disable: process.env.NODE_ENV === "development", // معطل أثناء التطوير
+});
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // images: {
-  //   domains: ["res.cloudinary.com", "cdn.salla.sa"],
-  // },
+  reactStrictMode: true,
   images: {
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "res.cloudinary.com",
-      },
-      {
-        protocol: "https",
-        hostname: "cdn.salla.sa",
-      },
+      { protocol: "https", hostname: "res.cloudinary.com" },
+      { protocol: "https", hostname: "cdn.salla.sa" },
     ],
   },
+  // أي إعدادات إضافية هنا
 };
 
-export default withNextIntl(nextConfig);
+// نلف PWA أولًا ثم Intl
+export default withNextIntl(withPWA(nextConfig));

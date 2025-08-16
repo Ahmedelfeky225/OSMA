@@ -82,7 +82,7 @@ export default function FixedWhatsappButton() {
     <div
       className={`fixed bottom-4 ${
         locale === "ar" ? "right-5" : "left-5"
-      }  ${positionClass} z-50 group`}
+      }  ${positionClass} z-10 group`}
     >
       {/* Pulsing Ring */}
       <div className="absolute inset-0 w-14 h-14 sm:w-16 sm:h-16 bg-[#25D366] rounded-full animate-ping opacity-20"></div>

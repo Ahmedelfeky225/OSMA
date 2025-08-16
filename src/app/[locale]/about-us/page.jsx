@@ -312,7 +312,7 @@ export default function AboutPage() {
                     {t("contact.email.title")}
                   </h4>
                   <a
-                    href="mailto:osmaoman7@gmail.com"
+                    href="mailto:omanosma3@gmail.com"
                     className="text-muted-foreground tracking-wide"
                   >
                     {t("contact.email.address")}
