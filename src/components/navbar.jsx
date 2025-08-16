@@ -451,7 +451,7 @@ export const Navbar = ({ isAuth, user, userData }) => {
                               )}
                               <button
                                 onClick={handleLogout}
-                                className="w-full px-4 py-3 text-red-600 bg-amber-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl transition-all duration-300 font-semibold cursor-pointer"
+                                className="w-full px-4 py-3 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl transition-all duration-300 font-semibold cursor-pointer"
                               >
                                 {locale === "ar" ? "تسجيل الخروج" : "Logout"}
                               </button>
