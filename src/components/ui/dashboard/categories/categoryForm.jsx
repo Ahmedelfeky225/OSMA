@@ -131,7 +131,7 @@ export default function CategoryForm({ categoryId = null }) {
 
   if (isLoading && categoryId) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center  justify-center">
         <div className="flex flex-col items-center gap-4">
           {/* Use gradient for spinner loading */}
           <div
@@ -152,7 +152,7 @@ export default function CategoryForm({ categoryId = null }) {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-6">
-      <div className="w-full max-w-2xl">
+      <div className="w-full  sm:max-w-[90%] mx-auto max-w-[95%]">
         <div
           className="rounded-xl shadow-xl p-8 border border-gray-700"
           style={{ backgroundColor: "#1c283b" }}

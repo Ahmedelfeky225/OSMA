@@ -1435,7 +1435,7 @@ export default function ProductForm({ initialData = null }) {
       className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900"
       dir={isRTL ? "rtl" : "ltr"}
     >
-      <div className="w-[90%] max-w-7xl mx-auto px-6 py-8">
+      <div className=" sm:max-w-[90%] max-w-[95%]  mx-auto px-6 py-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-4">
