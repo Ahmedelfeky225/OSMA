@@ -49,8 +49,8 @@ export default function ProductsGrid({
           >
             <CardHeader className="p-0 relative">
               <Image
-                src={imageSrc || "/placeholder.svg"}
-                alt={getProductName(product) || "Product image"} // Added default alt text
+                src={imageSrc}
+                alt={getProductName(product)} // Added default alt text
                 width={300}
                 height={200}
                 className="w-full h-48 object-cover"

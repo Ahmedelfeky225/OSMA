@@ -30,11 +30,24 @@ const RelatedProducts = ({ productId }) => {
   const nextRef = useRef(null);
   const swiperRef = useRef(null);
 
+  const getSlidesPerView = () => {
+    if (typeof window === "undefined") return 1;
+    const width = window.innerWidth;
+    if (width >= 1280) return 4;
+    if (width >= 1024) return 3;
+    if (width >= 768) return 2;
+    if (width >= 640) return 1.5;
+    return 1;
+  };
+
+  const [currentSlidesPerView, setCurrentSlidesPerView] = useState(1);
+
   // Check screen size
   useEffect(() => {
     setMounted(true);
     const handleResize = () => {
       setIsLargeScreen(window.innerWidth >= 1024);
+      setCurrentSlidesPerView(getSlidesPerView());
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -107,6 +120,9 @@ const RelatedProducts = ({ productId }) => {
     }
   }, [mounted, locale, isRTL]);
 
+  const shouldShowArrows =
+    isLargeScreen && relatedProducts.length > Math.floor(currentSlidesPerView);
+
   if (!mounted) {
     return null;
   }
@@ -155,7 +171,7 @@ const RelatedProducts = ({ productId }) => {
 
         <div className="relative">
           {/* Navigation Arrows for Large Screens */}
-          {isLargeScreen && (
+          {shouldShowArrows && (
             <>
               <button
                 onClick={handlePrevClick}
@@ -192,7 +208,7 @@ const RelatedProducts = ({ productId }) => {
             modules={[Navigation, Pagination]}
             dir={isRTL ? "rtl" : "ltr"}
             spaceBetween={20}
-            slidesPerView={1}
+            slidesPerView={currentSlidesPerView}
             slidesPerGroup={1}
             loop={false}
             speed={700}
@@ -316,7 +332,7 @@ const RelatedProducts = ({ productId }) => {
           opacity: 1 !important;
           background: linear-gradient(135deg, #7a99c0, #5a7ba0) !important;
           border-color: #7a99c0 !important;
-          transform: scale(1.3) !important;
+          transform: scale(1.1) !important;
           box-shadow: 0 0 15px rgba(122, 153, 192, 0.4) !important;
         }
 

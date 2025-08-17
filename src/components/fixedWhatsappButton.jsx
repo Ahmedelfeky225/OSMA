@@ -80,7 +80,7 @@ export default function FixedWhatsappButton() {
 
   return (
     <div
-      className={`fixed bottom-4 ${
+      className={`fixed bottom-4 w-fit ${
         locale === "ar" ? "right-5" : "left-5"
       }  ${positionClass} z-10 group`}
     >

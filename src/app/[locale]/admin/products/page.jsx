@@ -108,20 +108,20 @@ export default function ProductsPage() {
       dir={isRTL ? "rtl" : "ltr"}
     >
       <Navbar onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} />{" "}
-      <div className="w-[90%] max-w-[90%] mx-auto px-6 py-8 flex flex-col flex-grow">
+      <div className="w-[95%] max-w-[95%] sm:max-w-[90%] mx-auto  py-8 flex flex-col flex-grow">
         {/* Added flex-grow here */}
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-4">
             <div className={isRTL ? "text-right" : "text-left"}>
               <h1
-                className="text-3xl font-bold tracking-tight flex items-center gap-3"
+                className="text-lg md:text-3xl font-bold tracking-tight flex items-center gap-3"
                 style={{ color: "var(--primary-color)" }}
               >
-                <Package className="h-8 w-8" />
+                <Package className="md:h-8 md:w-8 w-6 h-6" />
                 {t("manageProducts")}
               </h1>
-              <p className="text-gray-600 dark:text-gray-400 mt-2 text-lg">
+              <p className="text-gray-600 dark:text-gray-400 mt-2 text-sm md:text-base">
                 {t("manageProductsDescription")}
               </p>
             </div>
@@ -129,7 +129,7 @@ export default function ProductsPage() {
           <div className="flex items-center gap-3">
             <Button
               onClick={() => router.push("/admin/products/create")}
-              className="flex items-center gap-2 px-6 py-3 rounded-sm text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+              className="flex items-center gap-2 px-6 py-3 rounded-sm text-white shadow-sm hover:shadow-sm transform hover:scale-105 transition-all duration-200"
               style={{
                 background: `linear-gradient(to right, var(--primary-color), #3B82F6)`,
               }}
@@ -140,7 +140,7 @@ export default function ProductsPage() {
           </div>
         </div>
         {/* Filters and View Toggle */}
-        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-sm shadow-xl border border-gray-200/50 dark:border-gray-700/50 p-6 mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-sm shadow-sm border border-gray-200/50 dark:border-gray-700/50 p-6 mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <ProductFilters
             filters={filters}
             onFilterChange={handleFilterChange}

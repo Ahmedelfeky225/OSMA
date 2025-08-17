@@ -42,8 +42,8 @@ export function ComingSoonPage() {
       </button>
 
       <div className="text-center max-w-2xl mx-auto px-6 py-12">
-        <div className="mb-8">
-          <div className="w-20 h-20 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-6">
+        <div className="md:mb-8 mb-4">
+          <div className="md:w-20 md:h-20 w-10 h-10 p-1 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-6">
             <svg
               className="w-10 h-10 text-primary"
               fill="none"
@@ -66,19 +66,19 @@ export function ComingSoonPage() {
           </div>
         </div>
 
-        <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+        <h1 className="md:text-5xl text-lg font-bold mb-4 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
           {t("title")}
         </h1>
 
-        <h2 className="text-3xl text-primary/80 mb-8 font-semibold">
+        <h2 className="md:text-3xl text-xl tracking-wide text-primary/80 md:mb-8 mb-4 font-semibold">
           {t("comingSoon")}
         </h2>
 
-        <p className="text-xl text-muted-foreground mb-6 leading-relaxed">
+        <p className="text-sm md:text-xl text-muted-foreground mb-2 md:mb-6 leading-relaxed">
           {t("subtitle")}
         </p>
 
-        <p className="text-lg text-muted-foreground/80 leading-relaxed max-w-lg mx-auto">
+        <p className="text-sm md:text-lg text-muted-foreground/80 leading-relaxed max-w-lg mx-auto">
           {t("description")}
         </p>
 

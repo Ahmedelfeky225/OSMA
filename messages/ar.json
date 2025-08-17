@@ -47,6 +47,7 @@
     }
   },
   "products": {
+    "related_products": "منتجات ذات صلة",
     "title": "إدارة المنتجات",
     "addProduct": "إضافة منتج جديد",
     "deleteProduct": "حذف المنتج",
@@ -488,6 +489,8 @@
     "Register": {
       "title": "تسجيل",
       "email": "البريد الإلكتروني",
+      "name": "الاسم",
+      "nameRequired": "الاسم مطلوب",
       "password": "كلمة المرور",
       "emailRequired": "البريد الإلكتروني مطلوب",
       "emailInvalid": "البريد الإلكتروني غير صالح",

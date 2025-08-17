@@ -1,14 +1,14 @@
-// components/productDetails.jsx
 "use client";
 
-import React, { useState, Fragment } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { FaWhatsapp, FaStar } from "react-icons/fa";
 import InnerImageZoom from "react-inner-image-zoom";
 import "react-inner-image-zoom/lib/styles.min.css";
-import { Dialog, Transition } from "@headlessui/react";
 import RelatedProducts from "./relatedProducts";
+import ReviewsSection from "./reviews/ReviewsSection";
+import AddReviewForm from "./reviews/AddReviewForm";
 
 const ProductDetails = ({ product }) => {
   console.log("PRODUCTID", product._id);
@@ -31,9 +31,7 @@ const ProductDetails = ({ product }) => {
   } = product;
 
   const [mainImage, setMainImage] = useState(images[0]);
-  const [userRating, setUserRating] = useState(0);
-  const [userComment, setUserComment] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAddReviewOpen, setIsAddReviewOpen] = useState(false);
 
   const formatPrice = (value) =>
     new Intl.NumberFormat(locale, {
@@ -42,22 +40,12 @@ const ProductDetails = ({ product }) => {
       minimumFractionDigits: 0,
     }).format(value);
 
-  const handleSubmitRating = () => {
-    console.log({
-      rating: userRating,
-      comment: userComment,
-    });
-    setUserRating(0);
-    setUserComment("");
-    setIsModalOpen(false);
-  };
-
   return (
-    <div className="py-6 max-w-[90%] mx-auto sm:my-12 ">
+    <div className="py-6 max-w-[90%] mx-auto pt-[120px]  sm:pt-[130px] sm:pb-16">
       <div className="grid lg:grid-cols-2 gap-10">
         {/* Main Image */}
         <div>
-          <div className="w-full aspect-square rounded-md   text-foreground overflow-hidden flex items-center justify-center">
+          <div className="w-full aspect-square rounded-md text-foreground overflow-hidden flex items-center justify-center">
             <InnerImageZoom
               src={mainImage}
               zoomSrc={mainImage}
@@ -73,8 +61,8 @@ const ProductDetails = ({ product }) => {
             {images.map((img, idx) => (
               <div
                 key={idx}
-                className={`w-20 aspect-square rounded-sm border-[var(--primary-color)]  border-2 cursor-pointer overflow-hidden ${
-                  mainImage === img ? "ring-0 ring-[var(--primary-color)]" : ""
+                className={`w-20 aspect-square rounded-sm border-primary border-2 cursor-pointer overflow-hidden ${
+                  mainImage === img ? "ring-0 ring-primary" : ""
                 }`}
                 onClick={() => setMainImage(img)}
               >
@@ -99,7 +87,6 @@ const ProductDetails = ({ product }) => {
             <p className="text-sm mb-5 font-normal tracking-wide text-muted-foreground whitespace-pre-line leading-relaxed">
               {translations[locale]?.description}
             </p>
-
             <ul className="text-sm text-foreground space-y-2 mb-6">
               <li>
                 <strong className="tracking-wide text-base font-medium">
@@ -118,7 +105,6 @@ const ProductDetails = ({ product }) => {
                 </span>
               </li>
             </ul>
-
             <div className="mb-6">
               <p className="font-medium text-lg tracking-wide mb-3 text-foreground">
                 {t("notes")} :
@@ -148,28 +134,25 @@ const ProductDetails = ({ product }) => {
                 </span>
               </p>
             </div>
-
             <div className="flex items-center gap-4 mb-5">
               <p className="text-2xl font-bold text-foreground">
                 {formatPrice(finalPrice || price)}
               </p>
               {discount > 0 && (
-                <p className="text-sm text-gray-400 line-through">
+                <p className="text-sm text-muted-foreground line-through">
                   {formatPrice(price)}
                 </p>
               )}
             </div>
-
             <p
               className={`text-sm font-medium mb-2 ${
-                stock > 0 ? "text-emerald-600" : "text-rose-500"
+                stock > 0 ? "text-primary" : "text-destructive"
               }`}
             >
               {stock > 0 ? t("inStock") : t("outOfStock")}
             </p>
-
             {numReviews > 0 && (
-              <div className="flex items-center gap-1 text-sm text-slate-700 mb-3">
+              <div className="flex items-center gap-1 text-sm text-muted-foreground mb-3">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <FaStar
                     key={star}
@@ -178,29 +161,37 @@ const ProductDetails = ({ product }) => {
                         ? "text-yellow-400"
                         : averageRating >= star - 0.5
                         ? "text-yellow-400"
-                        : "text-gray-300"
+                        : "text-muted-foreground"
                     }
                   />
                 ))}
                 <span className="ml-1">{averageRating.toFixed(1)} / 5</span>
-                <span className="text-gray-500 ml-1">
+                <span className="text-muted-foreground ml-1">
                   ({numReviews} {t("reviews")})
                 </span>
               </div>
             )}
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="cursor-pointer mt-2 px-4 py-2 btn-primary text-white rounded text-sm font-medium"
-            >
-              {t("rateProduct")}
-            </button>
+
+            <div className="mt-6 pt-6 border-t border-border">
+              <button
+                onClick={() => setIsAddReviewOpen(true)}
+                className="px-6 py-2 bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90 transition-colors"
+              >
+                {locale === "ar" ? "اكتب مراجعة" : "Write a Review"}
+              </button>
+            </div>
+            <AddReviewForm
+              productId={product._id}
+              isOpen={isAddReviewOpen}
+              onClose={() => setIsAddReviewOpen(false)}
+            />
           </div>
 
           <a
             href="https://wa.me/201234567890"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-flex items-center justify-center gap-2 btn-primary text-white text-sm font-medium py-3 px-6 rounded-sm transition-all duration-200"
+            className="mt-8 inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground text-sm font-medium py-3 px-6 rounded-sm transition-all duration-200 hover:bg-primary/90"
           >
             <span>{t("contactWhatsapp")}</span>
             <FaWhatsapp size={20} />
@@ -208,86 +199,8 @@ const ProductDetails = ({ product }) => {
         </div>
       </div>
 
-      {/* Rating Modal */}
-      <Transition appear show={isModalOpen} as={Fragment}>
-        <Dialog
-          as="div"
-          className="relative z-50"
-          onClose={() => setIsModalOpen(false)}
-        >
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <div className="fixed inset-0 bg-[#0000001b] bg-opacity-30" />
-          </Transition.Child>
-
-          <div className="fixed inset-0 overflow-y-auto backdrop-blur-sm">
-            <div className="flex min-h-full items-center justify-center p-4">
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 scale-95"
-                enterTo="opacity-100 scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
-              >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-md bg-muted p-6 text-left align-middle shadow-xl transition-all">
-                  <Dialog.Title className="text-lg font-medium text-foreground mb-4">
-                    {t("rateProduct")}
-                  </Dialog.Title>
-
-                  <div className="flex items-center gap-1 mb-4">
-                    {[1, 2, 3, 4, 5].map((value) => (
-                      <FaStar
-                        key={value}
-                        size={28}
-                        onClick={() => setUserRating(value)}
-                        className={`cursor-pointer transition-colors fill-current ${
-                          userRating >= value
-                            ? "text-yellow-400"
-                            : "text-gray-300"
-                        }`}
-                      />
-                    ))}
-                  </div>
-
-                  <textarea
-                    value={userComment}
-                    onChange={(e) => setUserComment(e.target.value)}
-                    placeholder={t("writeComment")}
-                    className="w-full border border-slate-300 rounded-sm p-3 text-sm text-gray-800 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-1 focus:ring-slate-500 focus:border-slate-500 transition duration-200"
-                    rows={4}
-                  />
-
-                  <div className="mt-4 flex justify-end gap-2">
-                    <button
-                      onClick={() => setIsModalOpen(false)}
-                      className="cursor-pointer text-sm px-4 py-2 bg-gray-400  hover:bg-gray-300 rounded-sm"
-                    >
-                      {t("cancel")}
-                    </button>
-                    <button
-                      onClick={handleSubmitRating}
-                      className="cursor-pointer text-sm px-4 py-2 btn-primary rounded-sm"
-                    >
-                      {t("submit")}
-                    </button>
-                  </div>
-                </Dialog.Panel>
-              </Transition.Child>
-            </div>
-          </div>
-        </Dialog>
-      </Transition>
-
       <RelatedProducts productId={product._id} />
+      <ReviewsSection product={product} />
     </div>
   );
 };

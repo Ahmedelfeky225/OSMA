@@ -107,7 +107,7 @@ const ProductImage = ({ src, alt, className }) => {
         </div>
       )}
       <img
-        src={src || "/placeholder.svg"}
+        src={src}
         alt={alt}
         className={`${className} object-cover transition-all duration-300 ${
           isLoading ? "opacity-0 scale-110" : "opacity-100 scale-100"

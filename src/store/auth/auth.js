@@ -199,7 +199,7 @@
 // export default authSlice.reducer;
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axiosInstance from "../interceptor/axiosInstance";
+import axiosInstance from "../../lib/axiosInstance";
 import { fetchCurrentUser, clearCurrentUser } from "@/store/users/users";
 
 // ✅ استيراد مكتبة js-cookie
@@ -214,12 +214,22 @@ export const loginUser = createAsyncThunk(
       const response = await axiosInstance.post("/auth/login", credentials);
       const { token, user } = response.data;
 
-      // ✅ تخزين التوكن في كوكي عادية (غير httpOnly)
       if (token) {
+        // حفظ في cookies
         Cookies.set("token", token, {
           expires: 7, // 7 أيام
-          secure: true, // مهم للـ production
+          secure: process.env.NODE_ENV === "production", // secure فقط في production
           sameSite: "Lax", // عشان تشتغل في الـ middleware
+        });
+
+        // حفظ في localStorage كبديل احتياطي
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(user));
+
+        console.log("[v0] authSlice - Token saved:", {
+          cookieSaved: !!Cookies.get("token"),
+          localStorageSaved: !!localStorage.getItem("token"),
+          tokenPreview: token.substring(0, 20) + "...",
         });
       }
 
@@ -244,13 +254,23 @@ export const registerUser = createAsyncThunk(
     try {
       const response = await axiosInstance.post("/auth/register", userData);
       const { token, user } = response.data;
+
       if (token) {
         Cookies.set("token", token, {
           expires: 7,
-          secure: true,
+          secure: process.env.NODE_ENV === "production",
           sameSite: "Lax",
         });
+
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(user));
+
+        console.log("[v0] authSlice - Registration token saved:", {
+          cookieSaved: !!Cookies.get("token"),
+          localStorageSaved: !!localStorage.getItem("token"),
+        });
       }
+
       await dispatch(fetchCurrentUser());
       return { message: "تم التسجيل بنجاح" };
     } catch (error) {
@@ -272,8 +292,11 @@ export const logoutUser = createAsyncThunk(
       // ✅ مافيش حاجة هتتبعت، التوكن هيتشال من الـ client
       await axiosInstance.post("/auth/logout");
 
-      // ✅ نحذف التوكن من الكوكي
       Cookies.remove("token");
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+
+      console.log("[v0] authSlice - Tokens cleared on logout");
 
       dispatch(clearCurrentUser());
       return { message: "تم تسجيل الخروج بنجاح" };
@@ -323,10 +346,43 @@ export const forgotPassword = createAsyncThunk(
   }
 );
 
+export const checkAuthStatus = createAsyncThunk(
+  "auth/checkAuthStatus",
+  async (_, { dispatch, rejectWithValue }) => {
+    try {
+      const cookieToken = Cookies.get("token");
+      const localToken = localStorage.getItem("token");
+      const token = cookieToken || localToken;
+
+      console.log("[v0] authSlice - checkAuthStatus:", {
+        cookieToken: cookieToken ? "exists" : "null",
+        localToken: localToken ? "exists" : "null",
+        finalToken: token ? "exists" : "null",
+      });
+
+      if (token) {
+        // Verify token with backend and get current user
+        await dispatch(fetchCurrentUser());
+        return { isAuthenticated: true };
+      }
+
+      return { isAuthenticated: false };
+    } catch (error) {
+      console.log("[v0] authSlice - checkAuthStatus failed:", error.message);
+      Cookies.remove("token");
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      dispatch(clearCurrentUser());
+      return rejectWithValue("Authentication failed");
+    }
+  }
+);
+
 const initialState = {
   isLoading: false,
   error: null,
   message: null,
+  isAuthenticated: false,
 };
 
 const authSlice = createSlice({
@@ -337,6 +393,9 @@ const authSlice = createSlice({
       state.error = null;
       state.isLoading = false;
       state.message = null;
+    },
+    setAuthenticated(state, action) {
+      state.isAuthenticated = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -349,10 +408,12 @@ const authSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.message = action.payload?.message;
+        state.isAuthenticated = true;
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload || "خطأ في تسجيل الدخول";
+        state.isAuthenticated = false;
       })
 
       // registerUser
@@ -363,42 +424,25 @@ const authSlice = createSlice({
       .addCase(registerUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.message = action.payload?.message;
+        state.isAuthenticated = true;
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload || "خطأ في التسجيل";
+        state.isAuthenticated = false;
       })
 
-      // resetPassword
-      .addCase(resetPassword.pending, (state) => {
+      .addCase(checkAuthStatus.pending, (state) => {
         state.isLoading = true;
-        state.error = null;
-        state.message = null;
       })
-      .addCase(resetPassword.fulfilled, (state, action) => {
+      .addCase(checkAuthStatus.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.message = action.payload.message || "تم تغيير كلمة المرور بنجاح";
+        state.isAuthenticated = action.payload.isAuthenticated;
       })
-      .addCase(resetPassword.rejected, (state, action) => {
+      .addCase(checkAuthStatus.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload || "خطأ في إعادة تعيين كلمة المرور";
-      })
-
-      // forgotPassword
-      .addCase(forgotPassword.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-        state.message = null;
-      })
-      .addCase(forgotPassword.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.message =
-          action.payload.message ||
-          "تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك";
-      })
-      .addCase(forgotPassword.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload || "خطأ في طلب إعادة تعيين كلمة المرور";
+        state.isAuthenticated = false;
+        state.error = action.payload;
       })
 
       // logoutUser
@@ -408,13 +452,15 @@ const authSlice = createSlice({
       .addCase(logoutUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.message = action.payload?.message;
+        state.isAuthenticated = false;
       })
       .addCase(logoutUser.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload || "فشل تسجيل الخروج";
+        state.isAuthenticated = false;
       });
   },
 });
 
-export const { clearState } = authSlice.actions;
+export const { clearState, setAuthenticated } = authSlice.actions;
 export default authSlice.reducer;

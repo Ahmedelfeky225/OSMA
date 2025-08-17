@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axiosInstance from "../interceptor/axiosInstance";
+import axiosInstance from "@/store/interceptor/axiosInstance";
 
 // Get all reviews for a product
 export const getProductReviews = createAsyncThunk(
@@ -92,7 +92,6 @@ const reviewsSlice = createSlice({
       })
       .addCase(getProductReviews.fulfilled, (state, action) => {
         state.isLoading = false;
-        // الـ response هو array مباشرة
         state.reviews = Array.isArray(action.payload) ? action.payload : [];
         state.error = null;
       })
@@ -108,7 +107,6 @@ const reviewsSlice = createSlice({
       })
       .addCase(addProductReview.fulfilled, (state, action) => {
         state.submitting = false;
-        // إضافة الـ review الجديد في بداية القائمة
         state.reviews.unshift(action.payload);
         state.message = "تم إضافة التقييم بنجاح";
         state.error = null;

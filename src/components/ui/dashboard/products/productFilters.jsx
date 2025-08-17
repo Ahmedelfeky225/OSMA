@@ -37,7 +37,7 @@ export default function ProductFilters({
           placeholder={t("filters.searchPlaceholder")}
           value={filters.search}
           onChange={(e) => onFilterChange({ search: e.target.value })}
-          className="pl-10 pr-4 py-2 rounded-sm border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 w-full"
+          className="pl-10 ps-10 py-2 rounded-sm border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 w-full"
           dir={isRTL ? "rtl" : "ltr"}
         />
         <Search

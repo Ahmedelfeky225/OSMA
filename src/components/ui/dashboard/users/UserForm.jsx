@@ -48,7 +48,7 @@ const FormField = ({
     >
       {label}
       {required && <span className="text-red-500">*</span>}
-      {success && <CheckCircle2 className="h-4 w-4 text-green-500" />}
+      {success && <CheckCircle2 className="h-4 w-4 text-blue-300" />}
       {error && <AlertCircle className="h-4 w-4 text-red-500" />}
     </label>
     {children || (
@@ -426,7 +426,7 @@ export default function UserForm({ userId = null }) {
       className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900"
       dir={isRTL ? "rtl" : "ltr"}
     >
-      <div className="sm:max-w-[90%]  mx-auto max-w-[95%] px-6 py-8">
+      <div className="sm:max-w-[90%]  mx-auto max-w-[95%]  py-8">
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-4">
             <button
@@ -441,11 +441,11 @@ export default function UserForm({ userId = null }) {
               <ArrowLeft className="h-5 w-5" />
             </button>
             <div className={isRTL ? "text-right" : "text-left"}>
-              <h1 className="admin-heading text-2xl sm:text-3xl tracking-wide flex items-center gap-3">
-                <User className="h-8 w-8" />
+              <h1 className="admin-heading text-lg md:text-3xl sm:text-3xl tracking-wide flex items-center gap-1">
+                <User className="md:h-8 md:w-8 w-6 h-6" />
                 {isEditMode ? t("editUser") : t("createUser")}
               </h1>
-              <p className="admin-body mt-2 text-sm tracking-wide opacity-70">
+              <p className="admin-body md:text-base  mt-2 text-sm tracking-wide opacity-70">
                 {isEditMode
                   ? t("editUserDescription")
                   : t("createUserDescription")}

@@ -17,7 +17,7 @@ export default function UsersPage() {
     <div>
       <Navbar onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
       <div
-        className="max-w-[90%] mb-2 mt-6 mx-auto space-y-6"
+        className="sm:max-w-[90%] max-w-[95%]  mb-2 mt-6 mx-auto space-y-6"
         dir={isRTL ? "rtl" : "ltr"}
       >
         {/* Header */}
@@ -37,8 +37,8 @@ export default function UsersPage() {
           </button> */}
 
             <div className={isRTL ? "text-right" : "text-left"}>
-              <h1 className="text-3xl font-bold tracking-wide flex items-center gap-3 text-[#7a99c0]">
-                <Users className="h-8 w-8" />
+              <h1 className="md:text-3xl text-lg font-bold tracking-wide flex items-center gap-3 text-[#7a99c0]">
+                <Users className="md:h-8 w-5 h-5 md:w-8" />
                 {t("manageUsers")}
               </h1>
               <p className="text-gray-600 dark:text-gray-400 mt-2 text-sm md:text-base">

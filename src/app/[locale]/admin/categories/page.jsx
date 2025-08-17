@@ -100,8 +100,8 @@ export default function CategoriesPage() {
   return (
     <div>
       <Navbar onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} />{" "}
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 p-4 md:p-8">
-        <div className="max-w-[90%] mx-auto">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-4 md:py-8">
+        <div className="sm:max-w-[90%] max-w-[95%] mx-auto">
           {/* Header */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
             <div className="flex-1">
@@ -116,7 +116,7 @@ export default function CategoriesPage() {
               onClick={() =>
                 (window.location.href = "/admin/categories/create")
               }
-              className="px-4 sm:px-6 py-2 sm:py-3 text-white font-medium rounded-lg transition-all duration-200 flex items-center justify-center gap-2 hover:shadow-lg transform hover:scale-105 min-w-fit"
+              className="px-4 sm:px-6 py-2 sm:py-3 text-white font-medium rounded-lg transition-all duration-200 flex items-center justify-center gap-2 hover:shadow-sm transform hover:scale-105 min-w-fit"
               style={{
                 background:
                   "linear-gradient(to right, var(--primary-color), #3B82F6)",
@@ -130,7 +130,7 @@ export default function CategoriesPage() {
 
           {/* Stats Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
-            <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-xl sm:rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50 p-4 sm:p-6 hover:shadow-2xl transition-all duration-300">
+            <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-xl sm:rounded-2xl shadow-sm border border-gray-200/50 dark:border-gray-700/50 p-4 sm:p-6 hover:shadow-2xl transition-all duration-300">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400">
@@ -148,7 +148,7 @@ export default function CategoriesPage() {
           </div>
 
           {/* Filters */}
-          <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-xl sm:rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50 p-4 sm:p-6 mb-6 sm:mb-8 hover:shadow-2xl transition-all duration-300">
+          <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-xl sm:rounded-2xl shadow-sm border border-gray-200/50 dark:border-gray-700/50 p-4 sm:p-6 mb-6 sm:mb-8 hover:shadow-2xl transition-all duration-300">
             <div className="flex flex-col lg:flex-row gap-4 items-stretch lg:items-center justify-between">
               <div className="flex-1 max-w-full lg:max-w-md">
                 <div className="relative">
@@ -230,7 +230,7 @@ export default function CategoriesPage() {
                   </button>
                   <button
                     onClick={confirmDelete}
-                    className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all duration-200 hover:shadow-lg transform hover:scale-105 order-1 sm:order-2"
+                    className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all duration-200 hover:shadow-sm transform hover:scale-105 order-1 sm:order-2"
                   >
                     {tCommon("delete")}
                   </button>

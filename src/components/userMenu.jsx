@@ -101,7 +101,7 @@ export default function UserMenu({ user }) {
         <div className="relative">
           {user?.user?.image ? (
             <img
-              src={user.user.image || "/placeholder.svg"}
+              src={user.user.image}
               alt={displayName}
               className="w-8 h-8 rounded-full object-cover border-2 border-[var(--primary-color)]/20 transition-all duration-300 group-hover:border-[var(--primary-color)]/40"
             />
@@ -146,7 +146,7 @@ export default function UserMenu({ user }) {
                   <div className="relative">
                     {user?.user?.image ? (
                       <img
-                        src={user.user.image || "/placeholder.svg"}
+                        src={user.user.image}
                         alt={displayName}
                         className="w-12 h-12 rounded-full object-cover border-2 border-[var(--primary-color)]/30"
                       />

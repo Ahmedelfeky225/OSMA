@@ -403,7 +403,7 @@
 //       : category.translations?.en?.name || category.name;
 
 //   const cardClass =
-//     "bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-sm shadow-xl border border-gray-200/50 dark:border-gray-700/50";
+//     "bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-sm shadow-sm border border-gray-200/50 dark:border-gray-700/50";
 
 //   return (
 //     <div
@@ -872,7 +872,7 @@
 //                 />
 //                 <label
 //                   htmlFor="image-upload"
-//                   className={`inline-block mt-4 px-6 py-3 text-white rounded-sm transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 cursor-pointer ${
+//                   className={`inline-block mt-4 px-6 py-3 text-white rounded-sm transition-all duration-200 shadow-sm hover:shadow-sm transform hover:scale-105 cursor-pointer ${
 //                     isSubmitting ? "opacity-50" : ""
 //                   }`}
 //                   style={{
@@ -888,7 +888,7 @@
 //                   {imagePreviews.map((preview, index) => (
 //                     <div key={index} className="relative group">
 //                       <img
-//                         src={preview || "/placeholder.svg"}
+//                         src={preview}
 //                         alt={`Preview ${index + 1}`}
 //                         className="w-full h-24 object-cover rounded-sm shadow-md"
 //                       />
@@ -896,7 +896,7 @@
 //                         type="button"
 //                         onClick={() => removeImage(index)}
 //                         disabled={isSubmitting}
-//                         className="absolute -top-2 -right-2 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-all duration-200 shadow-lg hover:bg-red-600 disabled:opacity-50"
+//                         className="absolute -top-2 -right-2 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-all duration-200 shadow-sm hover:bg-red-600 disabled:opacity-50"
 //                       >
 //                         <X className="h-3 w-3" />
 //                       </button>
@@ -970,7 +970,7 @@
 //                   className={`w-full flex items-center justify-center gap-3 px-6 py-4 rounded-sm font-medium transition-all duration-300
 //                 ${
 //                   isFormValid() && !isSubmitting
-//                     ? "text-white shadow-lg hover:shadow-xl transform hover:scale-105"
+//                     ? "text-white shadow-sm hover:shadow-sm transform hover:scale-105"
 //                     : "bg-gray-300 dark:bg-gray-700 text-gray-500"
 //                 }
 //                 cursor-pointer disabled:cursor-not-allowed
@@ -1428,14 +1428,14 @@ export default function ProductForm({ initialData = null }) {
       : category.translations?.en?.name || category.name;
 
   const cardClass =
-    "bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-sm shadow-xl border border-gray-200/50 dark:border-gray-700/50";
+    "bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-sm shadow-sm border border-gray-200/50 dark:border-gray-700/50";
 
   return (
     <div
       className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900"
       dir={isRTL ? "rtl" : "ltr"}
     >
-      <div className=" sm:max-w-[90%] max-w-[95%]  mx-auto px-6 py-8">
+      <div className=" sm:max-w-[90%] max-w-[95%]  mx-auto py-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-4">
@@ -1448,13 +1448,13 @@ export default function ProductForm({ initialData = null }) {
             </button>
             <div className={isRTL ? "text-right" : "text-left"}>
               <h1
-                className="text-3xl font-bold tracking-tight flex items-center gap-3"
+                className="text:lg md:text-3xl font-bold tracking-tight flex items-center gap-3"
                 style={{ color: "var(--primary-color)" }}
               >
-                <Package className="h-8 w-8" />
+                <Package className="md:h-8 md:w-8" />
                 {isEditMode ? t("editProduct") : t("createProduct")}
               </h1>
-              <p className="text-gray-600 dark:text-gray-400 mt-2 text-lg">
+              <p className="text-gray-600 dark:text-gray-400 mt-2 text-sm md:text-base">
                 {isEditMode
                   ? t("editProductDescription")
                   : t("createProductDescription")}
@@ -1907,7 +1907,7 @@ export default function ProductForm({ initialData = null }) {
                 />
                 <label
                   htmlFor="image-upload"
-                  className={`inline-block mt-4 px-6 py-3 text-white rounded-sm transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 cursor-pointer ${
+                  className={`inline-block mt-4 px-6 py-3 text-white rounded-sm transition-all duration-200 shadow-sm hover:shadow-sm transform hover:scale-105 cursor-pointer ${
                     isSubmitting ? "opacity-50" : ""
                   }`}
                   style={{
@@ -1923,7 +1923,7 @@ export default function ProductForm({ initialData = null }) {
                   {imagePreviews.map((preview, index) => (
                     <div key={index} className="relative group">
                       <img
-                        src={preview || "/placeholder.svg"}
+                        src={preview}
                         alt={`Preview ${index + 1}`}
                         className="w-full h-24 object-cover rounded-sm shadow-md"
                       />
@@ -1931,7 +1931,7 @@ export default function ProductForm({ initialData = null }) {
                         type="button"
                         onClick={() => removeImage(index)}
                         disabled={isSubmitting}
-                        className="absolute -top-2 -right-2 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-all duration-200 shadow-lg hover:bg-red-600 disabled:opacity-50"
+                        className="absolute -top-2 -right-2 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-all duration-200 shadow-sm hover:bg-red-600 disabled:opacity-50"
                       >
                         <X className="h-3 w-3" />
                       </button>
@@ -2005,7 +2005,7 @@ export default function ProductForm({ initialData = null }) {
                   className={`w-full flex items-center justify-center gap-3 px-6 py-4 rounded-sm font-medium transition-all duration-300
                 ${
                   isFormValid() && !isSubmitting
-                    ? "text-white shadow-lg hover:shadow-xl transform hover:scale-105"
+                    ? "text-white shadow-sm hover:shadow-sm transform hover:scale-105"
                     : "bg-gray-300 dark:bg-gray-700 text-gray-500"
                 }
                 cursor-pointer disabled:cursor-not-allowed

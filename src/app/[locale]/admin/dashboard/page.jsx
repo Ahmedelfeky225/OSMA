@@ -21,10 +21,10 @@ export default function Dashboard() {
       <div className="flex-1 flex flex-col overflow-hidden">
         <Navbar onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
 
-        <main className="flex-1 overflow-auto p-6 space-y-6">
+        <main className="flex-1 overflow-auto py-6 px-3 space-y-6">
           {/* Welcome Section */}
           <div className="flex flex-col gap-2">
-            <h1 className="text-3xl font-bold tracking-tight">
+            <h1 className="md:text-3xl text-lg font-bold tracking-tight">
               {t("welcome")}
             </h1>
             <p className="text-gray-600 dark:text-gray-400">{t("overview")}</p>
