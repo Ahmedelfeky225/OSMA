@@ -215,7 +215,7 @@ export default function RegisterPage() {
             )}
           </Button>
 
-          <Stack
+          {/* <Stack
             direction="row"
             justifyContent="center"
             alignItems="center"
@@ -233,7 +233,7 @@ export default function RegisterPage() {
             >
               {t("loginLink")}
             </Link>
-          </Stack>
+          </Stack> */}
         </Box>
       </Container>
     </div>
