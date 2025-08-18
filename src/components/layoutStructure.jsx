@@ -25,7 +25,9 @@ export default async function LayoutStructure({ children }) {
       <Navbar userData={userData} />
 
       <main>
-        <MuiProviders>{children}</MuiProviders>
+        {/* <MuiProviders> */}
+        {children}
+        {/* </MuiProviders> */}
       </main>
       <Footer />
       <Toaster
