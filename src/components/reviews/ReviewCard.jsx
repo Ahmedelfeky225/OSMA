@@ -3,12 +3,19 @@ import { FaStar, FaTrash } from "react-icons/fa";
 import { useTranslations, useLocale } from "next-intl";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteProductReview } from "@/store/reviews/reviews";
+import { useEffect, useState } from "react";
 
 const ReviewCard = ({ review, productId, canDelete = false }) => {
   const t = useTranslations("Product");
   const locale = useLocale();
   const dispatch = useDispatch();
   const { isLoading } = useSelector((state) => state.reviews);
+  const [userName, setUserName] = useState(null);
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    setUserName(storedUser?.name || null);
+  }, []);
 
   const renderStars = (rating) => {
     return [1, 2, 3, 4, 5].map((star) => (
@@ -56,6 +63,7 @@ const ReviewCard = ({ review, productId, canDelete = false }) => {
           <div>
             <h4 className="font-semibold text-foreground">
               {review.name ||
+                userName ||
                 (locale === "ar" ? "مستخدم مجهول" : "Anonymous User")}
             </h4>
             <div className="flex items-center space-x-1 rtl:space-x-reverse mt-1">
