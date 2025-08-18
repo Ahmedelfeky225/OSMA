@@ -415,7 +415,7 @@ export default function LoginPage() {
             )}
           </Button>
 
-          <Stack
+          {/* <Stack
             direction="row"
             justifyContent="space-between"
             alignItems="center"
@@ -432,7 +432,7 @@ export default function LoginPage() {
                 {t("forgotPassword")}
               </a>
             </NextLink>
-          </Stack>
+          </Stack> */}
         </Box>
       </Container>
     </div>
