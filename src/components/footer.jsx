@@ -164,10 +164,10 @@ export default function Footer() {
                     <Link
                       key={item.href}
                       href={item.href}
-                      className={`text-sm font-medium w-full  transition-all duration-300 hover:translate-x-1 block py-2 px-3 rounded-lg hover:bg-gray-800/50 sm:w-fit ${
+                      className={`text-sm font-medium w-full  transition-all duration-300 hover:translate-x-1 block py-2 px-3 rounded-lg  sm:w-fit ${
                         pathname === item.href
                           ? "text-primary bg-primary/10"
-                          : " text-foreground  hover:text-white"
+                          : " text-foreground  dark:hover:text-white"
                       }`}
                     >
                       {t(item.label)}
@@ -248,7 +248,9 @@ export default function Footer() {
             <div className="container  mx-auto px-4 py-6">
               <div className="flex flex-col md:flex-row items-center justify-center gap-4">
                 <div className="flex items-center flex-col sm:flex-row gap-2 text-foreground text-sm">
-                  <span>{t("footer_copyright")}</span>
+                  <span>
+                    {t("footer_copyright", { year: new Date().getFullYear() })}
+                  </span>
                   <Heart className="w-4 h-4 text-red-500 animate-pulse" />
                   <span>{t("footer_made_with_love")}</span>
                 </div>

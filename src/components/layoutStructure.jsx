@@ -6,6 +6,7 @@ import { Toaster } from "react-hot-toast";
 import { fetchInterceptor } from "@/utils/fetchInterceptor";
 import { Suspense } from "react";
 import FixedWhatsappButton from "./fixedWhatsappButton";
+import MuiProviders from "./MuiProviders";
 
 export default async function LayoutStructure({ children }) {
   const cookieStore = await cookies();
@@ -22,7 +23,10 @@ export default async function LayoutStructure({ children }) {
   return (
     <ReduxProvider>
       <Navbar userData={userData} />
-      <main>{children}</main>
+
+      <main>
+        <MuiProviders>{children}</MuiProviders>
+      </main>
       <Footer />
       <Toaster
         position="top-center"

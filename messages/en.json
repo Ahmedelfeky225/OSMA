@@ -591,7 +591,7 @@
     "footer_newsletter_placeholder": "Enter your email",
     "footer_subscribe_button": "Subscribe",
     "footer_payment_methods_title": "Payment Methods",
-    "footer_copyright": "© 2025 OSMA Perfumes. All rights reserved.",
+    "footer_copyright": "© {year} OSMA Perfumes. All rights reserved.",
     "whatsapp_prefilled_message": "Hello OSMA Perfumes, I would like to inquire about:\n1. Product details\n2. Order status\n3. Shipping information\n4. Other",
     "whatsapp_button_label": "Chat with us on WhatsApp",
     "home": "Home",

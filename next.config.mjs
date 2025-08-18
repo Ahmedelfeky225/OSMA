@@ -10,6 +10,7 @@ const withPWA = withPWAInit({
   register: true, // يسجل تلقائيًا
   skipWaiting: true, // يفعّل أي تحديث فورًا
   disable: process.env.NODE_ENV === "development", // معطل أثناء التطوير
+  buildExcludes: [/app-build-manifest\.json$/],
 });
 
 /** @type {import('next').NextConfig} */

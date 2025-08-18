@@ -7,6 +7,7 @@
   --primary-color: #7a99c0; /* لون أساسي للوضع الفاتح */
   --primary-color-lighter: #11c9d383;
   --primary-color-hover: #0bbcc6;
+  --color-tex: #7a99c0; /* لون أساسي للوضع الفاتح */
 
   /* Shadcn/ui default variables - تم تفعيلها وتعديلها */
   --background: oklch(1 0 0); /* أبيض فاتح */
@@ -58,6 +59,7 @@
   --primary-color-hover: #11cad3;
   --bg-navbar: #101828;
   --bg-footer: #101828;
+  --color-tex: #7a99c0; /* لون أساسي للوضع الفاتح */
 
   /* Shadcn/ui dark mode variables - تم تفعيلها وتعديلها */
   --background: #101828; /* أسود داكن للخلفية */
@@ -422,4 +424,20 @@ button {
 
 button:disabled {
   cursor: not-allowed !important;
+}
+
+.muirtl-16wblaj-MuiInputBase-input-MuiOutlinedInput-input {
+  color: var(--color-tex) !important;
+}
+.muirtl-vbhg19-MuiFormLabel-root-MuiInputLabel-root.Mui-focused,
+.muirtl-vbhg19-MuiFormLabel-root-MuiInputLabel-root.Mui-focused,
+.muirtl-16wblaj-MuiInputBase-input-MuiOutlinedInput-input:focus,
+.muirtl-7arswm-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: var(--color-tex) !important;
+}
+
+.muirtl-er619e-MuiFormHelperText-root.Mui-error,
+.muirtl-u6k86m-MuiFormLabel-root-MuiInputLabel-root.Mui-error {
+  margin: 0;
+  margin-top: 2px;
 }

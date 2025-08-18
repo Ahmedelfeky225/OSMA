@@ -30,11 +30,9 @@ const AddReviewForm = ({ productId, isOpen, onClose }) => {
   useEffect(() => {
     if (message && !error) {
       // Show success state briefly before reload
-      setTimeout(() => {
-        onClose();
-        dispatch(clearState());
-        window.location.reload();
-      }, 1500); // Give user time to see success message
+      dispatch(clearState());
+      onClose();
+      window.location.reload();
     }
   }, [message, error, onClose, dispatch]);
 

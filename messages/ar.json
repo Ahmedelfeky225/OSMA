@@ -201,7 +201,7 @@
     "footer_newsletter_placeholder": "أدخل بريدك الإلكتروني",
     "footer_subscribe_button": "اشترك",
     "footer_payment_methods_title": "طرق الدفع",
-    "footer_copyright": "© 2025 عطور اوسما. جميع الحقوق محفوظة.",
+    "footer_copyright": "© {year} عطور اوسما. جميع الحقوق محفوظة.",
     "whatsapp_prefilled_message": "مرحباً عطور اوسما أود الاستفسار عن:\n1. تفاصيل المنتج\n2. حالة الطلب\n3. معلومات الشحن\n4. أخرى",
     "whatsapp_button_label": "تحدث معنا عبر واتساب",
     "home": "الرئيسية",
@@ -484,10 +484,11 @@
     },
     "Logout": {
       "logoutFailed": "فشل تسجيل الخروج",
-      "logoutSuccess": "تم تسجيل الخروج بنجاح"
+      "logoutSuccess": "تم تسجيل الخروج بنجاح",
+      "loggingOut": "جاري تسجيل الخروج..."
     },
     "Register": {
-      "title": "تسجيل",
+      "title": "تسجيل حساب جديد",
       "email": "البريد الإلكتروني",
       "name": "الاسم",
       "nameRequired": "الاسم مطلوب",

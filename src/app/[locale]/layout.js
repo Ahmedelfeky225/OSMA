@@ -267,6 +267,7 @@ import FixedWhatsappButton from "@/components/fixedWhatsappButton";
 import { ThemeProvider } from "@/components/themeProvider";
 import { Suspense } from "react";
 import TopLoader from "@/components/topLoader";
+import MuiProviders from "@/components/MuiProviders";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -458,7 +459,7 @@ export default async function LocaleLayout({ children, params }) {
             locale={locale}
             messages={messages}
             timeZone="Africa/Cairo"
-            now={new Date()}
+            // now={new Date()}
           >
             <Suspense
               fallback={
@@ -472,7 +473,11 @@ export default async function LocaleLayout({ children, params }) {
                 </div>
               }
             >
-              <LayoutStructure userAuth={userAuth}>{children}</LayoutStructure>
+              {/* <LayoutStructure userAuth={userAuth}> */}
+              {/* <Suspense fallback={<div>Loading...</div>}> */}
+              <LayoutStructure>{children}</LayoutStructure>
+              {/* </Suspense> */}
+              {/* </LayoutStructure> */}
             </Suspense>
           </NextIntlClientProvider>
         </ThemeProvider>
