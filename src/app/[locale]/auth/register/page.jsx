@@ -56,7 +56,7 @@ export default function RegisterPage() {
     if (registerUser.fulfilled.match(result)) {
       toast.success(t("registerSuccess"));
       reset();
-      router.push("/auth/login");
+      router.push(`/auth/login/${locale}`);
       // router.refresh();
       dispatch(clearState());
     } else {
