@@ -51,14 +51,14 @@ export default function LoginPage() {
     const result = await dispatch(loginUser(data));
 
     if (loginUser.fulfilled.match(result)) {
-      toast.success(t("loginSuccess"));
+      // toast.success(t("loginSuccess"));
       reset();
       dispatch(clearState());
       // ✅ استخدام router.replace() لمنع العودة إلى صفحة الدخول
       router.push(`/${locale}`);
     } else {
       // التعامل مع الخطأ مباشرة من result.payload
-      toast.error(result.payload || t("loginFailed"));
+      // toast.error(result.payload || t("loginFailed"));
     }
   };
 
