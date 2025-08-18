@@ -57,7 +57,7 @@ export default function RegisterPage() {
       toast.success(t("registerSuccess"));
       reset();
       router.push("/auth/login");
-      router.refresh();
+      // router.refresh();
       dispatch(clearState());
     } else {
       toast.error(result.payload || t("registerFailed"));

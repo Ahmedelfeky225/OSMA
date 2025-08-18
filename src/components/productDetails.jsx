@@ -88,52 +88,70 @@ const ProductDetails = ({ product }) => {
               {translations[locale]?.description}
             </p>
             <ul className="text-sm text-foreground space-y-2 mb-6">
-              <li>
-                <strong className="tracking-wide text-base font-medium">
-                  {t("brand")} :
-                </strong>{" "}
-                <span className="text-muted-foreground tracking-wide">
-                  {brand}
-                </span>
-              </li>
-              <li>
-                <strong className="tracking-wide font-medium text-base">
-                  {t("size")} :
-                </strong>{" "}
-                <span className="text-muted-foreground tracking-wide">
-                  {size}
-                </span>
-              </li>
+              {brand && (
+                <li>
+                  <strong className="tracking-wide text-base font-medium">
+                    {t("brand")} :
+                  </strong>{" "}
+                  <span className="text-muted-foreground tracking-wide">
+                    {brand}
+                  </span>
+                </li>
+              )}
+              {size && (
+                <li>
+                  <strong className="tracking-wide font-medium text-base">
+                    {t("size")} :
+                  </strong>{" "}
+                  <span className="text-muted-foreground tracking-wide">
+                    {size}
+                  </span>
+                </li>
+              )}
             </ul>
-            <div className="mb-6">
-              <p className="font-medium text-lg tracking-wide mb-3 text-foreground">
-                {t("notes")} :
-              </p>
-              <p className="text-sm text-foreground mb-2">
-                <strong className="tracking-wide font-medium text-base">
-                  {t("topNotes")} :
-                </strong>{" "}
-                <span className="text-muted-foreground tracking-wide">
-                  {notes.top.join(", ")}
-                </span>
-              </p>
-              <p className="text-sm text-foreground mb-2">
-                <strong className="tracking-wide font-medium text-base">
-                  {t("heartNotes")} :
-                </strong>{" "}
-                <span className="text-muted-foreground tracking-wide">
-                  {notes.heart.join(", ")}
-                </span>
-              </p>
-              <p className="text-sm text-foreground mb-2">
-                <strong className="tracking-wide font-medium text-base">
-                  {t("baseNotes")} :
-                </strong>{" "}
-                <span className="text-muted-foreground tracking-wide">
-                  {notes.base.join(", ")}
-                </span>
-              </p>
-            </div>
+            {(notes.top?.length > 0 ||
+              notes.heart?.length > 0 ||
+              notes.base?.length > 0) && (
+              <div className="mb-6">
+                <p className="font-medium text-lg tracking-wide mb-3 text-foreground">
+                  {t("notes")} :
+                </p>
+
+                {notes.top?.length > 0 && (
+                  <p className="text-sm text-foreground mb-2">
+                    <strong className="tracking-wide font-medium text-base">
+                      {t("topNotes")} :
+                    </strong>{" "}
+                    <span className="text-muted-foreground tracking-wide">
+                      {notes.top.join(", ")}
+                    </span>
+                  </p>
+                )}
+
+                {notes.heart?.length > 0 && (
+                  <p className="text-sm text-foreground mb-2">
+                    <strong className="tracking-wide font-medium text-base">
+                      {t("heartNotes")} :
+                    </strong>{" "}
+                    <span className="text-muted-foreground tracking-wide">
+                      {notes.heart.join(", ")}
+                    </span>
+                  </p>
+                )}
+
+                {notes.base?.length > 0 && (
+                  <p className="text-sm text-foreground mb-2">
+                    <strong className="tracking-wide font-medium text-base">
+                      {t("baseNotes")} :
+                    </strong>{" "}
+                    <span className="text-muted-foreground tracking-wide">
+                      {notes.base.join(", ")}
+                    </span>
+                  </p>
+                )}
+              </div>
+            )}
+
             <div className="flex items-center gap-4 mb-5">
               <p className="text-2xl font-bold text-foreground">
                 {formatPrice(finalPrice || price)}

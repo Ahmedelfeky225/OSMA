@@ -55,7 +55,7 @@ export default function LoginPage() {
       reset();
       dispatch(clearState());
       // ✅ استخدام router.replace() لمنع العودة إلى صفحة الدخول
-      router.replace("/");
+      router.push("/");
     } else {
       // التعامل مع الخطأ مباشرة من result.payload
       toast.error(result.payload || t("loginFailed"));
