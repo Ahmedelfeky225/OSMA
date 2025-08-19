@@ -233,6 +233,9 @@ const usersSlice = createSlice({
     setSearchLoading(state, action) {
       state.searchLoading = action.payload;
     },
+    setCurrentUser(state, action) {
+      state.currentUser = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -394,5 +397,6 @@ export const {
   clearSearchResults,
   setLoading,
   setSearchLoading,
+  setCurrentUser,
 } = usersSlice.actions;
 export default usersSlice.reducer;

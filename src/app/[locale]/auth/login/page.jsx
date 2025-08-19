@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser, clearState } from "@/store/auth";
+// import { loginUser, clearState } from "@/store/auth";
+import { loginUser, clearState, setCurrentUser } from "@/store/auth";
+
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { useForm } from "react-hook-form";
@@ -52,10 +54,28 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
 
+  // const onSubmit = async (data) => {
+  //   const result = await dispatch(loginUser(data));
+
+  //   if (loginUser.fulfilled.match(result)) {
+  //     toast.success(t("loginSuccess"));
+  //     reset();
+  //     dispatch(clearState());
+  //     router.push("/");
+  //   } else {
+  //     toast.error(result.payload || t("loginFailed"));
+  //   }
+  // };
+
   const onSubmit = async (data) => {
     const result = await dispatch(loginUser(data));
 
     if (loginUser.fulfilled.match(result)) {
+      // ✅ خزّن بيانات اليوزر في الـ Redux مباشرة
+      if (result.payload?.user) {
+        dispatch(setCurrentUser(result.payload.user));
+      }
+
       toast.success(t("loginSuccess"));
       reset();
       dispatch(clearState());
