@@ -2,15 +2,15 @@
 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { loginUser, clearState } from "@/store/auth";
-import { loginUser, clearState, setCurrentUser } from "@/store/auth";
+import { loginUser, clearState } from "@/store/auth";
+import { setCurrentUser } from "@/store/users/users"; // ✅ صححت المسار
 
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { useForm } from "react-hook-form";
 import { useTranslations, useLocale } from "next-intl";
 
-// MUI imports
+//ok
 import {
   Box,
   Button,
