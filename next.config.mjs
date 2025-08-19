@@ -29,16 +29,9 @@
 // export default withNextIntl(withPWA(nextConfig));
 
 import createNextIntlPlugin from "next-intl/plugin";
-import withPWAInit from "next-pwa";
 
+// إعداد next-intl
 const withNextIntl = createNextIntlPlugin();
-const withPWA = withPWAInit({
-  dest: "public",
-  register: true,
-  skipWaiting: true,
-  disable: process.env.NODE_ENV === "development",
-  buildExcludes: [/app-build-manifest\.json$/],
-});
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -49,8 +42,8 @@ const nextConfig = {
       { protocol: "https", hostname: "cdn.salla.sa" },
     ],
   },
+  // أي إعدادات إضافية هنا
 };
 
-const finalConfig = withNextIntl(nextConfig);
-
-export default withPWA(finalConfig);
+// نستخدم next-intl فقط
+export default withNextIntl(nextConfig);
