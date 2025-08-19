@@ -59,6 +59,7 @@ export const fetchInterceptor = async (url, options = {}) => {
       "Content-Type": "application/json",
       appId: process.env.NEXT_PUBLIC_APPID,
       Authorization: tokenCookie ? `Bearer ${tokenCookie.value}` : "",
+      Cookie: tokenCookie ? `token=${tokenCookie.value}` : "",
     },
     cache: "no-store",
   };
