@@ -561,8 +561,6 @@
 
 import React from "react";
 
-const Navbar = () => {
-  return <div>N</div>;
+export const Navbar = () => {
+  return <div>Navbar</div>;
 };
-
-export default Navbar;
