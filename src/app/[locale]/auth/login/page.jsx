@@ -485,6 +485,7 @@ export default function LoginPage() {
       reset();
       dispatch(clearState());
       router.replace(`/${locale}`);
+      router.refresh();
     } else {
       toast.error(result.payload || t("loginFailed"));
     }
