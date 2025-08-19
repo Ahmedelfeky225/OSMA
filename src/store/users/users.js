@@ -37,21 +37,34 @@ export const fetchUsers = createAsyncThunk(
 );
 
 // جلب المستخدم الحالي
+// export const fetchCurrentUser = createAsyncThunk(
+//   "users/fetchCurrentUser",
+//   async (_, { rejectWithValue }) => {
+//     try {
+//       const response = await axiosInstance.get("/auth/me", {
+//         withCredentials: true,
+//       });
+//       return response.data;
+//     } catch (error) {
+//       if (error.response && error.response.data) {
+//         return rejectWithValue(
+//           error.response.data.message || error.response.data.error
+//         );
+//       }
+//       return rejectWithValue(error.message);
+//     }
+//   }
+// );
+
+// جلب المستخدم الحالي
 export const fetchCurrentUser = createAsyncThunk(
   "users/fetchCurrentUser",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axiosInstance.get("/auth/me", {
-        withCredentials: true,
-      });
+      const response = await axiosInstance.get("/auth/me");
       return response.data;
     } catch (error) {
-      if (error.response && error.response.data) {
-        return rejectWithValue(
-          error.response.data.message || error.response.data.error
-        );
-      }
-      return rejectWithValue(error.message);
+      return rejectWithValue(error.response?.data?.message || error.message);
     }
   }
 );
