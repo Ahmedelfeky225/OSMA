@@ -42,8 +42,11 @@ export default function LoginPage() {
   const t = useTranslations("Auth.Login");
   const locale = useLocale();
 
-  const { isLoading } = useSelector((state) => state.auth);
+  // const { isLoading } = useSelector((state) => state.auth);
 
+  const { isFetching, isSuccess, isError, errorMessage } = useSelector(
+    (state) => state.auth
+  );
   const {
     register,
     handleSubmit,
@@ -58,6 +61,11 @@ export default function LoginPage() {
   //   const result = await dispatch(loginUser(data));
 
   //   if (loginUser.fulfilled.match(result)) {
+  //     // ✅ خزّن بيانات اليوزر في الـ Redux مباشرة
+  //     if (result.payload?.user) {
+  //       dispatch(setCurrentUser(result.payload.user));
+  //     }
+
   //     toast.success(t("loginSuccess"));
   //     reset();
   //     dispatch(clearState());
@@ -71,16 +79,26 @@ export default function LoginPage() {
     const result = await dispatch(loginUser(data));
 
     if (loginUser.fulfilled.match(result)) {
-      // ✅ خزّن بيانات اليوزر في الـ Redux مباشرة
+      // ✅ احفظ اليوزر في Redux
       if (result.payload?.user) {
         dispatch(setCurrentUser(result.payload.user));
+      }
+
+      // ✅ خزّن الـ token في الكوكي
+      if (result.payload?.token) {
+        Cookies.set("token", result.payload.token, {
+          expires: 7, // 7 أيام
+          path: "/", // متاح في كل الصفحات
+        });
       }
 
       toast.success(t("loginSuccess"));
       reset();
       dispatch(clearState());
       router.push("/");
-    } else {
+    }
+
+    if (loginUser.rejected.match(result)) {
       toast.error(result.payload || t("loginFailed"));
     }
   };
