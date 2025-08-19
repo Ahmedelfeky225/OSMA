@@ -302,6 +302,7 @@ export default function RegisterPage() {
       reset();
       dispatch(clearState());
       router.push(`/auth/login`);
+      router.refresh();
     }
 
     if (registerUser.rejected.match(result)) {
