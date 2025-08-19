@@ -29,7 +29,7 @@ import ThemeToggle from "./themeToggle";
 import NavigationLinks from "./navigationLinks";
 import CustomImage from "./customImage";
 
-export const Navbar = ({ isAuth, user, userData }) => {
+export const Navbar = ({ userData }) => {
   const t = useTranslations("Index");
   const tLogout = useTranslations("Auth");
   const router = useRouter();
