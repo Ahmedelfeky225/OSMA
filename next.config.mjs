@@ -1,17 +1,7 @@
 // import createNextIntlPlugin from "next-intl/plugin";
-// import withPWAInit from "next-pwa";
 
 // // إعداد next-intl
 // const withNextIntl = createNextIntlPlugin();
-
-// // إعداد PWA
-// const withPWA = withPWAInit({
-//   dest: "public", // مكان توليد service worker
-//   register: true, // يسجل تلقائيًا
-//   skipWaiting: true, // يفعّل أي تحديث فورًا
-//   disable: process.env.NODE_ENV === "development", // معطل أثناء التطوير
-//   buildExcludes: [/app-build-manifest\.json$/],
-// });
 
 // /** @type {import('next').NextConfig} */
 // const nextConfig = {
@@ -25,13 +15,12 @@
 //   // أي إعدادات إضافية هنا
 // };
 
-// // نلف PWA أولًا ثم Intl
-// export default withNextIntl(withPWA(nextConfig));
-
+// // نستخدم next-intl فقط
+// export default withNextIntl(nextConfig);
 import createNextIntlPlugin from "next-intl/plugin";
+import withPWA from "next-pwa";
 
-// إعداد next-intl
-const withNextIntl = createNextIntlPlugin();
+const nextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -42,8 +31,17 @@ const nextConfig = {
       { protocol: "https", hostname: "cdn.salla.sa" },
     ],
   },
-  // أي إعدادات إضافية هنا
 };
 
-// نستخدم next-intl فقط
-export default withNextIntl(nextConfig);
+// دمج next-intl و PWA
+export default nextIntl(
+  withPWA({
+    ...nextConfig,
+    pwa: {
+      dest: "public", // مكان تخزين ملفات SW
+      register: true, // تسجيل SW تلقائي
+      skipWaiting: true, // SW يشتغل فورًا بدون انتظار
+      disable: process.env.NODE_ENV === "development", // تعطيل في الـ dev
+    },
+  })
+);
