@@ -40,7 +40,7 @@ export default function LoginPage() {
   const dispatch = useDispatch();
   const router = useRouter();
   const t = useTranslations("Auth.Login");
-  const locale = useLocale();
+  // const locale = useLocale();
 
   // const { isLoading } = useSelector((state) => state.auth);
 
@@ -54,24 +54,6 @@ export default function LoginPage() {
 
   const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
-
-  // const onSubmit = async (data) => {
-  //   const result = await dispatch(loginUser(data));
-
-  //   if (loginUser.fulfilled.match(result)) {
-  //     // ✅ خزّن بيانات اليوزر في الـ Redux مباشرة
-  //     if (result.payload?.user) {
-  //       dispatch(setCurrentUser(result.payload.user));
-  //     }
-
-  //     toast.success(t("loginSuccess"));
-  //     reset();
-  //     dispatch(clearState());
-  //     router.push("/");
-  //   } else {
-  //     toast.error(result.payload || t("loginFailed"));
-  //   }
-  // };
 
   const onSubmit = async (data) => {
     const result = await dispatch(loginUser(data));
