@@ -270,13 +270,29 @@ import axiosInstance from "../../lib/axiosInstance";
 import { fetchCurrentUser, clearCurrentUser } from "@/store/users/users";
 import Cookies from "js-cookie";
 
+// تسجيل الدخول
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async (credentials, { dispatch, rejectWithValue }) => {
     try {
       const response = await axiosInstance.post("/auth/login", credentials);
-      await dispatch(fetchCurrentUser());
-      return { message: "تم تسجيل الدخول بنجاح" };
+      const { token, user } = response.data;
+
+      if (token) {
+        Cookies.set("token", token, {
+          expires: 7,
+          secure: process.env.NODE_ENV === "production",
+          sameSite: "Lax",
+        });
+
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(user));
+      }
+
+      // تحديث بيانات المستخدم في Redux
+      dispatch(fetchCurrentUser());
+
+      return { message: "تم تسجيل الدخول بنجاح", user };
     } catch (error) {
       if (error.response && error.response.data) {
         return rejectWithValue(
@@ -288,13 +304,27 @@ export const loginUser = createAsyncThunk(
   }
 );
 
+// تسجيل مستخدم جديد
 export const registerUser = createAsyncThunk(
   "auth/registerUser",
   async (userData, { dispatch, rejectWithValue }) => {
     try {
       const response = await axiosInstance.post("/auth/register", userData);
-      await dispatch(fetchCurrentUser());
-      return { message: "تم التسجيل بنجاح" };
+      const { token, user } = response.data;
+
+      if (token) {
+        Cookies.set("token", token, {
+          expires: 7,
+          secure: process.env.NODE_ENV === "production",
+          sameSite: "Lax",
+        });
+
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(user));
+      }
+
+      dispatch(fetchCurrentUser());
+      return { message: "تم التسجيل بنجاح", user };
     } catch (error) {
       if (error.response && error.response.data) {
         return rejectWithValue(
@@ -306,12 +336,17 @@ export const registerUser = createAsyncThunk(
   }
 );
 
+// تسجيل الخروج
 export const logoutUser = createAsyncThunk(
   "auth/logoutUser",
   async (_, { dispatch, rejectWithValue }) => {
     try {
       await axiosInstance.post("/auth/logout");
+
       Cookies.remove("token");
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+
       dispatch(clearCurrentUser());
       return { message: "تم تسجيل الخروج بنجاح" };
     } catch (error) {
@@ -323,6 +358,7 @@ export const logoutUser = createAsyncThunk(
   }
 );
 
+// إعادة تعيين كلمة المرور
 export const resetPassword = createAsyncThunk(
   "auth/resetPassword",
   async ({ token, newPassword, confirmPassword }, { rejectWithValue }) => {
@@ -341,6 +377,7 @@ export const resetPassword = createAsyncThunk(
   }
 );
 
+// طلب رابط إعادة تعيين كلمة المرور
 export const forgotPassword = createAsyncThunk(
   "auth/forgotPassword",
   async (email, { rejectWithValue }) => {
@@ -362,10 +399,9 @@ export const checkAuthStatus = createAsyncThunk(
   "auth/checkAuthStatus",
   async (_, { dispatch, rejectWithValue }) => {
     try {
-      const token = Cookies.get("token");
-      console.log("[v0] authSlice - checkAuthStatus:", {
-        cookieToken: token ? "exists" : "null",
-      });
+      const cookieToken = Cookies.get("token");
+      const localToken = localStorage.getItem("token");
+      const token = cookieToken || localToken;
 
       if (token) {
         await dispatch(fetchCurrentUser());
@@ -374,8 +410,9 @@ export const checkAuthStatus = createAsyncThunk(
 
       return { isAuthenticated: false };
     } catch (error) {
-      console.log("[v0] authSlice - checkAuthStatus failed:", error.message);
       Cookies.remove("token");
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
       dispatch(clearCurrentUser());
       return rejectWithValue("Authentication failed");
     }
@@ -404,6 +441,7 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      // loginUser
       .addCase(loginUser.pending, (state) => {
         state.isLoading = true;
         state.error = null;
@@ -418,6 +456,8 @@ const authSlice = createSlice({
         state.error = action.payload || "خطأ في تسجيل الدخول";
         state.isAuthenticated = false;
       })
+
+      // registerUser
       .addCase(registerUser.pending, (state) => {
         state.isLoading = true;
         state.error = null;
@@ -432,6 +472,7 @@ const authSlice = createSlice({
         state.error = action.payload || "خطأ في التسجيل";
         state.isAuthenticated = false;
       })
+
       .addCase(checkAuthStatus.pending, (state) => {
         state.isLoading = true;
       })
@@ -444,6 +485,8 @@ const authSlice = createSlice({
         state.isAuthenticated = false;
         state.error = action.payload;
       })
+
+      // logoutUser
       .addCase(logoutUser.pending, (state) => {
         state.isLoading = true;
       })

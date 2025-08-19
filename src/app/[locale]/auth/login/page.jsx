@@ -232,14 +232,17 @@
 // }
 
 "use client";
+
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser, clearState } from "@/store/auth";
 import { setCurrentUser } from "@/store/users/users";
+
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { useForm } from "react-hook-form";
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
+
 import {
   Box,
   Button,
@@ -253,20 +256,22 @@ import {
   Link as MuiLink,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+
 import NextLink from "next/link";
 import toast from "react-hot-toast";
+import Cookies from "js-cookie";
 
+// Dynamic import for react-hot-toast (client-only)
 const Toaster = dynamic(
   () => import("react-hot-toast").then((mod) => mod.Toaster),
-  {
-    ssr: false,
-  }
+  { ssr: false }
 );
 
 export default function LoginPage() {
   const dispatch = useDispatch();
   const router = useRouter();
   const t = useTranslations("Auth.Login");
+
   const { isLoading } = useSelector((state) => state.auth);
   const {
     register,
@@ -280,12 +285,20 @@ export default function LoginPage() {
 
   const onSubmit = async (data) => {
     const result = await dispatch(loginUser(data));
+
     if (loginUser.fulfilled.match(result)) {
+      // ✅ حفظ الـ user في Redux مباشرة
+      if (result.payload?.user) {
+        dispatch(setCurrentUser(result.payload.user));
+      }
+
       toast.success(t("loginSuccess"));
       reset();
       dispatch(clearState());
       router.push("/");
-    } else {
+    }
+
+    if (loginUser.rejected.match(result)) {
       toast.error(result.payload || t("loginFailed"));
     }
   };
@@ -293,6 +306,7 @@ export default function LoginPage() {
   return (
     <div className="dark:bg-[#1c2737]">
       <Toaster />
+
       <Container
         maxWidth="sm"
         sx={{
@@ -319,6 +333,8 @@ export default function LoginPage() {
           >
             {t("title")}
           </Typography>
+
+          {/* Email Field */}
           <TextField
             label={t("email")}
             variant="outlined"
@@ -345,6 +361,8 @@ export default function LoginPage() {
               mb: 3,
             }}
           />
+
+          {/* Password Field */}
           <TextField
             label={t("password")}
             variant="outlined"
@@ -382,6 +400,7 @@ export default function LoginPage() {
               mb: 5,
             }}
           />
+
           <Button
             type="submit"
             variant="contained"
@@ -401,6 +420,7 @@ export default function LoginPage() {
               t("loginButton")
             )}
           </Button>
+
           <Stack
             direction="row"
             justifyContent="space-between"
