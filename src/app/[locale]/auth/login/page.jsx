@@ -44,9 +44,7 @@ export default function LoginPage() {
 
   // const { isLoading } = useSelector((state) => state.auth);
 
-  const { isFetching, isSuccess, isError, errorMessage } = useSelector(
-    (state) => state.auth
-  );
+  const { isLoading } = useSelector((state) => state.auth);
   const {
     register,
     handleSubmit,
