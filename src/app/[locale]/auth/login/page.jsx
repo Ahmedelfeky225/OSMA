@@ -296,6 +296,7 @@ export default function LoginPage() {
       reset();
       dispatch(clearState());
       router.push("/");
+      router.refresh();
     }
 
     if (loginUser.rejected.match(result)) {
