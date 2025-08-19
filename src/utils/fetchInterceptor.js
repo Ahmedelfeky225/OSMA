@@ -42,35 +42,27 @@ import { getLocale } from "next-intl/server";
 
 export const fetchInterceptor = async (url, options = {}) => {
   const locale = await getLocale();
-
-  // جلب الكوكيز من السيرفر
   const cookieStore = await cookies();
   const tokenCookie = cookieStore.get("token");
 
-  // بناء الـ URL مع الـ locale و الـ params
   let baseURL = `${process.env.NEXT_APP_BASE_URL}/${url}?locale=${locale}`;
+
   if (options?.params) {
     const params = new URLSearchParams(options.params).toString();
     baseURL = `${process.env.NEXT_APP_BASE_URL}/${url}?${params}&locale=${locale}`;
   }
 
-  // تجهيز الـ headers
   const modifiedOptions = {
     ...options,
     headers: {
       ...(options.headers || {}),
       "Content-Type": "application/json",
       appId: process.env.NEXT_PUBLIC_APPID,
-      // إذا الكوكيز موجود نبعته كـ Authorization Bearer
+      // ارسال التوكن في الـ Authorization header
       Authorization: tokenCookie ? `Bearer ${tokenCookie.value}` : "",
     },
     cache: "no-store",
   };
-
-  // لو الطلب من الكلاينت، نضيف credentials عشان يرسل الكوكيز
-  if (typeof window !== "undefined") {
-    modifiedOptions.credentials = "include";
-  }
 
   try {
     const response = await fetch(baseURL, modifiedOptions);
