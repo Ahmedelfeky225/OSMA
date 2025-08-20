@@ -1371,6 +1371,16 @@ export default function ProductForm({ initialData = null }) {
 
     const dataToSubmit = {
       ...formData,
+      translations: {
+        ar: {
+          name: formData.name_ar,
+          description: formData.description_ar,
+        },
+        en: {
+          name: formData.name_en,
+          description: formData.description_en,
+        },
+      },
       notes: {
         top: formData.notes.top
           ? formData.notes.top
