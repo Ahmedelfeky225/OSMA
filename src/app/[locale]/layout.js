@@ -75,6 +75,14 @@ export default async function LocaleLayout({ children, params }) {
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+        <link rel="alternate" hrefLang="en" href="/en" />
+        <link rel="alternate" hrefLang="ar" href="/ar" />
+        <link rel="alternate" hrefLang="x-default" href="/en" />
+        <link rel="canonical" href={`https://osma-perfumes.com/${locale}`} />
+        <link
+          rel="manifest"
+          href={locale === "ar" ? "/manifest.ar.json" : "/manifest.en.json"}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
