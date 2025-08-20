@@ -426,8 +426,8 @@
     }
   },
   "Product": {
-    "brand": "Brand",
-    "inStock": "In Stock",
+    "brand": "العلامة التجارية",
+    "inStock": "متوفر في المخزون",
     "size": "الحجم",
     "concentration": "تركيز العطر",
     "notes": "نوتات العطر",
