@@ -1174,9 +1174,15 @@ export default function ProductForm({ initialData = null }) {
         size: initialData.size || "",
         concentration: initialData.concentration || "",
         notes: {
-          top: initialData.notes?.top?.join(", ") || "",
-          heart: initialData.notes?.heart?.join(", ") || "",
-          base: initialData.notes?.base?.join(", ") || "",
+          top: Array.isArray(initialData.notes?.top)
+            ? initialData.notes.top.join(", ")
+            : "",
+          heart: Array.isArray(initialData.notes?.heart)
+            ? initialData.notes.heart.join(", ")
+            : "",
+          base: Array.isArray(initialData.notes?.base)
+            ? initialData.notes.base.join(", ")
+            : "",
         },
       });
       if (initialData.images && initialData.images.length > 0) {
@@ -1363,32 +1369,28 @@ export default function ProductForm({ initialData = null }) {
     }
     setIsSubmitting(true);
 
-    // Process notes into a single array
-    const notesArray = [
-      ...(formData.notes.top
-        ? formData.notes.top
-            .split(",")
-            .map((note) => note.trim())
-            .filter(Boolean)
-        : []),
-      ...(formData.notes.heart
-        ? formData.notes.heart
-            .split(",")
-            .map((note) => note.trim())
-            .filter(Boolean)
-        : []),
-      ...(formData.notes.base
-        ? formData.notes.base
-            .split(",")
-            .map((note) => note.trim())
-            .filter(Boolean)
-        : []),
-    ];
-
-    // Prepare data for Redux thunk
     const dataToSubmit = {
       ...formData,
-      notes: notesArray, // Send notes as a single array
+      notes: {
+        top: formData.notes.top
+          ? formData.notes.top
+              .split(",")
+              .map((note) => note.trim())
+              .filter((note) => note)
+          : [],
+        heart: formData.notes.heart
+          ? formData.notes.heart
+              .split(",")
+              .map((note) => note.trim())
+              .filter((note) => note)
+          : [],
+        base: formData.notes.base
+          ? formData.notes.base
+              .split(",")
+              .map((note) => note.trim())
+              .filter((note) => note)
+          : [],
+      },
       images: images,
       existingImages: existingImages,
     };
@@ -1443,7 +1445,6 @@ export default function ProductForm({ initialData = null }) {
       dir={isRTL ? "rtl" : "ltr"}
     >
       <div className=" sm:max-w-[90%] max-w-[95%]  mx-auto py-8">
-        {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-4">
             <button
@@ -1474,9 +1475,7 @@ export default function ProductForm({ initialData = null }) {
           onSubmit={handleSubmit}
           className="grid grid-cols-1 xl:grid-cols-4 gap-8"
         >
-          {/* Main Form */}
           <div className="xl:col-span-3 space-y-8">
-            {/* Language Tabs & Basic Information */}
             <div className={cardClass}>
               <div className="border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-slate-800 dark:to-slate-700 rounded-t-sm">
                 <div className="flex">
@@ -1612,7 +1611,6 @@ export default function ProductForm({ initialData = null }) {
               </div>
             </div>
 
-            {/* Category & Stock & Price */}
             <div className={cardClass + " p-8"}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField
@@ -1748,7 +1746,6 @@ export default function ProductForm({ initialData = null }) {
                 )}
             </div>
 
-            {/* Optional Details (remaining fields) */}
             <div className={cardClass + " p-8"}>
               <h3
                 className={`text-xl font-semibold mb-6 flex items-center gap-2 ${
@@ -1856,9 +1853,7 @@ export default function ProductForm({ initialData = null }) {
             </div>
           </div>
 
-          {/* Sidebar */}
           <div className="xl:col-span-1 space-y-8">
-            {/* Image Upload */}
             <div className={cardClass + " p-6"}>
               <h3
                 className={`text-lg font-semibold mb-4 flex items-center gap-2 ${
@@ -1941,7 +1936,6 @@ export default function ProductForm({ initialData = null }) {
               )}
             </div>
 
-            {/* Form Status */}
             <div className={cardClass + " p-6"}>
               <h3
                 className={`text-lg font-semibold mb-4 ${
@@ -1994,7 +1988,6 @@ export default function ProductForm({ initialData = null }) {
               </div>
             </div>
 
-            {/* Actions */}
             <div className={cardClass + " p-6"}>
               <div className="space-y-4">
                 <button
