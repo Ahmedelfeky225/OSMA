@@ -1092,9 +1092,18 @@ const ProductForm = ({
         size: initialData.size || "",
         concentration: initialData.concentration || "",
         notes: {
-          top: initialData.notes?.top?.join(", ") || "",
-          heart: initialData.notes?.heart?.join(", ") || "",
-          base: initialData.notes?.base?.join(", ") || "",
+          top:
+            initialData.notes?.top
+              ?.filter((note) => note && note.trim() !== "")
+              .join(", ") || "",
+          heart:
+            initialData.notes?.heart
+              ?.filter((note) => note && note.trim() !== "")
+              .join(", ") || "",
+          base:
+            initialData.notes?.base
+              ?.filter((note) => note && note.trim() !== "")
+              .join(", ") || "",
         },
         stock: initialData.stock || 0,
         isFeatured: initialData.isFeatured || false,
@@ -1140,18 +1149,26 @@ const ProductForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // تحويل البيانات للشكل المطلوب
     const processedData = {
       ...formData,
       notes: {
         top: formData.notes.top
-          ? formData.notes.top.split(",").map((note) => note.trim())
+          ? formData.notes.top
+              .split(",")
+              .map((note) => note.trim())
+              .filter((note) => note !== "") // Remove empty strings
           : [],
         heart: formData.notes.heart
-          ? formData.notes.heart.split(",").map((note) => note.trim())
+          ? formData.notes.heart
+              .split(",")
+              .map((note) => note.trim())
+              .filter((note) => note !== "") // Remove empty strings
           : [],
         base: formData.notes.base
-          ? formData.notes.base.split(",").map((note) => note.trim())
+          ? formData.notes.base
+              .split(",")
+              .map((note) => note.trim())
+              .filter((note) => note !== "") // Remove empty strings
           : [],
       },
     };
@@ -1335,7 +1352,7 @@ const ProductForm = ({
                       : noteType === "heart"
                       ? "الوسطى"
                       : "القاعدية"
-                  } مفصولة بفواصل`}
+                  } مفصولة بفواصل (مثال: ورد، ياسمين، عود)`}
                 />
               ))}
             </div>
