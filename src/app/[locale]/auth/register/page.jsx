@@ -446,6 +446,25 @@ export default function RegisterPage() {
               t("registerButton")
             )}
           </Button>
+          <Stack
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
+            mt={2}
+            fontSize={14}
+          >
+            <Link
+              href="/auth/login"
+              underline="hover"
+              sx={{
+                color: "var(--primary-color)",
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}
+            >
+              {t("loginLink")}
+            </Link>
+          </Stack>
         </Box>
       </Container>
     </div>
