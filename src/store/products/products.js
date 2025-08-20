@@ -1249,28 +1249,28 @@ export const createProduct = createAsyncThunk(
       // إضافة البيانات النصية
       Object.keys(productData).forEach((key) => {
         if (key === "notes") {
-          // تحويل notes object إلى الشكل المطلوب للباك إند
           if (productData.notes) {
             const notesObject = {
-              top: productData.notes.top
-                ? productData.notes.top
-                    .split(",")
-                    .map((note) => note.trim())
-                    .filter(Boolean)
-                : [],
-              heart: productData.notes.heart
-                ? productData.notes.heart
-                    .split(",")
-                    .map((note) => note.trim())
-                    .filter(Boolean)
-                : [],
-              base: productData.notes.base
-                ? productData.notes.base
-                    .split(",")
-                    .map((note) => note.trim())
-                    .filter(Boolean)
-                : [],
+              top: [],
+              heart: [],
+              base: [],
             };
+
+            // التحقق من نوع البيانات ومعالجتها بناءً على ذلك
+            Object.keys(productData.notes).forEach((noteType) => {
+              const noteValue = productData.notes[noteType];
+              if (Array.isArray(noteValue)) {
+                // إذا كانت array بالفعل، استخدمها مباشرة
+                notesObject[noteType] = noteValue.filter(Boolean);
+              } else if (typeof noteValue === "string" && noteValue.trim()) {
+                // إذا كانت string، قم بتحويلها إلى array
+                notesObject[noteType] = noteValue
+                  .split(",")
+                  .map((note) => note.trim())
+                  .filter(Boolean);
+              }
+            });
+
             formData.append("notes", JSON.stringify(notesObject));
           }
         } else if (key !== "images" && productData[key] !== undefined) {
@@ -1330,25 +1330,26 @@ export const updateProduct = createAsyncThunk(
         } else if (key === "notes") {
           if (productData.notes) {
             const notesObject = {
-              top: productData.notes.top
-                ? productData.notes.top
-                    .split(",")
-                    .map((note) => note.trim())
-                    .filter(Boolean)
-                : [],
-              heart: productData.notes.heart
-                ? productData.notes.heart
-                    .split(",")
-                    .map((note) => note.trim())
-                    .filter(Boolean)
-                : [],
-              base: productData.notes.base
-                ? productData.notes.base
-                    .split(",")
-                    .map((note) => note.trim())
-                    .filter(Boolean)
-                : [],
+              top: [],
+              heart: [],
+              base: [],
             };
+
+            // التحقق من نوع البيانات ومعالجتها بناءً على ذلك
+            Object.keys(productData.notes).forEach((noteType) => {
+              const noteValue = productData.notes[noteType];
+              if (Array.isArray(noteValue)) {
+                // إذا كانت array بالفعل، استخدمها مباشرة
+                notesObject[noteType] = noteValue.filter(Boolean);
+              } else if (typeof noteValue === "string" && noteValue.trim()) {
+                // إذا كانت string، قم بتحويلها إلى array
+                notesObject[noteType] = noteValue
+                  .split(",")
+                  .map((note) => note.trim())
+                  .filter(Boolean);
+              }
+            });
+
             formData.append("notes", JSON.stringify(notesObject));
           }
         } else if (productData[key] !== undefined) {
