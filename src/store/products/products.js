@@ -1273,8 +1273,20 @@ export const createProduct = createAsyncThunk(
 
             formData.append("notes", JSON.stringify(notesObject));
           }
+        } else if (key === "translations") {
+          if (productData.translations) {
+            formData.append(
+              "translations",
+              JSON.stringify(productData.translations)
+            );
+          }
         } else if (key !== "images" && productData[key] !== undefined) {
-          formData.append(key, productData[key]);
+          const value = productData[key];
+          if (typeof value === "object" && value !== null) {
+            formData.append(key, JSON.stringify(value));
+          } else {
+            formData.append(key, value);
+          }
         }
       });
 
@@ -1352,8 +1364,20 @@ export const updateProduct = createAsyncThunk(
 
             formData.append("notes", JSON.stringify(notesObject));
           }
+        } else if (key === "translations") {
+          if (productData.translations) {
+            formData.append(
+              "translations",
+              JSON.stringify(productData.translations)
+            );
+          }
         } else if (productData[key] !== undefined) {
-          formData.append(key, productData[key]);
+          const value = productData[key];
+          if (typeof value === "object" && value !== null) {
+            formData.append(key, JSON.stringify(value));
+          } else {
+            formData.append(key, value);
+          }
         }
       });
 
