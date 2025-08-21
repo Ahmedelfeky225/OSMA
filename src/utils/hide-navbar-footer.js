@@ -6,4 +6,6 @@ export const hideNavbarAndFooter = [
   "/auth/verify-email",
   "/auth/change-password",
   "/admin",
+  "/not-found", // للـ 404
+  "/error",
 ];
