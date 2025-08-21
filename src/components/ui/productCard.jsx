@@ -45,7 +45,7 @@ const ProductCard = ({ product }) => {
     )} ${description}\n\n${t("whatsapp_message.image")}: ${image}\n${t(
       "whatsapp_message.link"
     )}: ${productUrl}`;
-    return `https://wa.me/+968 7711 7906?text=${encodeURIComponent(message)}`;
+    return `https://wa.me/+96877117906?text=${encodeURIComponent(message)}`;
   };
 
   const renderStars = (rating) => {
