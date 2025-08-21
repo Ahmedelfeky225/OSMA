@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { useLocale } from "next-intl";
+import Link from "next/link";
 
 export default function Error({ error, reset }) {
   const locale = useLocale();
@@ -65,13 +66,13 @@ export default function Error({ error, reset }) {
         </div>
 
         {/* Error Details */}
-        {error?.message && (
+        {/* {error?.message && (
           <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/10 border border-red-200 dark:border-red-800 rounded-lg">
             <p className="text-sm text-red-600 dark:text-red-400 font-mono">
               {error.message}
             </p>
           </div>
-        )}
+        )} */}
 
         {/* Action Buttons */}
         <div className="space-y-4">
@@ -82,12 +83,13 @@ export default function Error({ error, reset }) {
             {currentContent.retryButton}
           </button>
 
-          <button
-            onClick={() => (window.location.href = "/")}
+          <Link
+            // onClick={() => (window.location.href = "/")}
+            href="/"
             className="block w-full border-2 border-[#7a99c0] text-[#7a99c0] hover:bg-[#7a99c0] hover:text-white font-medium py-3 px-6 rounded-lg transition-all duration-200"
           >
             {currentContent.homeButton}
-          </button>
+          </Link>
         </div>
 
         {/* Support Info */}
