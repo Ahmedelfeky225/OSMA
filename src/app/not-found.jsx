@@ -26,11 +26,13 @@ export default function NotFound() {
   return (
     <div className="min-h-screen bg-white dark:bg-[#1b2535] flex items-center justify-center px-4">
       <div className="max-w-md w-full text-center">
+        {/* OSMA Brand Logo */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-[#7a99c0] mb-2">OSMA</h1>
           <div className="w-16 h-1 bg-[#7a99c0] mx-auto rounded-full"></div>
         </div>
 
+        {/* 404 Error */}
         <div className="mb-8">
           <h2 className="text-8xl font-bold text-gray-200 dark:text-gray-700 mb-4">
             404
@@ -43,6 +45,7 @@ export default function NotFound() {
           </p>
         </div>
 
+        {/* Action Buttons */}
         <div className="space-y-4">
           <Link
             href="/"
@@ -57,6 +60,19 @@ export default function NotFound() {
           >
             {currentContent.backButton}
           </button>
+        </div>
+
+        {/* Decorative Elements */}
+        <div className="mt-8 flex justify-center space-x-2">
+          <div className="w-2 h-2 bg-[#7a99c0] rounded-full animate-pulse"></div>
+          <div
+            className="w-2 h-2 bg-[#7a99c0] rounded-full animate-pulse"
+            style={{ animationDelay: "0.2s" }}
+          ></div>
+          <div
+            className="w-2 h-2 bg-[#7a99c0] rounded-full animate-pulse"
+            style={{ animationDelay: "0.4s" }}
+          ></div>
         </div>
       </div>
     </div>
