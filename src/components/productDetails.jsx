@@ -500,6 +500,21 @@ const ProductDetails = ({ product }) => {
       minimumFractionDigits: 0,
     }).format(value);
 
+  const name = translations?.[locale]?.name || product?.name || "اسم المنتج";
+  const description =
+    translations?.[locale]?.description || product?.description || "";
+  const image = images?.[0] || "";
+
+  const generateWhatsAppLink = () => {
+    const baseUrl = process.env.NEXT_PUBLIC_FRONTEND_URL;
+    const productUrl = `${baseUrl}/${locale}/products/${slug}-${_id}`;
+    const message = `${t("whatsapp_message.intro")} ${name}\n\n${t(
+      "whatsapp_message.description"
+    )} ${description}\n\n${t("whatsapp_message.image")}: ${image}\n${t(
+      "whatsapp_message.link"
+    )}: ${productUrl}`;
+    return `https://wa.me/+96877117906?text=${encodeURIComponent(message)}`;
+  };
   return (
     <div className="py-6 max-w-[90%] mx-auto pt-[120px]  sm:pt-[130px] sm:pb-16">
       <div className="grid lg:grid-cols-2 gap-10">
@@ -673,7 +688,7 @@ const ProductDetails = ({ product }) => {
 
           {/* WhatsApp Contact */}
           <a
-            href="https://wa.me/96877117906"
+            href={generateWhatsAppLink()}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-8 inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground text-sm font-medium py-3 px-6 rounded-sm transition-all duration-200 hover:bg-primary/90"

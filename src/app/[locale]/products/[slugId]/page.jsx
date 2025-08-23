@@ -141,7 +141,7 @@ export async function generateMetadata({ params }) {
 }
 
 const ProductPage = async ({ params }) => {
-  console.log("PARAMS:", params);
+  // console.log("PARAMS:", params);
 
   if (!params.slugId) return <div>Invalid URL</div>;
 
