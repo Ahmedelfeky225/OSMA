@@ -77,14 +77,27 @@ import { fetchInterceptor } from "@/utils/fetchInterceptor";
 
 // جلب بيانات المنتج بالـ ID
 async function getProduct(id) {
-  return await fetchInterceptor(`products/${id}`);
+  try {
+    const product = await fetchInterceptor(`products/${id}`);
+    return product || null;
+  } catch (error) {
+    console.error("Error fetching product:", error);
+    return null;
+  }
 }
 
 // Metadata ديناميكي
 export async function generateMetadata({ params }) {
-  // params.slugId = "ahooood-68a61243ba59c4910e722b0c"
+  if (!params.slugId) {
+    return {
+      title: "Invalid URL",
+      description: "The product URL is invalid.",
+      icons: { icon: "/favicon.ico" },
+    };
+  }
+
   const parts = params.slugId.split("-");
-  const id = parts[parts.length - 1]; // آخر جزء هو _id
+  const id = parts[parts.length - 1];
 
   const product = await getProduct(id);
 
@@ -99,34 +112,40 @@ export async function generateMetadata({ params }) {
     };
   }
 
+  const name = product?.translations?.en?.name || "Product Details";
+  const description =
+    product?.translations?.en?.description || "View product details";
+
   return {
-    title: product.translations?.en?.name || "Product Details",
-    description:
-      product.translations?.en?.description || "View product details",
+    title: name,
+    description,
     icons: { icon: faviconUrl },
     openGraph: {
-      title: product.translations?.en?.name,
-      description: product.translations?.en?.description,
-      url: `${baseUrl}/products/${product.translations?.en?.name}-${product._id}`,
+      title: name,
+      description,
+      url: `${baseUrl}/products/${name}-${product._id}`,
       images: [
         {
           url: product.images?.[0],
-          alt: product.translations?.en?.name,
+          alt: name,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: product.translations?.en?.name,
-      description: product.translations?.en?.description,
+      title: name,
+      description,
       images: [product.images?.[0]],
     },
   };
 }
 
 const ProductPage = async ({ params }) => {
+  if (!params.slugId) return <div>Invalid URL</div>;
+
   const parts = params.slugId.split("-");
-  const id = parts[parts.length - 1]; // استخراج الـ _id
+  const id = parts[parts.length - 1];
+
   const product = await getProduct(id);
 
   if (!product) return <div>Product not found</div>;
