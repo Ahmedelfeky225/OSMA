@@ -50,11 +50,13 @@ const ProductDetails = ({ product }) => {
   const generateWhatsAppLink = () => {
     const baseUrl = process.env.NEXT_PUBLIC_FRONTEND_URL;
     const productUrl = `${baseUrl}/${locale}/products/${slug}-${_id}`;
-    const message = `${tProducts("whatsapp_message.intro")} ${name}\n\n${t(
+    const message = `${tProducts(
+      "whatsapp_message.intro"
+    )} ${name}\n\n${tProducts(
       "whatsapp_message.description"
-    )} ${description}\n\n${tProducts("whatsapp_message.image")}: ${image}\n${t(
-      "whatsapp_message.link"
-    )}: ${productUrl}`;
+    )} ${description}\n\n${tProducts(
+      "whatsapp_message.image"
+    )}: ${image}\n${tProducts("whatsapp_message.link")}: ${productUrl}`;
     return `https://wa.me/+96877117906?text=${encodeURIComponent(message)}`;
   };
   return (
