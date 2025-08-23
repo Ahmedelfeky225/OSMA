@@ -487,6 +487,7 @@ const ProductDetails = ({ product }) => {
     averageRating,
     numReviews,
     finalPrice,
+    slug,
     _id,
   } = product;
 

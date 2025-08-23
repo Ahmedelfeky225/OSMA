@@ -21,6 +21,7 @@ const ProductCard = ({ product }) => {
     finalPrice,
     averageRating = 0,
     numReviews = 0,
+    slug,
     _id,
   } = product;
 
