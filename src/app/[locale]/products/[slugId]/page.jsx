@@ -141,6 +141,8 @@ export async function generateMetadata({ params }) {
 }
 
 const ProductPage = async ({ params }) => {
+  console.log("PARAMS:", params);
+
   if (!params.slugId) return <div>Invalid URL</div>;
 
   const parts = params.slugId.split("-");
