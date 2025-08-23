@@ -196,10 +196,6 @@ export default async function LocaleLayout({ children, params }) {
   const fontClass = locale === "ar" ? rubik.variable : poppins.variable;
   const fontDisplay = locale === "ar" ? rubik.className : poppins.className;
 
-  // detect special pages (not-found / error)
-  const isSpecialPage =
-    children?.type?.name === "NotFound" || children?.type?.name === "Error";
-
   return (
     <html lang={locale} dir={dir} className={`${fontDisplay} ${fontClass}`}>
       <head>
@@ -249,13 +245,7 @@ export default async function LocaleLayout({ children, params }) {
                 </div>
               }
             >
-              {isSpecialPage ? (
-                children
-              ) : (
-                <LayoutStructure userAuth={userAuth}>
-                  {children}
-                </LayoutStructure>
-              )}
+              <LayoutStructure userAuth={userAuth}>{children}</LayoutStructure>
             </Suspense>
           </NextIntlClientProvider>
         </ThemeProvider>
