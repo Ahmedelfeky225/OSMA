@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://osma-perfume.vercel.app/sitemap
+Sitemap: https://osma-perfume.vercel.app/en/sitemap
+Sitemap: https://osma-perfume.vercel.app/ar/sitemap

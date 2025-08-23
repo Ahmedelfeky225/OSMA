@@ -1,11 +1,10 @@
 // /app/sitemap/route.js
-import { routing } from "@/i18n/routing";
 
 const BASE_URL = "https://osma-perfume.vercel.app";
 
 export async function GET() {
   // اللغات المدعومة من next-intl
-  const locales = routing.locales || ["en", "ar"]; // إنجليزي وعربي
+  const locales = ["en", "ar"]; // إنجليزي وعربي
 
   // الصفحات الثابتة
   const staticPages = ["/about-us"];
