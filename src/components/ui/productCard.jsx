@@ -78,7 +78,7 @@ const ProductCard = ({ product }) => {
       <div className="relative overflow-hidden">
         <Link
           className="relative block aspect-square overflow-hidden rounded-t-2xl"
-          href={`/products/${product._id}`}
+          href={`/products/${product?.slug}-${product?._id}`}
         >
           {image && (
             <CustomImage

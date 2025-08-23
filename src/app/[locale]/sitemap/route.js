@@ -1,5 +1,7 @@
 // /app/[locale]/sitemap/route.js
-const BASE_URL = "https://osma-perfume.vercel.app";
+import slugify from "slugify";
+
+const BASE_URL = "https://osma-perfume.vercel.app"; // روابط الموقع النهائية
 
 export async function GET({ params }) {
   const locale = params?.locale || "en";
@@ -31,10 +33,39 @@ export async function GET({ params }) {
     { path: "/categories/air-fresheners", changefreq: "weekly", priority: 0.9 },
   ];
 
-  // صفحات المنتجات الفردية (اضفهم لو عندك قاعدة بيانات)
-  const products = []; // مثال: [{ path: "/products/rose-perfume", changefreq: "weekly", priority: 0.7 }]
+  // ---- جلب المنتجات من الـ backend مع header ----
+  const BACKEND_URL = "https://osma-backend-1.onrender.com/api";
+  let products = [];
+  try {
+    const res = await fetch(`${BACKEND_URL}/products?locale=${locale}`, {
+      headers: {
+        appId: process.env.NEXT_PUBLIC_APPID,
+      },
+    });
+    const data = await res.json();
 
-  // دمج كل الروابط في مصفوفة واحدة
+    if (data.products && Array.isArray(data.products)) {
+      products = data.products.map((product) => {
+        // لو ما فيش slug، نولّد واحد من الاسم
+        let productSlug = product.slug;
+        if (!productSlug) {
+          const name = product.translations?.[locale]?.name || "product";
+          productSlug = slugify(name, { lower: true, strict: true });
+        }
+
+        return {
+          path: `/products/${productSlug}`,
+          changefreq: "weekly",
+          priority: 0.7,
+          lastmod: product.updatedAt || product.createdAt,
+        };
+      });
+    }
+  } catch (err) {
+    console.error("Error fetching products for sitemap:", err);
+  }
+
+  // دمج كل الروابط
   const allPages = [
     ...staticPages,
     ...dynamicPages,
@@ -46,7 +77,11 @@ export async function GET({ params }) {
     (page) => `
     <url>
       <loc>${BASE_URL}/${locale}${page.path}</loc>
-      <lastmod>${new Date().toISOString()}</lastmod>
+      <lastmod>${
+        page.lastmod
+          ? new Date(page.lastmod).toISOString()
+          : new Date().toISOString()
+      }</lastmod>
       <changefreq>${page.changefreq}</changefreq>
       <priority>${page.priority}</priority>
     </url>`
