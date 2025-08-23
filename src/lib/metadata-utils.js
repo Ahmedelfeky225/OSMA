@@ -126,7 +126,7 @@ export function generateProductStructuredData(product) {
       seller: {
         "@type": "Organization",
         name: "متجر العطور الفاخرة",
-        url: "https://osma.vercel.app",
+        url: "https://osma-perfume.vercel.app",
         address: {
           "@type": "PostalAddress",
           addressLocality: "مسقط",

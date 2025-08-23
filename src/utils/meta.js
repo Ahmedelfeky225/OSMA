@@ -7,7 +7,7 @@ export function generatePageMeta(locale, translations, pageKey) {
     openGraph: {
       title: t.metaTitle || t.title || "OSMA",
       description: t.metaDescription || t.description || "OSMA Perfume",
-      url: t.metaUrl || "https://osma.vercel.app", // هنا الرابط الصحيح
+      url: t.metaUrl || "https://osma-perfume.vercel.app", // هنا الرابط الصحيح
       siteName: "OSMA",
       images: t.metaImage
         ? [
