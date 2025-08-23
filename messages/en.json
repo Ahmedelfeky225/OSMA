@@ -933,5 +933,20 @@
     "subtitle": "We're working hard to bring you the best settings experience",
     "description": "Our settings module is currently under development. It will include all the tools you need to customize your experience.",
     "backHome": "Back to Home"
+  },
+  "Aboutt": {
+    "metaTitle": "About OSMA Perfumes | Luxury Fragrances",
+    "metaDescription": "Discover the story, mission, and vision of OSMA Perfumes. Blending Eastern inspiration with Western elegance for unique fragrances.",
+    "metaImage": "https://osma.vercel.app/images/about-og.jpg",
+
+    "hero": {
+      "badge": "About Us - OSMA Perfumes",
+      "title": "We are the scent of every moment",
+      "description": "At OSMA, we don't just sell perfumes — we create unforgettable experiences. From the heart of Eastern inspiration and the magic of Western fragrances, we blend art with the senses to give you your own unique fragrance signature."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To be the leading brand in the world of luxury perfumes, where quality meets craftsmanship, giving everyone a fragrance that reflects their personality."
+    }
   }
 }

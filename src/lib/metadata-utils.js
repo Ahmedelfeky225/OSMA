@@ -126,7 +126,13 @@ export function generateProductStructuredData(product) {
       seller: {
         "@type": "Organization",
         name: "متجر العطور الفاخرة",
-        url: "https://yourstore.com",
+        url: "https://osma.vercel.app",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "مسقط",
+          addressCountry: "سلطنة عمان",
+        },
+        telephone: "+968-7711-7906",
       },
     },
     aggregateRating:
