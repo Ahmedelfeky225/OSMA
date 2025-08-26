@@ -10,7 +10,7 @@
   --color-tex: #7a99c0; /* لون أساسي للوضع الفاتح */
 
   /* Shadcn/ui default variables - تم تفعيلها وتعديلها */
-  --background: oklch(1 0 0); /* أبيض فاتح */
+  --background: #f9fbfd; /* أبيض فاتح */
   --foreground: oklch(0.145 0 0); /* أسود داكن */
   --card: oklch(98.809% 0.00011 271.152); /* أبيض للبطاقات */
   --card-foreground: oklch(0.145 0 0); /* نص البطاقات */
@@ -147,7 +147,6 @@ body {
   scroll-behavior: smooth;
   padding-right: 0 !important;
   overflow: auto !important;
-  background-color: #f9fbfd;
 }
 
 .aboutLi::after {
