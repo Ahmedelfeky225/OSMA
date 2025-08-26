@@ -10,7 +10,7 @@ import "swiper/css/effect-fade";
 
 const HeroSlider = () => {
   return (
-    <div className="relative w-full h-[65vw] sm:h-[calc(100vh-90px)]    overflow-hidden z-0">
+    <div className="relative w-full h-[65vw] sm:h-[calc(100vh-90px)]  overflow-hidden z-0">
       <Swiper
         modules={[Autoplay, EffectFade]}
         effect="fade"

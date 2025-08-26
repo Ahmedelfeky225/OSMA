@@ -83,12 +83,12 @@ const Features = ({ exclusiveData }) => {
 
   return (
     <section
-      className="sm:py-16 pt-12 pb-0 bg-gradient-to-br from-slate-50 to-blue-50/30 dark:from-gray-900 dark:to-gray-800 overflow-hidden relative"
+      className="sm:py-12 pt-8 pb-0 bg-gradient-to-br from-slate-50 to-blue-50/30 dark:from-gray-900 dark:to-gray-800 overflow-hidden relative"
       dir={isRTL ? "rtl" : "ltr"}
     >
       <div className="max-w-[90%] mx-auto px-4">
         {/* Header مع شعار OSMA */}
-        <div className="text-center mb-12">
+        <div className="text-center sm:mb-12 mb-6">
           <div className="inline-flex items-center gap-2 mb-4">
             <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#7a99c0] to-[#5a7ba0] flex items-center justify-center shadow-lg">
               <span className="text-white font-bold text-sm">O</span>
@@ -246,9 +246,9 @@ const Features = ({ exclusiveData }) => {
       {/* Custom Styles */}
       <style jsx global>{`
         /* Features Swiper Container */
-        .features-swiper {
+        /* .features-swiper {
           padding-bottom: 60px !important;
-        }
+        } */
 
         /* RTL Support for Swiper */
         .features-swiper[dir="rtl"] .swiper-slide {
@@ -373,8 +373,10 @@ const Features = ({ exclusiveData }) => {
           .features-swiper .features-custom-bullet {
             width: 10px !important;
             height: 10px !important;
-            margin: 0 4px !important;
+            margin-left: 6px !important;
+            margin-right: 6px !important;
           }
+
           .features-swiper
             .features-custom-bullet.swiper-pagination-bullet-active {
             transform: scale(1.4) !important;

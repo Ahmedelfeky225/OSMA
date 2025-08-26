@@ -11,7 +11,7 @@ const Video = () => {
   });
 
   return (
-    <div ref={ref} className="max-w-6xl mx-auto sm:py-16  px-3 md:px-0">
+    <div ref={ref} className="max-w-6xl mx-auto sm:py-16 px-3 md:px-0">
       <div className="h-[320px] sm:h-[420px]">
         {inView && (
           <ReactPlayer

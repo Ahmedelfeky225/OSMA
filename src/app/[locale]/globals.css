@@ -147,6 +147,7 @@ body {
   scroll-behavior: smooth;
   padding-right: 0 !important;
   overflow: auto !important;
+  background-color: #f9fbfd;
 }
 
 .aboutLi::after {

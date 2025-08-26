@@ -86,9 +86,9 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section className="sm:py-16 py-12 bg-gradient-to-br from-slate-50 to-blue-50/30 dark:from-gray-900 dark:to-gray-800">
+    <section className="sm:py-12 py-6 bg-gradient-to-br from-slate-50 to-blue-50/30 dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-[90%] mx-auto px-4">
-        <div className="text-center mb-12">
+        <div className="text-center sm:mb-12 mb-6">
           <div className="inline-flex items-center gap-2 mb-4">
             <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#7a99c0] to-[#5a7ba0] flex items-center justify-center shadow-lg">
               <span className="text-white font-bold text-sm">O</span>
@@ -97,7 +97,7 @@ export default function TestimonialsSection() {
               OSMA
             </span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#7a99c0] to-[#5a7ba0] bg-clip-text text-transparent mb-4">
+          <h2 className="text-[26px] md:text-4xl font-bold bg-gradient-to-r from-[#7a99c0] to-[#5a7ba0] bg-clip-text text-transparent mb-4">
             {t("title")}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-[#7a99c0] to-[#5a7ba0] mx-auto rounded-full"></div>

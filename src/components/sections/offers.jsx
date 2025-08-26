@@ -92,12 +92,12 @@ const Offers = ({ offersData }) => {
 
   return (
     <section
-      className="sm:py-16 pt-12 pb-0 bg-gradient-to-br from-slate-50 to-blue-50/30 dark:from-gray-900 dark:to-gray-800"
+      className="sm:py-6 py-8 bg-gradient-to-br from-slate-50 to-blue-50/30 dark:from-gray-900 dark:to-gray-800"
       dir={isRTL ? "rtl" : "ltr"}
     >
       <div className="max-w-[90%] mx-auto px-4">
         {/* Header مع شعار OSMA */}
-        <div className="text-center mb-12">
+        <div className="text-center sm:mb-12 mb-6">
           <div className="inline-flex items-center gap-2 mb-4">
             <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#7a99c0] to-[#5a7ba0] flex items-center justify-center shadow-lg">
               <span className="text-white font-bold text-sm">O</span>
@@ -234,9 +234,9 @@ const Offers = ({ offersData }) => {
 
       <style jsx global>{`
         /* Offers Swiper Container */
-        .offers-swiper {
+        /* .offers-swiper {
           padding-bottom: 60px !important;
-        }
+        } */
 
         /* RTL Support for Swiper */
         .offers-swiper[dir="rtl"] .swiper-slide {
