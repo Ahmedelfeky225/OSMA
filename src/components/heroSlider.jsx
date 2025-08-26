@@ -22,7 +22,7 @@ const HeroSlider = () => {
         {heroImages.map((image, index) => (
           <SwiperSlide key={index} className="relative z-0">
             <div
-              className="absolute inset-0 bg-cover bg-center z-0"
+              className="absolute inset-0 bg-cover bg-no-repeat bg-center z-0"
               style={{ backgroundImage: `url(${image.src})` }}
             />
             <div className="absolute inset-0 bg-black/20 z-10" />

@@ -100,7 +100,7 @@ export default function Footer() {
                     </div>
                   </div>
 
-                  <p className=" text-foreground opacity-50 leading-relaxed text-sm max-w-xs">
+                  <p className="text-foreground opacity-50 leading-relaxed text-sm max-w-xs mx-auto md:mx-0">
                     {t("footer_about_osma")}
                   </p>
                 </div>
@@ -177,12 +177,12 @@ export default function Footer() {
               </div>
 
               {/* Contact Info */}
-              <div className="lg:col-span-1 space-y-6 mx-auto">
+              <div className="lg:col-span-1 space-y-6 mx-auto md:mx-0">
                 <h4 className="text-lg font-semibold text-foreground flex items-center mx-auto sm:mx-0 sm:w-auto w-fit  gap-2">
                   <FaMapMarkerAlt className="w-5 h-5 text-primary" />
                   {t("footer_contact_title")}
                 </h4>
-                <div className="space-y-6">
+                <div className="space-y-6 flex flex-col items-center md:items-start">
                   {/* Phone */}
                   <a
                     href={`tel:${phoneNumber}`}
