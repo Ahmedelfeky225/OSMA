@@ -62,7 +62,8 @@
   --color-tex: #7a99c0; /* لون أساسي للوضع الفاتح */
 
   /* Shadcn/ui dark mode variables - تم تفعيلها وتعديلها */
-  --background: #101828; /* أسود داكن للخلفية */
+  --background: #182232;
+  /* --background: #101828;  */
   --foreground: oklch(0.985 0 0); /* أبيض فاتح للنص */
   --card: #0a1021; /* لون أغمق للبطاقات */
   --card-hover: #282b336d;
