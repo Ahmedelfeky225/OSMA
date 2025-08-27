@@ -29,6 +29,7 @@ const ProductCard = ({ product }) => {
   const description =
     translations?.[locale]?.description || product?.description || "";
   const image = images?.[0] || "";
+  const nameBrand = locale === "ar" ? "اوسما" : "OSMA";
 
   const formatPrice = (value) => {
     return new Intl.NumberFormat(locale, {
@@ -41,9 +42,9 @@ const ProductCard = ({ product }) => {
   const generateWhatsAppLink = () => {
     const baseUrl = process.env.NEXT_PUBLIC_FRONTEND_URL;
     const productUrl = `${baseUrl}/${locale}/products/${slug}-${_id}`;
-    const message = `${t("whatsapp_message.intro")} ${name}\n\n${t(
+    const message = `${t("whatsapp_message.intro")} ${nameBrand}\n\n${t(
       "whatsapp_message.description"
-    )} ${description}\n\n${t("whatsapp_message.image")}: ${image}\n${t(
+    )} ${name}\n\n${t("whatsapp_message.image")}: ${image}\n${t(
       "whatsapp_message.link"
     )}: ${productUrl}`;
     return `https://wa.me/+96877117906?text=${encodeURIComponent(message)}`;

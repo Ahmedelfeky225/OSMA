@@ -46,17 +46,17 @@ const ProductDetails = ({ product }) => {
   const description =
     translations?.[locale]?.description || product?.description || "";
   const image = images?.[0] || "";
-
+  const nameBrand = locale === "ar" ? "اوسما" : "OSMA";
   const generateWhatsAppLink = () => {
     const baseUrl = process.env.NEXT_PUBLIC_FRONTEND_URL;
     const productUrl = `${baseUrl}/${locale}/products/${slug}-${_id}`;
     const message = `${tProducts(
       "whatsapp_message.intro"
-    )} ${name}\n\n${tProducts(
+    )} ${nameBrand}\n\n${tProducts(
       "whatsapp_message.description"
-    )} ${description}\n\n${tProducts(
-      "whatsapp_message.image"
-    )}: ${image}\n${tProducts("whatsapp_message.link")}: ${productUrl}`;
+    )} ${name}\n\n${tProducts("whatsapp_message.image")}: ${image}\n${tProducts(
+      "whatsapp_message.link"
+    )}: ${productUrl}`;
     return `https://wa.me/+96877117906?text=${encodeURIComponent(message)}`;
   };
   return (
