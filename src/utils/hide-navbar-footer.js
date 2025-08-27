@@ -5,4 +5,5 @@ export const hideNavbarAndFooter = [
   "/auth/reset-password",
   "/auth/verify-email",
   "/auth/change-password",
+  "/admin",
 ];
