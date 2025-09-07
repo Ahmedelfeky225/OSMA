@@ -86,7 +86,7 @@ const Features = ({ exclusiveData }) => {
       className="sm:py-12 pt-8 pb-0 bg-gradient-to-br from-slate-50 to-blue-50/30 dark:from-gray-900 dark:to-gray-800 overflow-hidden relative"
       dir={isRTL ? "rtl" : "ltr"}
     >
-      <div className="max-w-[90%] mx-auto px-4">
+      <div className="max-w-[90%] mx-auto">
         {/* Header مع شعار OSMA */}
         <div className="text-center sm:mb-12 mb-6">
           <div className="inline-flex items-center gap-2 mb-4">
