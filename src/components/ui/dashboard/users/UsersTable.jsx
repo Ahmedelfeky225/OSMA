@@ -85,7 +85,7 @@ export default function UsersTable() {
       dispatch(fetchUsers({ page: currentPage, limit: 10, ...filters }));
       setConfirmDialog({ isOpen: false, userId: null, userEmail: "" });
     } catch (error) {
-      console.error("Delete error:", error);
+      // console.error("Delete error:", error);
     }
   };
 

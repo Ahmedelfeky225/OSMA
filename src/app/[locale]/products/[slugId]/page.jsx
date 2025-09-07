@@ -166,7 +166,7 @@ async function getProduct(id) {
     const product = await fetchInterceptor(`products/${id}`);
     return product || null;
   } catch (error) {
-    console.error("Error fetching product:", error);
+    // console.error("Error fetching product:", error);
     return null;
   }
 }

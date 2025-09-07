@@ -98,7 +98,7 @@ const ProductCard = ({ product }) => {
 
         {/* Discount Badge */}
         {discount > 0 && (
-          <div className="absolute top-3 left-3 z-20">
+          <div className="absolute top-5 left-3 z-20">
             <div className="bg-gradient-to-r from-red-500 to-red-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg transform -rotate-12 group-hover:-rotate-6 transition-transform duration-300">
               <span>
                 {discount}% {locale === "en" ? "sale" : "خصم"}
@@ -108,7 +108,7 @@ const ProductCard = ({ product }) => {
         )}
 
         {/* Quick Actions */}
-        <div className="absolute top-3 right-3 z-20 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transform translate-x-4 group-hover:translate-x-0 transition-all duration-500">
+        <div className="absolute top-5 right-3 z-20 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transform translate-x-4 group-hover:translate-x-0 transition-all duration-500">
           <button
             onClick={() => setIsWishlisted(!isWishlisted)}
             className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
@@ -153,14 +153,6 @@ const ProductCard = ({ product }) => {
         </Link>
 
         {/* Rating */}
-        {averageRating > 0 && (
-          <div className="flex items-center gap-2 mb-3">
-            {renderStars(Math.round(averageRating))}
-            <span className="text-xs text-slate-500 dark:text-gray-400">
-              {/* ({numReviews} {t("reviews")}) */}
-            </span>
-          </div>
-        )}
 
         {/* Price */}
         <div className="flex items-center gap-3 mb-4">
@@ -171,6 +163,14 @@ const ProductCard = ({ product }) => {
             <span className="text-sm text-slate-400 dark:text-gray-500 line-through">
               {formatPrice(price)}
             </span>
+          )}
+          {averageRating > 0 && (
+            <div className="flex items-center gap-2 mb-1">
+              {renderStars(Math.round(averageRating))}
+              <span className="text-xs text-slate-500 dark:text-gray-400">
+                {/* ({numReviews} {t("reviews")}) */}
+              </span>
+            </div>
           )}
         </div>
 

@@ -378,10 +378,10 @@ export default function UserForm({ userId = null }) {
         await dispatch(updateUser({ userId, userData: updateData })).unwrap();
       } else {
         const result = await dispatch(createUser(formData)).unwrap();
-        console.log("User created successfully:", result);
+        // console.log("User created successfully:", result);
       }
     } catch (error) {
-      console.error("Submit error:", error);
+      // console.error("Submit error:", error);
       toast.error(error || "حدث خطأ أثناء العملية", {
         style: {
           background: "var(--admin-danger)",

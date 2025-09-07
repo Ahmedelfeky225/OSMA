@@ -14,7 +14,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 const RelatedProducts = ({ productId }) => {
-  console.log("{{{PP}}}", productId);
+  // console.log("{{{PP}}}", productId);
   const t = useTranslations("products");
   const locale = useLocale();
   const isRTL = locale === "ar";
@@ -75,7 +75,7 @@ const RelatedProducts = ({ productId }) => {
           throw new Error("Failed to fetch related products");
         }
         const data = await response.json();
-        console.log("DATA", data);
+        // console.log("DATA", data);
         setRelatedProducts(data || []);
       } catch (err) {
         setError(err.message);

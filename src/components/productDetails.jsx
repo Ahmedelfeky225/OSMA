@@ -11,7 +11,7 @@ import ReviewsSection from "./reviews/ReviewsSection";
 import AddReviewForm from "./reviews/AddReviewForm";
 
 const ProductDetails = ({ product }) => {
-  console.log("PRODUCTID", product._id);
+  // console.log("PRODUCTID", product._id);
   const t = useTranslations("Product");
   const tProducts = useTranslations("products");
   const locale = useLocale();

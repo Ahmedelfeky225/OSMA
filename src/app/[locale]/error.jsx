@@ -112,9 +112,9 @@ import Link from "next/link";
 export default function Error({ error, reset }) {
   const locale = useLocale();
 
-  useEffect(() => {
-    console.error(error);
-  }, [error]);
+  // useEffect(() => {
+  //   console.error(error);
+  // }, [error]);
 
   const content = {
     ar: {

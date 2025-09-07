@@ -31,7 +31,7 @@ export const fetchInterceptor = async (url, options = {}) => {
     if (!response.ok) return null;
     return data;
   } catch (error) {
-    console.error("❌ Fetch Interceptor Error:", error.message);
+    // console.error("❌ Fetch Interceptor Error:", error.message);
     return null;
   }
 };

@@ -239,7 +239,9 @@
         "placeholder": "Search for product..."
       },
       "price": {
-        "title": "Price Range"
+        "title": "Price Range",
+        "note": "Price Note"
+
       },
       "rating": {
         "title": "Minimum Rating"

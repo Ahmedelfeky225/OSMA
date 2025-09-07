@@ -17,14 +17,15 @@ const bodySprayPage = async ({ searchParams }) => {
   // استخراج جميع الفلاتر من searchParams المحلولة
   const {
     search,
-    minPrice,
-    maxPrice,
+    minFinalPrice,
+    maxFinalPrice,
     rating,
     inStock,
     minReviews,
     minDiscount,
     startDate,
     endDate,
+    sort,
     brand,
   } = resolvedSearchParams;
 
@@ -33,14 +34,15 @@ const bodySprayPage = async ({ searchParams }) => {
     page: page,
     limit: 10,
     ...(search && { search }),
-    ...(minPrice && { minPrice }),
-    ...(maxPrice && { maxPrice }),
+    ...(minFinalPrice && { minFinalPrice }),
+    ...(maxFinalPrice && { maxFinalPrice }),
     ...(rating && { rating }),
     ...(inStock && { inStock }),
     ...(minReviews && { minReviews }),
     ...(minDiscount && { minDiscount }),
     ...(startDate && { startDate }),
     ...(endDate && { endDate }),
+    ...(sort && { sort }),
     // تم إزالة فلتر 'brand' من هنا أيضًا لأنه لن يتم تمريره من الـ UI
     // ...(brand && { brand }),
   };
@@ -72,17 +74,19 @@ const bodySprayPage = async ({ searchParams }) => {
   return (
     <div className="flex flex-col md:flex-row gap-6 max-w-[90%] mx-auto pt-[120px]  sm:pt-[130px] sm:pb-16">
       {/* Filter Sidebar */}
-      <aside className="flex-1">
-        <ProductFilters
-          minPriceRange={calculatedMinPriceRange}
-          maxPriceRange={calculatedMaxPriceRange}
-          preservePage={true} // ✅ إضافة preservePage لمنع تداخل الفلاتر مع الـ pagination
-        />
-      </aside>
+      {data?.products?.length > 1 && (
+        <aside className="flex-1">
+          <ProductFilters
+            minPriceRange={calculatedMinPriceRange}
+            maxPriceRange={calculatedMaxPriceRange}
+            preservePage={true} // ✅ إضافة preservePage لمنع تداخل الفلاتر مع الـ pagination
+          />
+        </aside>
+      )}
 
       {/* Products List */}
       <main className="xl:flex-3 lg:flex-2 sm:flex-1">
-        <SearchInput />
+        {data?.products?.length > 1 && <SearchInput />}
 
         {/* Loading State */}
         {!data?.products && (
@@ -94,15 +98,17 @@ const bodySprayPage = async ({ searchParams }) => {
         {/* No Products Found */}
         {data?.products && data.products.length === 0 && (
           <div className="text-center py-12">
-            <div className="text-slate-500 dark:text-gray-400 text-lg">
-              لم يتم العثور على منتجات
+            <div className="text-slate-500 dark:text-gray-400 text-2xl">
+              {locale == "en"
+                ? "No Products Found"
+                : "  لم يتم العثور على منتجات"}
             </div>
           </div>
         )}
 
         {/* Products Grid */}
         {data?.products && data.products.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 lg:gap-3 2xl:gap-7">
+          <div className="grid grid-cols-1 sm:grid-cols-1 gap-5 lg:grid-cols-2 2xl:grid-cols-3 lg:gap-3 2xl:gap-7">
             {data.products.map((product) => (
               <ProductCard product={product} key={product._id} />
             ))}

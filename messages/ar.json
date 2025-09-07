@@ -1,4 +1,5 @@
 {
+  
   "productsPage": {
     "manageProducts": "إدارة المنتجات",
     "manageProductsDescription": "عرض وتعديل وحذف المنتجات الموجودة في متجرك.",
@@ -574,6 +575,7 @@
     "logout": "تسجيل الخروج"
   },
   "filters": {
+
     "title": "فلاتر المنتجات",
     "brand": "اوسما",
     "resetFilters": "إعادة تعيين",
@@ -592,12 +594,15 @@
       "discount": "خصم"
     },
     "sections": {
+    
       "search": {
         "title": "البحث بالاسم",
         "placeholder": "البحث عن منتج..."
       },
       "price": {
-        "title": "نطاق السعر"
+        "title": "نطاق السعر",
+        "note": "ملاحظة عن السعر" 
+
       },
       "rating": {
         "title": "الحد الأدنى للتقييم"
