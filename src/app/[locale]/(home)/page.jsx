@@ -11,11 +11,11 @@ import React from "react";
 
 const page = async () => {
   // const t = useTranslations("");
-  const offersProducts = await fetchInterceptor("products/offers?limit=6", {
+  const offersProducts = await fetchInterceptor("products/offers?limit=10", {
     method: "GET",
   });
   const exclusiveProducts = await fetchInterceptor(
-    "products/featured?limit=6",
+    "products/featured?limit=10",
     {
       method: "GET",
     }

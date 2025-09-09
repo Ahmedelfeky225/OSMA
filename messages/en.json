@@ -122,8 +122,8 @@
       "heartNotesPlaceholder": "Heart Notes (e.g., Jasmine, Rose)",
       "baseNotes": "Base Notes (Depth & Longevity)",
       "baseNotesPlaceholder": "Base Notes (e.g., Sandalwood, Musk)",
-      "isFeatured": "Featured Product",
-      "featuredDescription": "Will appear in featured products section",
+      "isFeatured": "Exclusive Offers",
+      "featuredDescription": "Will appear in Exclusive Offers section",
       "images": "Product Images",
       "imagesDescription": "Drag images here or click to select",
       "imagesLimit": "Maximum 5 images, PNG, JPG up to 10MB",
@@ -241,7 +241,6 @@
       "price": {
         "title": "Price Range",
         "note": "Price Note"
-
       },
       "rating": {
         "title": "Minimum Rating"
@@ -544,11 +543,11 @@
   "why_us": {
     "title": "Why Choose Us?",
     "features": {
-      "shipping": "Fast & Secure Shipping 🚚",
+      "shipping": "Fast & Secure Shipping",
       "authentic": "100% Authentic Perfumes",
       "support": "24/7 Customer Support",
       "payment": "Cash on Delivery or Online Payment",
-      "packaging": "Elegant Gift-Ready Packaging 🎁"
+      "packaging": "Elegant Gift-Ready Packaging"
     }
   },
   "Index": {
@@ -616,7 +615,7 @@
     "inquiry": "Ask about product",
     "OsmanLogo": "Logo",
     "offersTitle": "Featured Offers",
-    "exclusiveTitle": "Exclusive Perfumes",
+    "exclusiveTitle": "Exclusive Offers",
     "title": "Title",
     "description": "Description",
     "searchPlaceholder": "Search...",

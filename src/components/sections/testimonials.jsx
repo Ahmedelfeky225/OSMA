@@ -87,7 +87,7 @@ export default function TestimonialsSection() {
 
   return (
     <section className="sm:py-12 py-6 bg-gradient-to-br from-slate-50 to-blue-50/30 dark:from-gray-900 dark:to-gray-800">
-      <div className="max-w-[90%] mx-auto">
+      <div className="max-w-[90%] mx-auto sm:px-0 px-2">
         <div className="text-center sm:mb-12 mb-6">
           <div className="inline-flex items-center gap-2 mb-4">
             <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#7a99c0] to-[#5a7ba0] flex items-center justify-center shadow-lg">
@@ -108,15 +108,15 @@ export default function TestimonialsSection() {
             <>
               <button
                 ref={prevRef}
-                className="cursor-pointer absolute left-4 top-1/2 z-10 -translate-y-1/2 w-12 h-12 bg-white dark:bg-gray-800 text-[#7a99c0] rounded-full hover:bg-[#7a99c0] hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl border border-slate-200 dark:border-gray-700 flex items-center justify-center group"
+                className="cursor-pointer absolute -left-4 lg:-left-6 top-1/2 z-10 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 bg-white dark:bg-gray-800 text-[#7a99c0] rounded-full hover:bg-[#7a99c0] hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl border border-slate-200 dark:border-gray-700 flex items-center justify-center group"
               >
-                <ChevronLeftIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                <ChevronLeftIcon className="w-4 h-4 lg:w-5 lg:h-5 group-hover:scale-110 transition-transform" />
               </button>
               <button
                 ref={nextRef}
-                className="cursor-pointer absolute right-4 top-1/2 z-10 -translate-y-1/2 w-12 h-12 bg-white dark:bg-gray-800 text-[#7a99c0] rounded-full hover:bg-[#7a99c0] hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl border border-slate-200 dark:border-gray-700 flex items-center justify-center group"
+                className="cursor-pointer absolute -right-4 lg:-right-6 top-1/2 z-10 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 bg-white dark:bg-gray-800 text-[#7a99c0] rounded-full hover:bg-[#7a99c0] hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl border border-slate-200 dark:border-gray-700 flex items-center justify-center group"
               >
-                <ChevronRightIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                <ChevronRightIcon className="w-4 h-4 lg:w-5 lg:h-5 group-hover:scale-110 transition-transform" />
               </button>
             </>
           )}

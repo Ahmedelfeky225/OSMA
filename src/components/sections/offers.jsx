@@ -405,12 +405,218 @@
 
 // export default Offers;
 
+// "use client";
+
+// import { useEffect, useRef, useState } from "react";
+// import ProductCard from "../ui/productCard";
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import { Navigation, Autoplay } from "swiper/modules"; // حذف Pagination
+// import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+// import { useLocale, useTranslations } from "use-intl";
+// import { Sparkles, Tag } from "lucide-react";
+
+// import "swiper/css";
+// import "swiper/css/navigation";
+
+// const Offers = ({ offersData }) => {
+//   const [isLargeScreen, setIsLargeScreen] = useState(false);
+//   const [mounted, setMounted] = useState(false);
+//   const [showNav, setShowNav] = useState(false);
+//   const swiperRef = useRef(null);
+
+//   const t = useTranslations("Index");
+//   const sectionText = useTranslations("sectionText");
+//   const locale = useLocale();
+//   const isRTL = locale === "ar";
+
+//   useEffect(() => {
+//     setMounted(true);
+//     const handleResize = () => {
+//       setIsLargeScreen(window.innerWidth >= 1024);
+
+//       // احسب عدد الشرائح المتاحة حسب عرض الشاشة
+//       let slidesPerView = 1;
+//       if (window.innerWidth >= 1280) slidesPerView = 4;
+//       else if (window.innerWidth >= 1024) slidesPerView = 3;
+//       else if (window.innerWidth >= 768) slidesPerView = 2;
+//       else if (window.innerWidth >= 640) slidesPerView = 1.5;
+
+//       const totalProducts = offersData?.products?.length || 0;
+//       setShowNav(totalProducts > slidesPerView);
+//     };
+
+//     handleResize();
+//     window.addEventListener("resize", handleResize);
+//     return () => window.removeEventListener("resize", handleResize);
+//   }, [offersData]);
+
+//   const handlePrevClick = () => {
+//     swiperRef.current?.slidePrev();
+//   };
+
+//   const handleNextClick = () => {
+//     swiperRef.current?.slideNext();
+//   };
+
+//   useEffect(() => {
+//     if (mounted && swiperRef.current) {
+//       const swiper = swiperRef.current;
+//       const timer = setTimeout(() => {
+//         if (swiper?.initialized) {
+//           try {
+//             swiper.changeLanguageDirection(isRTL ? "rtl" : "ltr");
+//             swiper.update();
+//             swiper.updateSize();
+//             swiper.updateSlides();
+//             swiper.slideTo(0, 0);
+//           } catch (err) {
+//             try {
+//               swiper.changeLanguageDirection(isRTL ? "rtl" : "ltr");
+//               swiper.update();
+//             } catch (_) {}
+//           }
+//         }
+//       }, 250);
+//       return () => clearTimeout(timer);
+//     }
+//   }, [mounted, locale, isRTL]);
+
+//   if (!mounted) return null;
+
+//   return (
+//     <section
+//       className="sm:py-6 py-8 bg-gradient-to-br from-slate-50 to-blue-50/30 dark:from-gray-900 dark:to-gray-800"
+//       dir={isRTL ? "rtl" : "ltr"}
+//     >
+//       <div className="max-w-[90%] mx-auto sm:px-0 px-2">
+//         {/* Header */}
+//         <div className="text-center sm:mb-12 mb-6">
+//           <div className="inline-flex items-center gap-2 mb-4">
+//             <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#7a99c0] to-[#5a7ba0] flex items-center justify-center shadow-lg">
+//               <span className="text-white font-bold text-sm">O</span>
+//             </div>
+//             <span className="text-[#7a99c0] dark:text-[#8fa5c8] font-semibold text-lg">
+//               OSMA
+//             </span>
+//           </div>
+//           <div className="flex items-center justify-center gap-3 mb-4">
+//             <div className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#7a99c0]/10 to-[#5a7ba0]/10 rounded-full border border-[#7a99c0]/20">
+//               {locale === "ar" && <Tag className="w-5 h-5 text-[#7a99c0]" />}
+//               <span className="text-[#7a99c0] dark:text-[#8fa5c8] font-medium text-sm">
+//                 {sectionText("special_offers")}
+//               </span>
+//               {locale === "en" && (
+//                 <Tag className="w-5 h-5 text-[#7a99c0] rotate-90" />
+//               )}
+//             </div>
+//           </div>
+//           <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#7a99c0] to-[#5a7ba0] bg-clip-text text-transparent mb-4">
+//             {t("offersTitle")}
+//           </h2>
+//           <div className="w-24 h-1 bg-gradient-to-r from-[#7a99c0] to-[#5a7ba0] mx-auto rounded-full"></div>
+//         </div>
+
+//         <div className="relative">
+//           {/* الأسهم تظهر بس لو فيه منتجات أكتر من الشرائح */}
+//           {showNav && (
+//             <>
+//               <button
+//                 onClick={handlePrevClick}
+//                 className={`cursor-pointer absolute ${
+//                   isRTL ? "-right-4" : "-left-4"
+//                 } top-1/2 z-10 -translate-y-1/2 w-10 h-10 bg-white dark:bg-gray-800 text-[#7a99c0] rounded-full hover:bg-[#7a99c0] hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl border border-slate-200 dark:border-gray-700 flex items-center justify-center group`}
+//                 aria-label={isRTL ? "الشريحة السابقة" : "Previous slide"}
+//               >
+//                 {isRTL ? (
+//                   <ChevronRightIcon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+//                 ) : (
+//                   <ChevronLeftIcon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+//                 )}
+//               </button>
+//               <button
+//                 onClick={handleNextClick}
+//                 className={`cursor-pointer absolute ${
+//                   isRTL ? "-left-4" : "-right-4"
+//                 } top-1/2 z-10 -translate-y-1/2 w-10 h-10 bg-white dark:bg-gray-800 text-[#7a99c0] rounded-full hover:bg-[#7a99c0] hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl border border-slate-200 dark:border-gray-700 flex items-center justify-center group`}
+//                 aria-label={isRTL ? "الشريحة التالية" : "Next slide"}
+//               >
+//                 {isRTL ? (
+//                   <ChevronLeftIcon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+//                 ) : (
+//                   <ChevronRightIcon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+//                 )}
+//               </button>
+//             </>
+//           )}
+
+//           <Swiper
+//             key={`${locale}-${mounted}-${offersData?.products?.length || 0}`}
+//             modules={[Navigation, Autoplay]}
+//             dir={isRTL ? "rtl" : "ltr"}
+//             spaceBetween={20}
+//             slidesPerView={1}
+//             slidesPerGroup={1}
+//             loop={false}
+//             speed={700}
+//             touchRatio={2}
+//             threshold={1}
+//             resistanceRatio={0.85}
+//             longSwipesRatio={0.1}
+//             observer
+//             observeParents
+//             centeredSlides={false}
+//             initialSlide={0}
+//             breakpoints={{
+//               640: { slidesPerView: 1.5, spaceBetween: 16 },
+//               768: { slidesPerView: 2, spaceBetween: 20 },
+//               1024: { slidesPerView: 3, spaceBetween: 24 },
+//               1280: { slidesPerView: 4, spaceBetween: 24 },
+//             }}
+//             navigation={false}
+//             pagination={false} // تم إيقاف الـ bullets بالكامل
+//             onSwiper={(swiper) => {
+//               swiperRef.current = swiper;
+//             }}
+//             onInit={(swiper) => {
+//               try {
+//                 swiper.changeLanguageDirection(isRTL ? "rtl" : "ltr");
+//               } catch (_) {}
+//             }}
+//             className="offers-swiper"
+//           >
+//             {offersData?.products?.map((product, index) => (
+//               <SwiperSlide key={product._id || index}>
+//                 <div className="group relative">
+//                   <div
+//                     className={`absolute -top-1 ${
+//                       isRTL ? "-right-1" : "-left-1"
+//                     } z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+//                   >
+//                     <Sparkles className="w-5 h-5 text-yellow-400 animate-pulse" />
+//                   </div>
+//                   <div className="relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 dark:border-gray-700 group-hover:-translate-y-2">
+//                     <div className="absolute inset-0 bg-gradient-to-br from-[#7a99c0]/0 to-[#5a7ba0]/0 group-hover:from-[#7a99c0]/5 group-hover:to-[#5a7ba0]/5 transition-all duration-500 rounded-2xl"></div>
+//                     <ProductCard product={product} />
+//                     <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#7a99c0] to-[#5a7ba0] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center rounded-b-2xl"></div>
+//                   </div>
+//                 </div>
+//               </SwiperSlide>
+//             ))}
+//           </Swiper>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default Offers;
+
 "use client";
 
 import { useEffect, useRef, useState } from "react";
 import ProductCard from "../ui/productCard";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules"; // حذف Pagination
+import { Navigation, Autoplay } from "swiper/modules";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { useLocale, useTranslations } from "use-intl";
 import { Sparkles, Tag } from "lucide-react";
@@ -419,9 +625,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 const Offers = ({ offersData }) => {
-  const [isLargeScreen, setIsLargeScreen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [showNav, setShowNav] = useState(false);
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
   const swiperRef = useRef(null);
 
   const t = useTranslations("Index");
@@ -431,10 +638,8 @@ const Offers = ({ offersData }) => {
 
   useEffect(() => {
     setMounted(true);
-    const handleResize = () => {
-      setIsLargeScreen(window.innerWidth >= 1024);
 
-      // احسب عدد الشرائح المتاحة حسب عرض الشاشة
+    const handleResize = () => {
       let slidesPerView = 1;
       if (window.innerWidth >= 1280) slidesPerView = 4;
       else if (window.innerWidth >= 1024) slidesPerView = 3;
@@ -458,6 +663,7 @@ const Offers = ({ offersData }) => {
     swiperRef.current?.slideNext();
   };
 
+  // تحديث الاتجاه عند تغيير اللغة
   useEffect(() => {
     if (mounted && swiperRef.current) {
       const swiper = swiperRef.current;
@@ -466,8 +672,6 @@ const Offers = ({ offersData }) => {
           try {
             swiper.changeLanguageDirection(isRTL ? "rtl" : "ltr");
             swiper.update();
-            swiper.updateSize();
-            swiper.updateSlides();
             swiper.slideTo(0, 0);
           } catch (err) {
             try {
@@ -488,7 +692,7 @@ const Offers = ({ offersData }) => {
       className="sm:py-6 py-8 bg-gradient-to-br from-slate-50 to-blue-50/30 dark:from-gray-900 dark:to-gray-800"
       dir={isRTL ? "rtl" : "ltr"}
     >
-      <div className="max-w-[90%] mx-auto">
+      <div className="max-w-[90%] mx-auto sm:px-0 px-2">
         {/* Header */}
         <div className="text-center sm:mb-12 mb-6">
           <div className="inline-flex items-center gap-2 mb-4">
@@ -517,35 +721,40 @@ const Offers = ({ offersData }) => {
         </div>
 
         <div className="relative">
-          {/* الأسهم تظهر بس لو فيه منتجات أكتر من الشرائح */}
+          {/* الأسهم */}
           {showNav && (
             <>
-              <button
-                onClick={handlePrevClick}
-                className={`cursor-pointer absolute ${
-                  isRTL ? "right-4" : "left-4"
-                } top-1/2 z-10 -translate-y-1/2 w-12 h-12 bg-white dark:bg-gray-800 text-[#7a99c0] rounded-full hover:bg-[#7a99c0] hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl border border-slate-200 dark:border-gray-700 flex items-center justify-center group`}
-                aria-label={isRTL ? "الشريحة السابقة" : "Previous slide"}
-              >
-                {isRTL ? (
-                  <ChevronRightIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                ) : (
-                  <ChevronLeftIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                )}
-              </button>
-              <button
-                onClick={handleNextClick}
-                className={`cursor-pointer absolute ${
-                  isRTL ? "left-4" : "right-4"
-                } top-1/2 z-10 -translate-y-1/2 w-12 h-12 bg-white dark:bg-gray-800 text-[#7a99c0] rounded-full hover:bg-[#7a99c0] hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl border border-slate-200 dark:border-gray-700 flex items-center justify-center group`}
-                aria-label={isRTL ? "الشريحة التالية" : "Next slide"}
-              >
-                {isRTL ? (
-                  <ChevronLeftIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                ) : (
-                  <ChevronRightIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                )}
-              </button>
+              {!isBeginning && (
+                <button
+                  onClick={handlePrevClick}
+                  className={`cursor-pointer absolute ${
+                    isRTL ? "-right-4 lg:-right-6" : "-left-4 lg:-left-6"
+                  } top-1/2 z-10 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 bg-white dark:bg-gray-800 text-[#7a99c0] rounded-full hover:bg-[#7a99c0] hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl border border-slate-200 dark:border-gray-700 flex items-center justify-center group`}
+                  aria-label={isRTL ? "الشريحة السابقة" : "Previous slide"}
+                >
+                  {isRTL ? (
+                    <ChevronRightIcon className="w-4 h-4 lg:w-5 lg:h-5 group-hover:scale-110 transition-transform" />
+                  ) : (
+                    <ChevronLeftIcon className="w-4 h-4 lg:w-5 lg:h-5 group-hover:scale-110 transition-transform" />
+                  )}
+                </button>
+              )}
+
+              {!isEnd && (
+                <button
+                  onClick={handleNextClick}
+                  className={`cursor-pointer absolute ${
+                    isRTL ? "-left-4 lg:-left-6" : "-right-4 lg:-right-6"
+                  } top-1/2 z-10 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 bg-white dark:bg-gray-800 text-[#7a99c0] rounded-full hover:bg-[#7a99c0] hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl border border-slate-200 dark:border-gray-700 flex items-center justify-center group`}
+                  aria-label={isRTL ? "الشريحة التالية" : "Next slide"}
+                >
+                  {isRTL ? (
+                    <ChevronLeftIcon className="w-4 h-4 lg:w-5 lg:h-5  group-hover:scale-110 transition-transform" />
+                  ) : (
+                    <ChevronRightIcon className="w-4 h-4 lg:w-5 lg:h-5  group-hover:scale-110 transition-transform" />
+                  )}
+                </button>
+              )}
             </>
           )}
 
@@ -558,14 +767,9 @@ const Offers = ({ offersData }) => {
             slidesPerGroup={1}
             loop={false}
             speed={700}
-            touchRatio={2}
-            threshold={1}
-            resistanceRatio={0.85}
-            longSwipesRatio={0.1}
             observer
             observeParents
             centeredSlides={false}
-            initialSlide={0}
             breakpoints={{
               640: { slidesPerView: 1.5, spaceBetween: 16 },
               768: { slidesPerView: 2, spaceBetween: 20 },
@@ -573,14 +777,15 @@ const Offers = ({ offersData }) => {
               1280: { slidesPerView: 4, spaceBetween: 24 },
             }}
             navigation={false}
-            pagination={false} // تم إيقاف الـ bullets بالكامل
+            pagination={false}
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
+              setIsBeginning(swiper.isBeginning);
+              setIsEnd(swiper.isEnd);
             }}
-            onInit={(swiper) => {
-              try {
-                swiper.changeLanguageDirection(isRTL ? "rtl" : "ltr");
-              } catch (_) {}
+            onSlideChange={(swiper) => {
+              setIsBeginning(swiper.isBeginning);
+              setIsEnd(swiper.isEnd);
             }}
             className="offers-swiper"
           >

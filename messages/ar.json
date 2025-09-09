@@ -1,5 +1,4 @@
 {
-  
   "productsPage": {
     "manageProducts": "إدارة المنتجات",
     "manageProductsDescription": "عرض وتعديل وحذف المنتجات الموجودة في متجرك.",
@@ -120,8 +119,8 @@
       "heartNotesPlaceholder": "النوتات الوسطى (مثال: ياسمين، ورد)",
       "baseNotes": "النوتات الأساسية (العمق والثبات)",
       "baseNotesPlaceholder": "النوتات الأساسية (مثال: خشب الصندل، مسك)",
-      "isFeatured": "منتج مميز",
-      "featuredDescription": "اجعل هذا المنتج يظهر في قسم المنتجات المميزة.",
+      "isFeatured": "عطر عليه عرض حصري",
+      "featuredDescription": "اجعل هذا المنتج يظهر في قسم العروض الحصريه.",
       "images": "صور المنتج",
       "imagesDescription": "اسحب وأفلت الصور هنا، أو انقر لتحديدها.",
       "imagesLimit": "الحد الأقصى 5 صور.",
@@ -225,7 +224,7 @@
     "inquiry": "استفسر عن المنتج",
     "OsmanLogo": "الشعار",
     "offersTitle": "عروض مميزة",
-    "exclusiveTitle": "عطور حصرية",
+    "exclusiveTitle": "عروض حصرية",
     "title": "العنوان",
     "description": "الوصف",
     "searchPlaceholder": "بحث...",
@@ -460,11 +459,11 @@
   "why_us": {
     "title": "لماذا تختارنا؟",
     "features": {
-      "shipping": "شحن سريع وآمن 🚚",
+      "shipping": "شحن سريع وآمن",
       "authentic": "عطور أصلية 100%",
       "support": "دعم العملاء 24/7",
       "payment": "الدفع عند الاستلام أو الدفع عبر الإنترنت",
-      "packaging": "تغليف هدايا أنيق 🎁"
+      "packaging": "تغليف هدايا أنيق"
     }
   },
   "Auth": {
@@ -575,7 +574,6 @@
     "logout": "تسجيل الخروج"
   },
   "filters": {
-
     "title": "فلاتر المنتجات",
     "brand": "اوسما",
     "resetFilters": "إعادة تعيين",
@@ -594,15 +592,13 @@
       "discount": "خصم"
     },
     "sections": {
-    
       "search": {
         "title": "البحث بالاسم",
         "placeholder": "البحث عن منتج..."
       },
       "price": {
         "title": "نطاق السعر",
-        "note": "ملاحظة عن السعر" 
-
+        "note": "ملاحظة عن السعر"
       },
       "rating": {
         "title": "الحد الأدنى للتقييم"
