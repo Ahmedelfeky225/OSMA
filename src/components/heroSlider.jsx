@@ -15,7 +15,7 @@ const HeroSlider = () => {
   return (
     <div className="relative w-full h-[65vw] sm:h-[calc(100vh-90px)] overflow-hidden z-0">
       <Swiper
-        modules={[EffectFade]}
+        modules={[Autoplay, EffectFade]}
         effect="fade"
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         loop
