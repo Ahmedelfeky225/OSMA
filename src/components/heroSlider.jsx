@@ -44,7 +44,7 @@ const HeroSlider = () => {
                 }`}
               >
                 <div className="max-w-xs sm:max-w-lg md:max-w-xl lg:max-w-2xl space-y-3 sm:space-y-4 md:space-y-6">
-                  <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-balance drop-shadow-2xl">
+                  <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-bold  text-balance drop-shadow-2xl">
                     {locale === "ar" ? (
                       <>
                         <span className="block text-sky-200 drop-shadow-lg">
@@ -66,7 +66,7 @@ const HeroSlider = () => {
                     )}
                   </h1>
 
-                  <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-light leading-relaxed text-gray-50 text-pretty drop-shadow-lg">
+                  <p className="text-sm opacity-75 sm:text-base md:text-lg lg:text-xl xl:text-2xl font-light leading-relaxed text-gray-50 text-pretty drop-shadow-lg">
                     {locale === "ar"
                       ? "عطور فاخرة تحكي قصة جمالك الفريد - خصومات حصرية تصل إلى 55% على مجموعة مختارة من أرقى العطور العالمية"
                       : "Luxury fragrances that tell your unique beauty story - Exclusive discounts up to 55% on our curated collection of world's finest perfumes"}
