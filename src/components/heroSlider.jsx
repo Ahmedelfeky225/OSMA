@@ -13,7 +13,7 @@ const HeroSlider = () => {
   const locale = params?.locale || "en";
 
   return (
-    <div className="relative w-full h-[70vw] sm:h-[calc(100vh-90px)] overflow-hidden z-0">
+    <div className="relative w-full h-[75vw] sm:h-[calc(100vh-90px)] overflow-hidden z-0">
       <Swiper
         modules={[Autoplay, EffectFade]}
         effect="fade"
@@ -25,7 +25,7 @@ const HeroSlider = () => {
         {heroImages.map((image, index) => (
           <SwiperSlide key={index} className="relative z-0">
             <div
-              className="absolute inset-0 bg-cover lg:bg-top bg-no-repeat bg-[0%] z-0"
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
               style={{ backgroundImage: `url(${image.src})` }}
             />
             {index === 0 && (
@@ -75,7 +75,7 @@ const HeroSlider = () => {
                   {/* Enhanced button with sky blue color */}
                   <div className="pt-2 sm:pt-4">
                     <a
-                      href="/shop"
+                      href="/offers"
                       className="group inline-flex items-center gap-2 sm:gap-3 bg-sky-500 hover:bg-sky-600 text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-lg sm:rounded-xl text-sm sm:text-base md:text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-sky-500/25 drop-shadow-lg"
                     >
                       <span>
