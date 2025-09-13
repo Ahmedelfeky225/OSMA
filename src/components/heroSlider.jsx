@@ -115,7 +115,7 @@ const HeroSlider = () => {
                         />
                       </svg>
                       <span>
-                        {locale === "ar" ? "شحن مجاني" : "Free Shipping"}
+                        {locale === "ar" ? "شحن سريع وآمن" : "Fast & Secure Shipping"}
                       </span>
                     </div>
                     <div className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-sky-100 drop-shadow-md">
