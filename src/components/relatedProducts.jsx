@@ -137,7 +137,7 @@ const RelatedProducts = ({ productId }) => {
 
   return (
     <section
-      className="py-16 my-10 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/20 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden"
+      className="sm:py-16 sm:my-10 py-10 my-10 relative overflow-hidden"
       dir={isRTL ? "rtl" : "ltr"}
     >
       {/* Background decorative elements */}

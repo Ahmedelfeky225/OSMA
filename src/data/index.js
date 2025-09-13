@@ -1,5 +1,5 @@
 import heroImage1 from "@/assets/imgs/heroSlider1.jpg";
-import heroImage2 from "@/assets/imgs/heroSlider2.webp";
+import heroImage2 from "@/assets/imgs/heroSlider2.jpg";
 import heroImage3 from "@/assets/imgs/hero3.jpg";
 import heroImage4 from "@/assets/imgs/hero4.png";
 

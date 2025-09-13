@@ -495,7 +495,6 @@ export const createProduct = createAsyncThunk(
   }
 );
 
-// تحديث منتج
 export const updateProduct = createAsyncThunk(
   "products/updateProduct",
   async ({ productId, productData }, { rejectWithValue }) => {
@@ -504,39 +503,37 @@ export const updateProduct = createAsyncThunk(
       const existingImages = [];
       const newImages = [];
 
-      // فصل الصور الموجودة عن الصور الجديدة
       if (productData.images && productData.images.length > 0) {
         productData.images.forEach((image) => {
           if (image instanceof File) {
             newImages.push(image);
           } else {
-            existingImages.push(image); // هذه هي الـ URLs للصور الموجودة
+            existingImages.push(image);
           }
         });
       }
 
-      // إضافة البيانات النصية
       Object.keys(productData).forEach((key) => {
-        if (key === "images") {
-          // لا تفعل شيئًا هنا، سيتم التعامل مع الصور بشكل منفصل
-        } else if (key === "notes") {
-          // تحويل كائن الملاحظات إلى JSON string
+        if (key === "images") return;
+        if (key === "notes") {
           formData.append("notes", JSON.stringify(productData[key]));
         } else if (productData[key] !== undefined) {
           formData.append(key, productData[key]);
         }
       });
 
-      // إضافة الصور الجديدة
       newImages.forEach((image) => {
         formData.append("images", image);
       });
 
-      // إضافة الصور الموجودة (URLs) كحقل منفصل إذا كانت الواجهة الخلفية تتوقع ذلك
-      // أو يمكنك دمجها في حقل 'images' إذا كانت الواجهة الخلفية تتعامل مع كليهما
-      // هنا نفترض أن الواجهة الخلفية تتوقعها كـ 'existingImages'
       if (existingImages.length > 0) {
-        formData.append("existingImages", JSON.stringify(existingImages));
+        const cleanedExistingImages = existingImages
+          .map((img) => (typeof img === "string" ? img.trim() : img))
+          .filter((img) => img !== "");
+        formData.append(
+          "existingImages",
+          JSON.stringify(cleanedExistingImages)
+        );
       }
 
       const response = await axiosInstance.put(
@@ -544,11 +541,10 @@ export const updateProduct = createAsyncThunk(
         formData,
         {
           withCredentials: true,
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
+          headers: { "Content-Type": "multipart/form-data" },
         }
       );
+
       return response.data;
     } catch (error) {
       if (error.response && error.response.data) {

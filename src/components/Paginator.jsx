@@ -115,11 +115,7 @@ const Paginator = ({ paginate }) => {
                 : "bg-white cursor-pointer dark:bg-gray-800 text-slate-700 dark:text-gray-300 hover:bg-[#7a99c0] hover:text-white shadow-lg hover:shadow-xl border border-slate-200 dark:border-gray-600"
             }`}
           >
-            {locale === "en" ? (
-              <ChevronLeftIcon className="w-4 h-4" />
-            ) : (
-              <ChevronRightIcon className="w-4 h-4" />
-            )}
+            <ChevronLeftIcon className="w-4 h-4" />
             <span>{locale === "en" ? "Previous" : "السابق"}</span>
           </button>
 
@@ -164,11 +160,7 @@ const Paginator = ({ paginate }) => {
               <span className="sr-only">
                 {locale === "en" ? "Previous" : "السابق"}
               </span>
-              {locale === "en" ? (
-                <ChevronLeftIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              ) : (
-                <ChevronRightIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              )}
+              <ChevronRightIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
             </button>
 
             {/* Page Numbers */}

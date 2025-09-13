@@ -27,21 +27,6 @@ import {
   Loader2,
 } from "lucide-react";
 
-/**
- * ProductFilters Component
- *
- * A comprehensive product filtering component that synchronizes with URL parameters
- * for shareable and bookmarkable filtered results. Built for Next.js with full
- * internationalization support and production-ready error handling.
- *
- * Features:
- * - Range sliders with dual handles (min/max)
- * - Real-time URL synchronization
- * - Accessibility support
- * - Dark/light mode support
- * - Performance optimized with memoization
- */
-
 const ProductFilters = ({
   minPriceRange = 0,
   maxPriceRange = 1000,
@@ -67,7 +52,7 @@ const ProductFilters = ({
   const [endDate, setEndDate] = useState("");
   const [isFeatured, setIsFeatured] = useState(false);
   const [sort, setSort] = useState("newest");
-  const [expandedPanel, setExpandedPanel] = useState("panel-price");
+  const [expandedPanel, setExpandedPanel] = useState("panel-search");
   const [error, setError] = useState(null);
 
   // useTransition for non-blocking UI updates
@@ -140,12 +125,10 @@ const ProductFilters = ({
       const newSearchParams = new URLSearchParams();
 
       if (search.trim()) newSearchParams.set("search", search.trim());
-      
-      // إرسال معاملات السعر للفلتر على finalPrice (السعر النهائي بعد الخصم)
-      // لضمان أن الـ API يطبق الفلتر على السعر الصحيح
+
       newSearchParams.set("minFinalPrice", minPrice.toString());
       newSearchParams.set("maxFinalPrice", maxPrice.toString());
-      
+
       if (rating > 0) newSearchParams.set("rating", rating.toString());
       if (inStock) newSearchParams.set("inStock", "true");
       if (minReviews > 0)
@@ -337,7 +320,7 @@ const ProductFilters = ({
       const handleSliderChange = useCallback(
         (e, isMin) => {
           const newValue = Number(e.target.value);
-          
+
           if (isMin) {
             // للحد الأدنى - التأكد من عدم تجاوز الحد الأقصى
             const clampedValue = Math.min(newValue, value[1]);
@@ -407,9 +390,9 @@ const ProductFilters = ({
               onChange={(e) => handleSliderChange(e, true)}
               className="absolute top-0 w-full h-2 bg-transparent appearance-none cursor-pointer range-slider"
               aria-label={`الحد الأدنى: ${formatValue(value[0])}`}
-              style={{ 
+              style={{
                 zIndex: value[0] > max - (max - min) / 2 ? 25 : 20,
-                pointerEvents: 'auto'
+                pointerEvents: "auto",
               }}
             />
 
@@ -423,9 +406,9 @@ const ProductFilters = ({
               onChange={(e) => handleSliderChange(e, false)}
               className="absolute top-0 w-full h-2 bg-transparent appearance-none cursor-pointer range-slider"
               aria-label={`الحد الأقصى: ${formatValue(value[1])}`}
-              style={{ 
+              style={{
                 zIndex: value[1] < min + (max - min) / 2 ? 25 : 10,
-                pointerEvents: 'auto'
+                pointerEvents: "auto",
               }}
             />
           </div>
@@ -567,7 +550,9 @@ const ProductFilters = ({
         >
           <div className="mb-2">
             <p className="text-xs text-slate-500 dark:text-gray-400">
-              {t("sections.price.note", { defaultValue: "الفلتر يعمل على السعر النهائي (بعد الخصم)" })}
+              {t("sections.price.note", {
+                defaultValue: "الفلتر يعمل على السعر النهائي (بعد الخصم)",
+              })}
             </p>
           </div>
           <RangeSlider
@@ -894,7 +879,7 @@ const ProductFilters = ({
             height: 24px;
             width: 24px;
           }
-          
+
           .range-slider::-moz-range-thumb {
             height: 24px;
             width: 24px;
