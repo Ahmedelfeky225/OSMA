@@ -255,6 +255,17 @@ export default function Footer() {
                   <span>{t("footer_made_with_love")}</span>
                 </div>
               </div>
+              <p className="text-gray-300 block text-center mt-1">
+                Developed by{" "}
+                <a
+                  href="https://Wa.me/201005845202"
+                  className="underline text-sm text-blue-500"
+                  target="_blank"
+                >
+                  Ahmed Elfeky
+                </a>{" "}
+                | Displayed for portfolio purposes only
+              </p>
             </div>
           </div>
         </div>
