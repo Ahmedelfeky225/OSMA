@@ -6,7 +6,6 @@ import { routing } from "@/i18n/routing";
 import LayoutStructure from "@/components/layoutStructure";
 import { ThemeProvider } from "@/components/themeProvider";
 import TopLoader from "@/components/topLoader";
-import { Suspense } from "react";
 import { getMessages } from "next-intl/server";
 
 const poppins = Poppins({
@@ -105,15 +104,7 @@ export default async function LocaleLayout({ children, params }) {
             messages={messages}
             timeZone="Africa/Cairo"
           >
-            <Suspense
-              fallback={
-                <div className="min-h-screen flex items-center justify-center">
-                  Loading...
-                </div>
-              }
-            >
-              <LayoutStructure locale={locale}>{children}</LayoutStructure>
-            </Suspense>
+            <LayoutStructure locale={locale}>{children}</LayoutStructure>
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>
