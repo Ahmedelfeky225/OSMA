@@ -10,28 +10,14 @@ export default async function middleware(req) {
   const pathname = req.nextUrl.pathname;
 
   const authHeader = req.headers.get("authorization");
-  let token = authHeader?.split(" ")[1];
-
-  if (!token) {
-    token = req.cookies.get("token")?.value;
-  }
-
-  // console.log(
-  //   "🔍 Token source:",
-  //   authHeader ? "Header" : token ? "Cookie" : "None"
-  // );
-
-  if (!process.env.JWT_SECRET) {
-    // console.error("🚨 JWT_SECRET is NOT defined in environment variables!");
-  }
+  let token = authHeader?.split(" ")[1] || req.cookies.get("token")?.value;
 
   const pathWithoutLocale = pathname.replace(/^\/(en|ar|fr)/, "");
-
   const protectedPaths = ["/profile", "/admin"];
   const publicPaths = ["/auth/login", "/auth/register"];
 
   const needsAuth = protectedPaths.some((path) =>
-    pathWithoutLocale.startsWith(path)
+    pathWithoutLocale.startsWith(path),
   );
 
   if (publicPaths.some((path) => pathWithoutLocale.startsWith(path)) && token) {
@@ -42,6 +28,15 @@ export default async function middleware(req) {
   }
 
   if (!needsAuth) {
+    if (token) {
+      try {
+        const { payload } = await jwtVerify(
+          token,
+          new TextEncoder().encode(process.env.JWT_SECRET),
+        );
+        res.headers.set("x-user-auth", JSON.stringify(payload));
+      } catch {}
+    }
     return res;
   }
 
@@ -52,17 +47,16 @@ export default async function middleware(req) {
   try {
     const { payload } = await jwtVerify(
       token,
-      new TextEncoder().encode(process.env.JWT_SECRET)
+      new TextEncoder().encode(process.env.JWT_SECRET),
     );
 
-    // تحقق من الدور
     if (pathWithoutLocale.startsWith("/admin") && payload.role !== "admin") {
       return NextResponse.redirect(new URL("/", req.url));
     }
 
+    res.headers.set("x-user-auth", JSON.stringify(payload));
     return res;
   } catch {
-    // التوكن غير صالح → رجع المستخدم لصفحة تسجيل الدخول
     return NextResponse.redirect(new URL("/auth/login", req.url));
   }
 }
